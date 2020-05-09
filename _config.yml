@@ -1,0 +1,46 @@
+name:               "Quangdao Nguyen"
+description:        "Maker of Things"
+
+url:                "https://www.quangdao.com"
+author:             "thinker3197"
+gravatar_hash:      ""
+twitter:            "quangdaon"
+email:              "quangdaon@gmail.com"
+github:             "quangdaon"
+linkedin:           "quangdaonguyen"
+
+disqus_shortname:   "TheQueue841"
+
+background:         ""
+
+paginate:           5
+paginate_path:      "/page:num/"
+
+baseurl:            ""
+permalink:          /:year/:month/:day/:title/
+
+markdown:           kramdown
+
+nav:
+  - name:           "About"
+    href:           "/about"
+
+sass:
+  style:            :compressed
+
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+gems:
+  - jekyll-paginate
