@@ -45,12 +45,11 @@ body {
 
 a {
     color: #515151;
-    text-decoration: none;
     transition: all 0.3s;
+    text-underline-offset: 0.125em;
     &:hover,
     &:focus {
         color: $theme-color;
-        text-decoration: dotted;
     }
 }
 
@@ -342,10 +341,10 @@ tbody tr:nth-child(odd) th {
     }
     a {
         color: #BDBDBD;
+        text-decoration: none;
         &:hover,
         &:focus {
             color: $theme-color;
-            text-decoration: dotted;
         }    
     }
     .social {
@@ -406,7 +405,14 @@ tbody tr:nth-child(odd) th {
     }
 }
 
+.head {
+    a {
+        text-decoration: none;
+    }
+}
+
 .bloghead {
+    @extend .head;
     .bloghead-title {
         span {
             color: #BDBDBD;
@@ -436,6 +442,11 @@ tbody tr:nth-child(odd) th {
 .post-list {
     h2 {
         margin-top: 1.3rem;
+    }
+    .post-title {
+        a {
+            text-decoration: none;
+        }
     }
 }
 
