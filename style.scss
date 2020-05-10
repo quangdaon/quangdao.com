@@ -384,8 +384,15 @@ tbody tr:nth-child(odd) th {
             bottom: 0;
             margin-left: 1em;
             a {
+                display: inline-block;
+                font-size: 0;
                 padding: 0;
                 margin-left: 0;
+                margin-right: 1rem;
+                .fa {
+                    margin-right: 0;
+                    font-size: 2rem;
+                }
             }
         }
     }

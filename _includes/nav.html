@@ -2,9 +2,9 @@
   {% for nav in site.nav %}
   <a href="{{ nav.href }}">{{ nav.name }}
     {% assign lastItem = site.nav | last) %}
-    {% if(nav != lastItem) %}
-    <span> &nbsp;/&nbsp; </span>
-    {% endif %}
   </a>
+  {% if(nav != lastItem) %}
+  <span> &nbsp;/&nbsp; </span>
+  {% endif %}
   {% endfor %}
 </nav>
