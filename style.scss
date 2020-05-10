@@ -245,6 +245,15 @@ pre code {
         margin-left: 0;
         margin-right: 0.5em;
     }
+    &-sm {
+        font-size: 1em;
+    }
+    &-md {
+        font-size: 1.25em;
+    }
+    &-lg {
+        font-size: 2em;
+    }
 }
 
 img {
@@ -403,22 +412,23 @@ tbody tr:nth-child(odd) th {
             color: #BDBDBD;
         }
     }
-    .bloghead-nav {
-        a {
-            color: #000;
-            font-weight: 800;
-            &:hover {
-                color: #424242;
-            }
+}
+
+.nav {
+    a {
+        color: #000;
+        font-weight: 800;
+        &:hover {
+            color: #424242;
         }
-        span {
-            font-weight: 800;
+    }
+    span {
+        font-weight: 800;
+        color: $theme-color;
+        &:hover,
+        &:focus {
             color: $theme-color;
-            &:hover,
-            &:focus {
-                color: $theme-color;
-                text-decoration: none;
-            }
+            text-decoration: none;
         }
     }
 }
@@ -426,6 +436,20 @@ tbody tr:nth-child(odd) th {
 .post-list {
     h2 {
         margin-top: 1.3rem;
+    }
+}
+
+#disqus_thread {
+    margin-top: 1em;
+}
+
+.footer {
+    margin-top: 1em;
+    text-align: center;
+    @media (min-width: $breakpoint) {
+        display: flex;
+        text-align: left;
+        justify-content: space-between;
     }
 }
 

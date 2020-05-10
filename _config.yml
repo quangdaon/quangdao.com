@@ -11,7 +11,7 @@ linkedin:           "quangdaonguyen"
 
 disqus_shortname:   "TheQueue841"
 
-background:         ""
+background:         "/resources/images/side-background.jpg"
 
 paginate:           5
 paginate_path:      "/page:num/"
@@ -24,6 +24,8 @@ markdown:           kramdown
 nav:
   - name:           "About"
     href:           "/about"
+  - name:           "Projects"
+    href:           "/projects"
 
 sass:
   style:            :compressed
