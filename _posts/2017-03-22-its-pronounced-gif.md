@@ -1,6 +1,6 @@
 ---
-title: It's Pronounced Gif!
-description: 
+title: It's Pronounced "Gif"
+description: My attempt at tackling one of the most controversal topics in tech.
 tags: [gif, discussion, opinions]
 categories: [Random]
 ---

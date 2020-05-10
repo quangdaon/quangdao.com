@@ -1,5 +1,6 @@
 ---
 title: A (Hopefully) Temporary Facelift
+description: A bitter-sweet farewell to my old website, and a warm welcome to what's   to come.
 tags: []
 categories: [Technology]
 ---

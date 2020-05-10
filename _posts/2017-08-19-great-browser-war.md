@@ -1,5 +1,6 @@
 ---
 title: The Great Web Browser War of 2017
+description: Originally written for work, this posts compares and contrasts our options to traverse the online world.
 tags: [graydient, browsers, technology, comparison, debate]
 categories: [Technology]
 ---
