@@ -23,6 +23,6 @@ A Command Line meme generator.
 
 What? Who said I took this robot thing too far?
 
-<a href="/q-robomoter"><i class="fa fa-home fa-md"></i>Homepage</a>
+<a href="/q-robometer"><i class="fa fa-home fa-md"></i>Homepage</a>
 
 <a href="https://github.com/quangdaon/q-robometer.git"><i class="fa fa-github fa-md"></i>Repo</a>
