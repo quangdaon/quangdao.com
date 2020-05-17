@@ -457,6 +457,19 @@ tbody tr:nth-child(odd) th {
     }
 }
 
+.post {
+    .post-title {
+        margin-bottom: 0;
+    }
+    .post-date {
+        margin-bottom: 1em;
+    }
+
+    img {
+        margin: 0.5em 0;
+    }
+}
+
 #disqus_thread {
     margin-top: 1em;
 }
