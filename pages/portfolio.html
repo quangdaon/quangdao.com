@@ -1,0 +1,37 @@
+---
+permalink: /portfolio/
+---
+
+<h1>My Work</h1>
+
+<div class="portfolio">
+  <div class="card-grid">
+    {% for item in site.portfolio %}
+    {% if item.draft  %}
+    {% continue %}
+    {% endif  %}
+    <div class="card">
+      <div class="card-header">
+        <img src="https://via.placeholder.com/400x250" alt="">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <h4 class="card-subtitle">{{ item.type }} - {{ item.role }}</h4>
+        <p class="card-links">
+          <a href="{{ item.url }}">Details</a>
+          |
+          {% if item.links %}
+            {% for link in item.links %}
+              {% assign lastItem = item.links | last) %}
+              <a href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+              {% unless link == lastItem %}|{% endunless %}
+            {% endfor %}
+          {% else %}
+            <a href="{{ item.link }}" target="_blank">See It Live</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

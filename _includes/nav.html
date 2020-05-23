@@ -3,8 +3,8 @@
   <a href="{{ nav.href }}">{{ nav.name }}
     {% assign lastItem = site.nav | last) %}
   </a>
-  {% if(nav != lastItem) %}
+  {% unless nav == lastItem %}
   <span> &nbsp;/&nbsp; </span>
-  {% endif %}
+  {% endunless %}
   {% endfor %}
 </nav>
