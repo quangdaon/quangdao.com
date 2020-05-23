@@ -5,5 +5,3 @@ role: Front-End Developer
 platform: WordPress
 link: https://www.watchusgrow.org/
 ---
-
-HELLO

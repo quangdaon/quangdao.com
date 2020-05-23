@@ -28,7 +28,7 @@ permalink: /portfolio/
             <a class="button button-1 card-button" 
               href="{{ item.links[0].url }}" 
               data-reveal 
-              target="_blank">See It Live</a>
+              target="_blank">See It Live +</a>
           {% else %}
             <a class="button button-1 card-button" href="{{ item.link }}" target="_blank">See It Live</a>
           {% endif %}
@@ -37,7 +37,7 @@ permalink: /portfolio/
           <div class="card-reveal">
             <div class="card-reveal-content">
               {% for link in item.links %}
-                <a class="button button-1 card-button" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+                <a class="button button-1 card-button" href="{{ link.url }}" target="_blank" tabindex="-1">{{ link.label }}</a>
               {% endfor %}
             </div>
           </div>
