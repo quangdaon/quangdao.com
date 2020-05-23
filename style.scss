@@ -493,6 +493,7 @@ tbody tr:nth-child(odd) th {
 
 .card {
   &-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -536,6 +537,37 @@ tbody tr:nth-child(odd) th {
     color: #ffffff;
     height: 100%;
   }
+  &-reveal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    transition: background 300ms 300ms;
+    &-content {
+      margin-top: auto;
+      transform: translateY(100%);
+      transition: transform 300ms;
+      .button {
+        height: auto;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+  &.show-reveal {
+    .card-reveal {
+      pointer-events: auto;
+      background: rgba(#000, 0.5);
+      transition: background 300ms;
+      &-content {
+        transform: translateY(0);
+        transition: transform 300ms 300ms;
+      }
+    }
+  }
 }
 
 .button {
@@ -546,42 +578,24 @@ tbody tr:nth-child(odd) th {
   line-height: 1;
   font-weight: bold;
   border-bottom: 0em solid transparent;
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0em;
-    width: 100%;
-    transition: height 200ms;
-  }
-  &:hover {
-    &::before {
-      height: 0.25em;
-    }
-  }
   &-1 {
     background: $theme-accent;
     color: #fff;
     border-bottom-color: $theme-color;
-    &:before {
-      background-color: $theme-color;
-    }
     &:hover,
     &:focus {
       color: #ffffff;
+      background: darken($theme-accent, 10%);
     }
   }
   &-2 {
     background: $theme-color;
     color: $theme-accent;
     border-bottom-color: $theme-accent;
-    &::before {
-      background-color: $theme-accent;
-    }
     &:hover,
     &:focus {
       color: $theme-accent;
+      background: darken($theme-color, 10%);
     }
   }
 }

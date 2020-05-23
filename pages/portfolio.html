@@ -7,31 +7,43 @@ permalink: /portfolio/
 <div class="portfolio">
   <div class="card-grid">
     {% for item in site.portfolio %}
-      {% if item.draft  %}
-        {% continue %}
-      {% endif  %}
-      <div class="card">
-        <div class="card-container">
-          <div class="card-header">
-            <img src="https://via.placeholder.com/400x250" alt="">
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">{{ item.title }}</h3>
-            <h4 class="card-subtitle">{{ item.type }} - {{ item.role }}</h4>
-          </div>
-          <div class="card-links">
-            {% assign content = item.content | strip_newlines %}
-            {% unless content == '' %}<a class="button button-2 card-button" href="{{ item.url }}">Details</a>{% endunless %}
-            {% if item.links %}
-              {% for link in item.links %}
-              <a class="button button-1 card-button" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
-              {% endfor %}
-            {% else %}
-              <a class="button button-1 card-button" href="{{ item.link }}" target="_blank">See It Live</a>
-            {% endif %}
-          </div>
+    {% if item.draft  %}
+    {% continue %}
+    {% endif  %}
+    <div class="card">
+      <div class="card-container">
+        <div class="card-header">
+          <img src="https://via.placeholder.com/400x250" alt="">
         </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ item.title }}</h3>
+          <h4 class="card-subtitle">{{ item.type }} - {{ item.role }}</h4>
+        </div>
+        <div class="card-links">
+          {% assign content = item.content | strip_newlines %}
+          {% unless content == '' %}
+            <a class="button button-2 card-button" href="{{ item.url }}">Details</a>
+          {% endunless %}
+          {% if item.links %}
+            <a class="button button-1 card-button" 
+              href="{{ item.links[0].url }}" 
+              data-reveal 
+              target="_blank">See It Live</a>
+          {% else %}
+            <a class="button button-1 card-button" href="{{ item.link }}" target="_blank">See It Live</a>
+          {% endif %}
+        </div>
+        {% if item.links %}
+          <div class="card-reveal">
+            <div class="card-reveal-content">
+              {% for link in item.links %}
+                <a class="button button-1 card-button" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
+    </div>
     {% endfor %}
   </div>
 </div>
