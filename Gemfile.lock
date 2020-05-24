@@ -7,8 +7,8 @@ GEM
       json
     csspool-st (3.1.2)
     execjs (2.7.0)
-    ffi (1.9.10)
-    ffi (1.9.10-x64-mingw32)
+    ffi (1.12.2)
+    ffi (1.12.2-x64-mingw32)
     html_press (0.8.2)
       htmlentities
       multi_css (>= 0.1.0)
