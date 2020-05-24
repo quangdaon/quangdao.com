@@ -627,6 +627,12 @@ tbody tr:nth-child(odd) th {
   }
 }
 
+
+.highlight {
+  background-color: lighten($theme-accent, 70%);
+  padding: 1em;
+}
+
 .highlight .hll {
   background-color: #ffffcc;
 }
