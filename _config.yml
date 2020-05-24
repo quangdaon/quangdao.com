@@ -33,7 +33,9 @@ collections:
   portfolio:
     sort_by: priority
     output: true
-
+  projects:
+    output: false
+    
 sass:
   style:            :compressed
 

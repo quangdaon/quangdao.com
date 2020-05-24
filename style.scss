@@ -281,6 +281,44 @@ tbody tr:nth-child(odd) th {
   background-color: #eee;
 }
 
+.button {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  padding: 0.75em 1em;
+  line-height: 1;
+  font-weight: bold;
+  border-bottom: 0em solid transparent;
+  margin-right: 1em;
+  min-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  .fa {
+    vertical-align: middle;
+    margin: 0 0.25em;
+  }
+  &-1 {
+    background: $theme-accent;
+    color: #fff;
+    border-bottom-color: $theme-color;
+    &:hover,
+    &:focus {
+      color: #ffffff;
+      background: darken($theme-accent, 10%);
+    }
+  }
+  &-2 {
+    background: $theme-color;
+    color: $theme-accent;
+    border-bottom-color: $theme-accent;
+    &:hover,
+    &:focus {
+      color: $theme-accent;
+      background: darken($theme-color, 10%);
+    }
+  }
+}
+
 .top {
   position: fixed;
   background: $theme-color;
@@ -530,6 +568,8 @@ tbody tr:nth-child(odd) th {
     flex: 1 1 0px;
     color: #ffffff;
     height: 100%;
+    margin: 0;
+    justify-content: center;
   }
   &-reveal {
     position: absolute;
@@ -545,9 +585,11 @@ tbody tr:nth-child(odd) th {
       transform: translateY(100%);
       transition: transform 300ms;
       .button {
+        margin: 0;
         height: auto;
         display: block;
         width: 100%;
+        justify-content: center;
       }
     }
   }
@@ -560,41 +602,6 @@ tbody tr:nth-child(odd) th {
         transform: translateY(0);
         transition: transform 300ms 350ms;
       }
-    }
-  }
-}
-
-.button {
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  padding: 0.75em 1em;
-  line-height: 1;
-  font-weight: bold;
-  border-bottom: 0em solid transparent;
-  .fa {
-      font-size: 1em;
-      vertical-align: middle;
-      margin: 0 0.125em;
-  }
-  &-1 {
-    background: $theme-accent;
-    color: #fff;
-    border-bottom-color: $theme-color;
-    &:hover,
-    &:focus {
-      color: #ffffff;
-      background: darken($theme-accent, 10%);
-    }
-  }
-  &-2 {
-    background: $theme-color;
-    color: $theme-accent;
-    border-bottom-color: $theme-accent;
-    &:hover,
-    &:focus {
-      color: $theme-accent;
-      background: darken($theme-color, 10%);
     }
   }
 }
