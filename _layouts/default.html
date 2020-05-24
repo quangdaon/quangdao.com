@@ -5,36 +5,37 @@
 <body class="preload">
     <div class="top"></div>
     <div class="profile" style="background-image: url({{ site.background }});">
-        <img src="/resources/images/mugshot.jpg" class="img-circle" />
+        {% assign imageBaseUrl = site.baseurl | append: '/resources/images/mugshot' %}
+        {% include webp_picture.html pathbase=imageBaseUrl class='img-circle' alt='Ew gross, that\'s a photo of me.' %}
         <h3>
             <a href="/">
                 {{ site.name }}
             </a>
         </h3>
         <p>{{ site.description }}</p>
-        <ul class="social">
+        <div class="social">
             {% if site.github %}
-            <a type="button" href="http://github.com/{{ site.github }}" target="_blank">
+            <a type="button" href="https://github.com/{{ site.github }}" target="_blank" rel="noopener">
                 <i class="fa fa-github"></i> GitHub
             </a>
             {% endif %} {% if site.twitter %}
-            <a type="button" href="http://twitter.com/{{ site.twitter }}" target="_blank">
+            <a type="button" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">
                 <i class="fa fa-twitter"></i> Twitter
             </a>
             {% endif %} {% if site.linkedin %}
-            <a type="button" href="http://linkedin.com/in/{{ site.linkedin }}" target="_blank">
+            <a type="button" href="https://linkedin.com/in/{{ site.linkedin }}" target="_blank" rel="noopener">
                 <i class="fa fa-linkedin"></i> LinkedIn
             </a>
             {% endif %} {% if site.pinterest %}
-            <a type="button" href="http://pinterest.com/{{ site.pinterest }}" target="_blank">
+            <a type="button" href="https://pinterest.com/{{ site.pinterest }}" target="_blank" rel="noopener">
                 <i class="fa fa-pinterest"></i> Pinterest
             </a>
             {% endif %} {% if site.facebook %}
-            <a type="button" href="http://facebook.com/{{ site.facebook }}" target="_blank">
+            <a type="button" href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">
                 <i class="fa fa-facebook"></i> Facebook
             </a>
             {% endif %}
-        </ul>
+        </div>
     </div>
     <div class="posts">
         {{ content }}
@@ -43,7 +44,7 @@
                 Copyright &copy; 2020 Quangdao Nguyen
             </div>
             <div class="footer-right">
-                Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and the <a href="http://jekyllthemes.org/themes/ink/" target="_blank">Ink</a> theme.
+                Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> and the <a href="http://jekyllthemes.org/themes/ink/" target="_blank" rel="noopener">Ink</a> theme.
             </div>
         </footer>
     </div>
