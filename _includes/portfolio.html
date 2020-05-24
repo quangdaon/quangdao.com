@@ -1,6 +1,7 @@
 <div class="portfolio">
   <div class="card-grid">
-    {% for item in site.portfolio %}
+    {% assign sortedPortfolioItems = site.portfolio | sort: 'priority', 'last' %}
+    {% for item in sortedPortfolioItems %}
     {% if item.draft  %}
     {% continue %}
     {% endif  %}
