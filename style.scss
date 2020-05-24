@@ -566,6 +566,14 @@ tbody tr:nth-child(odd) th {
     margin: 0;
     line-height: 1;
   }
+  &-title {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+  }
+  &-subtitle {
+    font-size: 0.875em;
+    margin-bottom: 1em;
+  }
   &-links {
     flex: 0 0 2em;
     align-items: stretch;
