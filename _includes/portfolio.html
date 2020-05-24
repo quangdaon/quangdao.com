@@ -7,7 +7,13 @@
     <div class="card">
       <div class="card-container">
         <div class="card-header">
-          <img src="https://via.placeholder.com/400x250" alt="">
+          <a href="{{ item.links[0].url }}" target="_blank">
+            <picture>
+              <source srcset="/resources/images/portfolio/{{ item.slug }}/thumbnail.webp" type="image/webp">
+              <source srcset="/resources/images/portfolio/{{ item.slug }}/thumbnail.jpg" type="image/jpeg">
+              <img src="/resources/images/portfolio/{{ item.slug }}/thumbnail.jpg" alt="{{ item.title }} Screenshot">
+            </picture>
+            </a>
         </div>
         <div class="card-content">
           <h3 class="card-title">{{ item.title }}</h3>
