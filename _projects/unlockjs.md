@@ -1,6 +1,7 @@
 ---
 title: UnlockJS
 description: Use keyboard keys to their fullest potential!
+priority: 1
 links:
   - label: Homepage
     url: /unlockjs

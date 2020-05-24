@@ -5,21 +5,24 @@
     {% if item.draft  %}
     {% continue %}
     {% endif  %}
+    {% assign content = item.content | strip_newlines %}
     <div class="card">
       <div class="card-container">
         <div class="card-header">
-          <a href="{{ item.links[0].url }}" target="_blank" rel="noopener">
-            {% capture imageBaseUrl %}{{site.baseurl}}/resources/images/portfolio/{{ item.slug }}/thumbnail{% endcapture %}
-            {% assign imageAlt = item.title | append: 'Screenshot' %}
+          {% capture imageBaseUrl %}{{site.baseurl}}/resources/images/portfolio/{{ item.slug }}/thumbnail{% endcapture %}
+          {% assign imageAlt = item.title | append: 'Screenshot' %}
+          {% assign imageLink = item.link %}
+          {% if item.links %}{% assign imageLink = item.links[0].url %}{% endif %}
+          {% unless content == '' %}{% assign imageLink = item.url %}{% endunless %}
+          <a href="{{ imageLink }}" target="_blank" {% if item.links and content == '' %}data-reveal{% endif %} rel="noopener">
             {% include webp_picture.html pathbase=imageBaseUrl alt=imageAlt %}
-            </a>
+          </a>
         </div>
         <div class="card-content">
           <h3 class="card-title">{{ item.title }}</h3>
           <h4 class="card-subtitle">{{ item.type }} - {{ item.role }}</h4>
         </div>
         <div class="card-links">
-          {% assign content = item.content | strip_newlines %}
           {% unless content == '' %}
             <a class="button button-2 card-button" href="{{ item.url }}">Details</a>
           {% endunless %}

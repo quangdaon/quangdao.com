@@ -1,4 +1,6 @@
-{% for project in site.projects %}
+
+{% assign sortedProjects = site.projects | sort: 'priority', 'last' %}
+{% for project in sortedProjects %}
 ## {{ project.title }}
 
 {{ project.description }}

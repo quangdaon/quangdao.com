@@ -12,7 +12,7 @@ function hideCardReveal(card) {
 
 cards.forEach(card => {
   card.addEventListener('click', function(e) {
-    if (e.target.matches('[data-reveal]')) {
+    if (e.target.matches('[data-reveal], [data-reveal] *')) {
       e.preventDefault();
       showCardReveal(card);
     }
@@ -21,7 +21,7 @@ cards.forEach(card => {
 
 document.addEventListener('click', e => {
   cards.forEach(card => {
-    const triggers = [...card.querySelectorAll('[data-reveal]')];
+    const triggers = [...card.querySelectorAll('[data-reveal], [data-reveal] *')];
     if (!triggers.includes(e.target) && !e.target.matches('.card-reveal-content *')) {
       hideCardReveal(card);
     }

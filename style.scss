@@ -516,17 +516,8 @@ tbody tr:nth-child(odd) th {
 
 .card-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
   grid-gap: 1em;
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: 1600px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .card {
@@ -582,9 +573,9 @@ tbody tr:nth-child(odd) th {
   }
   &-button {
     flex: 1 1 0px;
-    color: #ffffff;
     height: 100%;
     margin: 0;
+    min-width: 0;
     justify-content: center;
   }
   &-reveal {
