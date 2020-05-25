@@ -335,17 +335,16 @@ tbody tr:nth-child(odd) th {
   font-weight: 800;
   margin: 2vw;
   a {
-    padding: 4px;
-    padding-left: 9px;
-    padding-right: 9px;
+    padding: 0.25em 0.5em;
     text-align: center;
-    border: 2px $theme-color solid;
-    color: $theme-color;
+    text-decoration: none;
+    background: #ffffff;
+    border: 2px $theme-accent solid;
+    color: $theme-accent;
     &:hover,
     &:focus {
       color: #fff;
-      border-color: #fff;
-      background: $theme-color;
+      background: $theme-accent;
     }
   }
 }
