@@ -1,8 +1,14 @@
 ---
 title: Wisconsin Restaurant Association
 type: Website Redesign
-role: Front-End Developer
+role: FE + BE Developer
 platform: Sitefinity
-link: https://www.wirestaurant.org/
+links: 
+  - label: Main Site
+    url: https://www.wirestaurant.org/
+  - label: Expo Mini-site
+    url: https://www.wirestaurant.org/expo
+  - label: Indulge Mini-site
+    url: https://www.wirestaurant.org/indulge
 priority: 1
 ---

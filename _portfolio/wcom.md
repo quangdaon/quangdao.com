@@ -1,7 +1,7 @@
 ---
 title: Wisconsin Conservatory of Music
 type: Website Redesign
-role: Front-End Developer
+role: FE + BE Developer
 platform: WordPress
 link: https://www.wcmusic.org/
 priority: 2
