@@ -1,7 +1,7 @@
 ---
 title: Marcus Online Groceries
 type: Website Redesign
-role: Front-End Developer
+role: FE + BE Developer
 platform: NopCommerce
 priority: 4
 links:
