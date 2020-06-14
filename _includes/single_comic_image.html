@@ -1,0 +1,10 @@
+{% assign comic = include.comic %}
+
+{% assign alt = comic.alt %}
+{% if alt == null %}
+  {% assign alt = comic.title %}
+{% endif %}
+
+<a href="/resources/images/comics/large/{{ comic.slug }}.png" title="View Large Image" target="_blank">
+  <img src="/resources/images/comics/web/{{ comic.slug }}.png" alt="{{ alt | escape }}">
+</a>

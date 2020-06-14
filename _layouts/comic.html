@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+{% include header.html %}
+
+<div class="content post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  {% include single_comic_image.html comic=page %}
+</div>
+
+<h3 id="transcript">Transcript:</h3>
+
+{{ content }}
