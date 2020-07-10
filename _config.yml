@@ -1,7 +1,6 @@
 name:               "Quangdao Nguyen"
 description:        "80% Robot"
 default_meta:       "Creative, adaptable, and resourceful software developer with a passion for pushing limits and challenging impossiblities."
-minify_html:        false
 
 url:                "https://www.quangdao.com"
 author:             "thinker3197"
@@ -68,6 +67,5 @@ defaults:
       type:         "comics"
     values:
         layout:     "comic"
-gems:
+plugins:
   - jekyll-paginate
-  - octopress-minify-html
