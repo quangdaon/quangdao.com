@@ -23,11 +23,11 @@ layout: default
   {% endfor %} {% if paginator.total_pages > 1 %}
   <div class="pages">
     {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">◀</a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">◀ Previous</a>
         {% endif %}
 
         {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">►</a>
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next ►</a>
         {% endif %}
   </div>
   {% endif %}
