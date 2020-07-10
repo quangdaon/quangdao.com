@@ -1,0 +1,13 @@
+{% assign comic = include.comic %}
+
+{% if comic == null %}
+{% assign comic = site.comics | where: 'slug', include.slug | first %}
+{% endif %}
+
+<h1 id="{{ comic.slug }}">
+  {{ comic.title }}
+</h1>
+
+{% include single_comic_image.html comic=comic %}
+
+<a href="{{comic.url}}#transcript">View Transcript</a>

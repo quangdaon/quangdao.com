@@ -3,7 +3,7 @@
     {% assign sortedPortfolioItems = site.portfolio | sort: 'priority', 'last' %}
     {% for item in sortedPortfolioItems %}
     {% if item.draft  %}
-    {% continue %}
+      {% continue %}
     {% endif  %}
     {% assign content = item.content | strip_newlines %}
     <div class="card">
@@ -20,7 +20,12 @@
         </div>
         <div class="card-content">
           <h3 class="card-title">{{ item.title }}</h3>
-          <h4 class="card-subtitle">{{ item.type }} - {{ item.role }}</h4>
+          <h4 class="card-subtitle">
+            {% if item.platform %}
+              {{ item.platform }} -
+            {% endif %}
+            {{ item.role }}
+          </h4>
         </div>
         <div class="card-links">
           {% unless content == '' %}
