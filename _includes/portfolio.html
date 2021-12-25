@@ -36,8 +36,10 @@
               href="{{ item.links[0].url }}" 
               data-reveal 
               target="_blank">See It Live +</a>
-          {% else %}
+          {% elsif item.link %}
             <a class="button button-1 card-button" href="{{ item.link }}" target="_blank" rel="noopener">See It Live</a>
+          {% else %}
+          <span class="button button-1 card-button">Demo Unavailable</span>
           {% endif %}
         </div>
         {% if item.links %}

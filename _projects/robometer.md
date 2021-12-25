@@ -1,7 +1,7 @@
 ---
 title: Q Robometer
 description: What? Who said I took this robot thing too far?
-priority: 2
+priority: 3
 links:
   - label: Homepage
     url: /q-robometer
