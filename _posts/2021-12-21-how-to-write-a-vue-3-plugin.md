@@ -1,11 +1,11 @@
 ---
 title: How to Write a Vue 3 Plugin
-description: Last night marked the release of version 1 of my vue-signalr library and I wanted to share some insights on the project.
+description: A quick tutorial on how to create a plugin for Vue 3, based on my experience with Vue SignalR.
 category: ['Technology']
 tags: ['vue', 'signalr', 'plugin', 'tutorial']
 ---
 
-This is part one of my four-part series documenting major lessons from developing my [`@quangdao/vue-signalr`][1]. The tutorial in this post is not exclusively tied to that plugin. For more info, [check out this post.][2]
+> This is part one of my four-part series documenting major lessons from developing my [`@quangdao/vue-signalr`][1] plugin. The tutorial in this post is not exclusively tied to that plugin. For more info, [check out this post.][2]
 
 If you want to get technical, a Vue plugin is really just an object that contains an `install` function. Do you just want to write a plugin for the sake of writing a plugin? Just copy and paste this snippet below:
 

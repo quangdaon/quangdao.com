@@ -10,9 +10,10 @@ Tonight, on December 20, 2021, after coming home from a surprise invite to a liv
 I'll be doing this as a four-part series, with each part dedicated to a major lesson learned throughout the process. Here's a handy-dandy table of contents if you just want to jump to the part that interests you:
 
 - [How to Write a Vue 3 Plugin][2]
-- Deploying to NPM Using GitHub Actions (Coming Soon)
+- [Deploying to NPM With GitHub Actions][3]
 - Managing a Public Open Source Library (Coming Soon)
 - Documentation Using a GitHub Wiki (Coming Soon)
 
 [1]: https://www.npmjs.com/package/@quangdao/vue-signalr
 [2]: /2021/12/how-to-write-a-vue-3-plugin/
+[3]: /2021/12/deploying-to-npm-with-github-actions/
