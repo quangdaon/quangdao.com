@@ -2,10 +2,8 @@
 title: Deploying to NPM With GitHub Actions
 description: How to use a GitHub Action workflow to automate deployments to NPM.
 category: ['Technology']
-tags: ['vue', 'signalr', 'tutorial', 'npm']
+tags: ['vue', 'signalr', 'tutorial', 'npm', 'github', 'devops']
 ---
-
-> This is part two of my four-part series documenting major lessons from developing my [`@quangdao/vue-signalr`][1] plugin. The tutorial in this post is not exclusively tied to that plugin. For more info, [check out this post.][2]
 
 These days, a "full-stack developer" is expected to know so much more than simply "front-end development" and "back-end development." DevOps is a crucial part of software development, and without it, you are pretty much stuck with a working piece of software that only runs on your machine. Among all the threads that fall under the web of DevOps is continuous integration and delivery (CI/CD). In other words, automating your deployments.
 
