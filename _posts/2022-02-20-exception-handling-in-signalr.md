@@ -109,11 +109,11 @@ public class CustomHubExceptionsFilter : IHubFilter
           await hub.Clients.Caller.NoticeSent(ExceptionToNotice(ex));
           break;
         case ExceptionScope.Host:
-          var owner = hub.GetOwnerConnectionId();
-          await hub.Clients.Client(owner).NoticeSent(ExceptionToNotice(ex));
+          var host = hub.GetHostConnectionId();
+          await hub.Clients.Client(host).NoticeSent(ExceptionToNotice(ex));
           break;
         case ExceptionScope.Group:
-          var group = hub.GetSessionName();
+          var group = hub.GetGroup();
           await hub.Clients.Group(group).NoticeSent(ExceptionToNotice(ex));
           break;
         default:
