@@ -5,10 +5,6 @@ permalink: /projects/
 description: Explore the projects touched by Quangdao's magic.
 ---
 
-# Professional Portfolio
-
-{% include portfolio.html %}
-
-# Solo Projects
+# Projects
 
 {% include projects.md %}
