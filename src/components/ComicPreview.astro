@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Comic from './Comic.astro';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+const posts = await getCollection('comics');
+const comic = posts.find(e => e.slug === slug);
+---
+
+<h1 id={ comic.slug }>
+  { comic.title }
+</h1>
+
+<Comic {...comic} />
+
+<a href={`/comics/${comic.slug}#transcript`}>View Transcript</a>

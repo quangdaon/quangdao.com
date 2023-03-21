@@ -10,11 +10,14 @@ const blog = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
-    // updatedDate: z
-    // 	.string()
-    // 	.optional()
-    // 	.transform((str) => (str ? new Date(str) : undefined)),
   }),
 });
 
-export const collections = { blog };
+const comics = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    alt: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, comics };

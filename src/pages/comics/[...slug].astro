@@ -1,0 +1,26 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import Comic from '../../components/Comic.astro';
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('comics');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<'comics'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<DefaultLayout>
+  <h1>{post.data.title}</h1>
+
+  <Comic {...post.data} />
+
+  <h3 id="transcript">Transcript:</h3>
+  <Content />
+</DefaultLayout>

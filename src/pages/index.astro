@@ -1,18 +1,39 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import NavList from '../components/NavList.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<h1>Hello, World!</h1>
-		<h2>I'm Q &mdash; a well-versed, multi-talented,<br/> highly-functional robot.</h2>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <header>
+      <NavList />
+      <div class="intro">
+        <h1>Hello, World!</h1>
+        <h2>
+          I'm Q &mdash; a well-versed, multi-talented, highly-functional robot.
+        </h2>
+      </div>
+    </header>
+    <Footer />
+  </body>
 </html>
+
+
+<style lang="scss">
+	.intro {
+		h1 {
+			font-size: 3em;
+		}
+
+		h2 {
+			font-size: 2em;
+			max-width: 50%;
+		}
+	}
+</style>
