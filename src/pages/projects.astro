@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.priority.valueOf() - b.data.priority.valueOf()
+);
+---
+
+<DefaultLayout>
+  <ul>
+    {projects.map((p) => <li>{p.data.title}</li>)}
+  </ul>
+</DefaultLayout>

@@ -17,6 +17,19 @@ const blog = defineCollection({
   },
 });
 
+const projects = defineCollection({
+  schema: z.object({
+    title: z.string(),
+		description: z.string(),
+		priority: z.number(),
+		links: z.array(z.object({
+			label: z.string(),
+			url: z.string(),
+			icon: z.string().optional()
+		}))
+  }),
+});
+
 const comics = defineCollection({
   schema: z.object({
     title: z.string(),
@@ -24,4 +37,4 @@ const comics = defineCollection({
   }),
 });
 
-export const collections = { blog, comics };
+export const collections = { blog, projects, comics };
