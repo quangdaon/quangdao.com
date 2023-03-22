@@ -8,7 +8,10 @@ const projects = (await getCollection('projects')).sort(
 ---
 
 <DefaultLayout>
-  <ul>
-    {projects.map((p) => <li>{p.data.title}</li>)}
-  </ul>
+  <div class="container">
+    <h1>Projects</h1>
+    <ul>
+      {projects.map((p) => <li>{p.data.title}</li>)}
+    </ul>
+  </div>
 </DefaultLayout>

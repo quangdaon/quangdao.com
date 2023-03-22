@@ -9,16 +9,19 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <DefaultLayout>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <FormattedDate date={post.data.date} />
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+	<section class="container">
+		<h1>Blog</h1>
+		<ul>
+			{
+				posts.map((post) => (
+					<li>
+						<FormattedDate date={post.data.date} />
+						<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
 </DefaultLayout>
 
 <style>
@@ -32,9 +35,5 @@ const posts = (await getCollection('blog')).sort(
   ul li :global(time) {
     flex: 0 0 130px;
     font-style: italic;
-    color: #595959;
-  }
-  ul li a:visited {
-    color: #8e32dc;
   }
 </style>

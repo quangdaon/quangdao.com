@@ -1,0 +1,7 @@
+@use 'variables' as *;
+
+%container {
+  max-width: calc($container-max-width + 2em);
+  margin: auto;
+  padding: 0 1em;
+}

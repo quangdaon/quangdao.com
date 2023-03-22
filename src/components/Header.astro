@@ -3,14 +3,30 @@ import NavList from './NavList.astro';
 ---
 
 <header>
-  <a href="/">[LogoHere]</a>
-  <NavList />
+  <div class="container">
+    <a class="brand" href="/">[LogoHere]</a>
+    <NavList header={true} />
+  </div>
 </header>
-<style>
+<style lang="scss">
+  @use 'src/styles/utils/placeholders';
+
   header {
-    margin: 0em 0 2em;
+		background: #fff;
+    border-bottom: 0.25em solid var(--color-brand);
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
   h2 {
     margin: 0.5em 0;
   }
+
+	:global(nav) {
+		a:hover {
+			color: red;
+		}
+	}
 </style>

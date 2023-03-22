@@ -1,9 +1,14 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 
+interface Props {
+  header: boolean;
+}
+
+const {header} = Astro.props;
 ---
 
 <nav>
-  <HeaderLink href="/blog">Blog</HeaderLink>
-  <HeaderLink href="/projects">Projects</HeaderLink>
+  <HeaderLink href="/blog" header={header}>Blog</HeaderLink>
+  <HeaderLink href="/projects" header={header}>Projects</HeaderLink>
 </nav>
