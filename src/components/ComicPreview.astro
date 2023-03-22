@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getEntryBySlug } from 'astro:content';
 import Comic from './Comic.astro';
 
 interface Props {
@@ -8,14 +8,14 @@ interface Props {
 
 const { slug } = Astro.props;
 
-const posts = await getCollection('comics');
-const comic = posts.find(e => e.slug === slug);
+const comic = await getEntryBySlug('comics', slug);
 ---
-
-<h1 id={ comic.slug }>
-  { comic.title }
-</h1>
-
-<Comic {...comic} />
-
-<a href={`/comics/${comic.slug}#transcript`}>View Transcript</a>
+{comic && 
+  <h1 id={comic.slug}>
+    {comic.data.title}
+  </h1>
+  
+  <Comic {...comic} />
+  
+  <a href={`/comics/${comic.slug}#transcript`}>View Transcript</a>
+}

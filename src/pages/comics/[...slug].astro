@@ -19,7 +19,7 @@ const { Content } = await post.render();
 <DefaultLayout>
   <h1>{post.data.title}</h1>
 
-  <Comic {...post.data} />
+  <Comic {...post} />
 
   <h3 id="transcript">Transcript:</h3>
   <Content />

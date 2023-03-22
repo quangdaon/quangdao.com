@@ -11,6 +11,10 @@ const blog = defineCollection({
       .or(z.date())
       .transform((val) => new Date(val)),
   }),
+  slug: (e) => {
+    console.log(e);
+    return e.defaultSlug.replace(/^\d+/, '');
+  },
 });
 
 const comics = defineCollection({

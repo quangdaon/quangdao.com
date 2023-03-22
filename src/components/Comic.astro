@@ -1,9 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-type Props = CollectionEntry<'comics'>['data'];
+type Props = CollectionEntry<'comics'>;
 
-const { title, slug, alt } = Astro.props;
+const { slug, data } = Astro.props;
+const { title, alt } = data;
 ---
 
 <a
