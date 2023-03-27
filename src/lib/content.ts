@@ -6,22 +6,33 @@ export interface BlogPost {
 	date: Date;
 }
 
-export async function loadContent() {
+interface PostTypes {
+	blog: BlogPost;
+}
+
+interface PostData<T> {
+	data: T;
+	slug: string;
+}
+
+export async function loadContent<T extends keyof PostTypes>(
+	postType: T
+): Promise<PostData<PostTypes[T]>[]> {
 	const contentRoot = '/src/content';
-	const postType = 'blog';
 	const postsRoot = `${contentRoot}/${postType}`;
 	const allPostFiles = import.meta.glob(`/src/content/**/*.md`);
-  const iterablePostFiles = Object.entries(allPostFiles);
-  const relevantPostFiles = iterablePostFiles.filter(([path]) => path.startsWith(postsRoot));
+	const iterablePostFiles = Object.entries(allPostFiles);
+	const relevantPostFiles = iterablePostFiles.filter(([path]) => path.startsWith(postsRoot));
 
-	const posts = await Promise.all(
+	const posts = await Promise.all<PostData<PostTypes[T]>>(
 		relevantPostFiles.map(async ([path, resolver]) => {
-			const { metadata } = (await resolver()) as any;
-			const postPath = path.replace(new RegExp(`^${postsRoot}/(.*?).md$`), '$1');
+			const result = (await resolver()) as any;
+			const { metadata, default : def } = result;
+			const slug = path.replace(new RegExp(`^${postsRoot}/(.*?).md$`), '$1');
 
 			return {
-				meta: metadata as BlogPost,
-				path: postPath
+				data: metadata as PostTypes[T],
+				slug
 			};
 		})
 	);
