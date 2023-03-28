@@ -1,8 +1,6 @@
-import { loadContent } from '$lib/content';
+import { loadPosts } from '$lib/content';
 
 export async function load() {
-  const posts = await loadContent('blog');
+  const posts = await loadPosts('blog');
 	return { posts };
 }
-
-export const prerender = true;
