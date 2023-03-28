@@ -4,6 +4,6 @@
 
 <h1>{data.title}</h1>
 
-<time>{data.date}</time>
+<time>{data.date.toLocaleDateString()}</time>
 
 <svelte:component this={data.component} />
