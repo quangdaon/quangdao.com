@@ -9,16 +9,21 @@ export async function loadPosts<T extends PostType>(postType: T): Promise<PostDa
 
 	const posts = await Promise.all<PostData<T>>(
 		relevantPostFiles.map(async ([path, resolver]) => {
-			const result = (await resolver()) as any;
-			const { metadata } = result;
-			const slug = path.replace(new RegExp(`^${postsRoot}/(.*?).md$`), '$1');
+			try {
 
-			const data = {
-				...metadata,
-				slug
-			};
-
-			return definitions[postType].transform(data);
+				const result = (await resolver()) as any;
+				const { metadata } = result;
+				const slug = path.replace(new RegExp(`^${postsRoot}/(.*?).md$`), '$1');
+	
+				const data = {
+					...metadata,
+					slug
+				};
+	
+				return definitions[postType].transform(data);
+			} catch (e) {
+				return {} as PostData<T>
+			}
 		})
 	);
 

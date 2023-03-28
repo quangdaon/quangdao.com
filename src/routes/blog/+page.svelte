@@ -3,7 +3,6 @@
 </script>
 
 {#each data.posts as post}
-  {JSON.stringify(post)}
   <div>
     <h1>{post.title}</h1>
     <p>{post.description}</p>
