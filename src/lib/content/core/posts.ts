@@ -8,14 +8,14 @@ type PostsCache = {
 let postsCache: PostsCache;
 
 async function compilePosts() {
-	const allPostFiles = import.meta.glob(`/src/content/**/*.md`);
+	const allPostFiles = import.meta.glob(`/src/posts/**/*.md`);
 	const iterablePostFiles = Object.entries(allPostFiles);
 
 	postsCache = {};
 
 	let postType: PostType;
 	for (postType in definitions) {
-		const postsRoot = `/src/content/${postType}`;
+		const postsRoot = `/src/posts/${postType}`;
 		const relevantPostFiles = iterablePostFiles.filter(([path]) => path.startsWith(postsRoot));
 		const posts = await Promise.all<PostData<typeof postType>>(
 			relevantPostFiles.map(async ([path, resolver]) => {
@@ -36,15 +36,15 @@ async function compilePosts() {
 	}
 }
 
-export async function loadPosts<T extends PostType>(postType: T): Promise<PostData<T>[]> {
+export async function getPosts<T extends PostType>(postType: T): Promise<PostData<T>[]> {
 	if (!postsCache) await compilePosts();
 	return postsCache[postType] || [];
 }
 
-export async function loadPost<T extends PostType>(
+export async function getPost<T extends PostType>(
 	postType: T,
 	slug: string
 ): Promise<PostData<T> | undefined> {
-	const posts = await loadPosts(postType);
+	const posts = await getPosts(postType);
 	return posts.find((e) => e.slug === slug);
 }

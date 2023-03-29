@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { loadPost } from '$lib/content';
+	import { getPost } from '$lib/content';
 	import type { ComicPost } from '$lib/content/types';
 	import { onMount } from 'svelte';
 	import Comic from './Comic.svelte';
@@ -7,7 +7,7 @@
 	let comic: ComicPost | undefined;
 
 	onMount(async () => {
-		comic = await loadPost('comics', slug);
+		comic = await getPost('comics', slug);
 	});
 </script>
 

@@ -1,1 +1,1 @@
-export { loadPost, loadPosts } from './core/posts';
+export { getPost, getPosts } from './core/posts';

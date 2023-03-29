@@ -1,7 +1,7 @@
-import { loadPosts } from '$lib/content';
+import { getPosts } from '$lib/content';
 
 export async function load() {
-	const posts = (await loadPosts('blog')).sort(
+	const posts = (await getPosts('blog')).sort(
 		(a, b) => b.date.getTime() - a.date.getTime()
 	);
 	return { posts };
