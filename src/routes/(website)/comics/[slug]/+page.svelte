@@ -1,5 +1,5 @@
 <script>
-	import Comic from '$lib/components/Comic.svelte';
+	import Comic from '$lib/components/comics/Comic.svelte';
 
 	export let data;
 </script>
