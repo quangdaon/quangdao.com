@@ -2,5 +2,7 @@ import { loadPost } from '$lib/content';
 import { error } from '@sveltejs/kit';
 
 export async function load({ params }) {
-	return (await loadPost('blog', params.slug)) || error(404);
+	const post = await loadPost('blog', params.slug);
+	if (!post) throw error(404);
+	return post;
 }

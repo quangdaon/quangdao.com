@@ -5,8 +5,6 @@
 
 <h1>{data.title}</h1>
 
-{#if data.date}
-	<time>{toFormattedDate(data.date)}</time>
-{/if}
+<time>{toFormattedDate(data.date)}</time>
 
 <svelte:component this={data.component} />
