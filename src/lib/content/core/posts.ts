@@ -21,17 +21,17 @@ async function compilePosts() {
 			relevantPostFiles.map(async ([path, resolver]) => {
 				const result = (await resolver()) as any;
 				const { metadata, default: component } = result;
-	
+
 				const data = {
 					...metadata,
 					slug: metadata.slug || path.replace(new RegExp(`^${postsRoot}/(.*?).md$`), '$1'),
 					component
 				};
-	
+
 				return definitions[postType].transform(data);
 			})
 		);
-	
+
 		postsCache[postType] = posts as any;
 	}
 }
