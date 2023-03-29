@@ -1,5 +1,5 @@
 import { definePostType } from './core/definition-helpers';
-import type { BlogPost, ComicPost } from './types';
+import type { BlogPost, ComicPost, ProjectPost } from './types';
 
 export const definitions = {
 	blog: definePostType<BlogPost>({
@@ -7,5 +7,6 @@ export const definitions = {
 	}),
 	comics: definePostType<ComicPost>({
 		alt: (alt, obj) => alt || obj.title
-	})
+	}),
+	projects: definePostType<ProjectPost>({})
 };
