@@ -1,0 +1,5 @@
+@mixin large {
+	@media (orientation: landscape) and (min-width: 1200px) {
+		@content;
+	}
+}
