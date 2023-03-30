@@ -8,20 +8,23 @@
 	<div class="content">
 		<h2 class="label">{label}</h2>
 		<div class="title-container">
-				<h3 class="title">{title}</h3>
-			</div>
+			<h3 class="title">{title}</h3>
 		</div>
+	</div>
+	<div class="footer">
+		<slot />
+	</div>
 </a>
 
 <style lang="scss">
 	@use '~/breakpoints';
 
 	.panel {
-		height: 100%;
 		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		height: 100%;
 		flex: 1 0 0;
 		color: inherit;
 		text-decoration: none;
@@ -56,6 +59,13 @@
 
 	.title-container {
 		overflow: hidden;
+	}
+
+
+	.footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 	}
 
 	.title {
