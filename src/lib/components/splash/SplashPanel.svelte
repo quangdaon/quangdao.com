@@ -4,33 +4,28 @@
 	export let href: string;
 </script>
 
-<a class="panel" {href}>
-	<div class="content">
-		<h2 class="label">{label}</h2>
-		<div class="title-container">
-			<h3 class="title">{title}</h3>
+<div class="panel">
+	<a class="panel-link" {href}>
+		<div class="content">
+			<h2 class="label">{label}</h2>
+			<div class="title-container">
+				<h3 class="title">{title}</h3>
+			</div>
 		</div>
-	</div>
+	</a>
 	{#if $$slots.default}
 		<div class="footer">
 			<slot />
 		</div>
 	{/if}
-</a>
+</div>
 
 <style lang="scss">
 	@use '~/breakpoints';
 
 	.panel {
 		position: relative;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		height: 100%;
 		flex: 1 0 0;
-		color: currentColor;
-		text-decoration: none;
 		$background-colors: (pink, lightblue, lightgreen, lavender);
 		@for $i from 1 through length($background-colors) {
 			$color: nth($background-colors, $i);
@@ -40,7 +35,6 @@
 		}
 
 		@include breakpoints.large {
-			flex-direction: row;
 			&:hover {
 				.title {
 					transform: translateY(0);
@@ -48,6 +42,16 @@
 			}
 		}
 	}
+
+  .panel-link {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		height: 100%;
+		color: currentColor;
+		text-decoration: none;
+  }
 
 	.content {
 		text-align: center;
@@ -68,8 +72,12 @@
 	.footer {
 		width: 100%;
 		@include breakpoints.large {
-			position: absolute;
+      position: absolute;
 			bottom: 0;
+      pointer-events: none;
+      :global(*) {
+        pointer-events: all;
+      }
 		}
 	}
 
