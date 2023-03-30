@@ -38,10 +38,13 @@
 		right: 0;
 		text-align: center;
 		z-index: 2;
+		pointer-events: none;
 		h1 {
+			display: inline-block;
 			margin: 0;
 			line-height: 1;
 			font-size: 3em;
+			pointer-events: all;
 		}
 		@include breakpoints.large {
 			display: block;
@@ -61,16 +64,16 @@
 		}
 	}
 
-  .social-links {
-    display: block;
-    width: 50%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    :global(a) {
-      display: block;
-      flex: 1 1 auto;
-      padding: 0.5rem;
-    }
-  }
+	.social-links {
+		display: block;
+		width: 50%;
+		margin: auto;
+		display: flex;
+		align-items: center;
+		:global(a) {
+			display: block;
+			flex: 1 1 auto;
+			padding: 0.5rem;
+		}
+	}
 </style>

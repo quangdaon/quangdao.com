@@ -11,9 +11,11 @@
 			<h3 class="title">{title}</h3>
 		</div>
 	</div>
-	<div class="footer">
-		<slot />
-	</div>
+	{#if $$slots.default}
+		<div class="footer">
+			<slot />
+		</div>
+	{/if}
 </a>
 
 <style lang="scss">
@@ -23,10 +25,11 @@
 		position: relative;
 		display: flex;
 		justify-content: center;
+		flex-direction: column;
 		align-items: center;
 		height: 100%;
 		flex: 1 0 0;
-		color: inherit;
+		color: currentColor;
 		text-decoration: none;
 		$background-colors: (pink, lightblue, lightgreen, lavender);
 		@for $i from 1 through length($background-colors) {
@@ -37,6 +40,7 @@
 		}
 
 		@include breakpoints.large {
+			flex-direction: row;
 			&:hover {
 				.title {
 					transform: translateY(0);
@@ -61,11 +65,12 @@
 		overflow: hidden;
 	}
 
-
 	.footer {
-		position: absolute;
-		bottom: 0;
 		width: 100%;
+		@include breakpoints.large {
+			position: absolute;
+			bottom: 0;
+		}
 	}
 
 	.title {
