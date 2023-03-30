@@ -1,25 +1,30 @@
 <script lang="ts">
 	export let title: string;
 	export let label: string;
+	export let href: string;
 </script>
 
-<div class="panel">
+<a class="panel" {href}>
 	<div class="content">
 		<h2 class="label">{label}</h2>
 		<div class="title-container">
-			<h3 class="title">{title}</h3>
+				<h3 class="title">{title}</h3>
+			</div>
 		</div>
-	</div>
-</div>
+</a>
 
 <style lang="scss">
 	@use '~/breakpoints';
 
 	.panel {
+		height: 100%;
+		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex: 1 0 0;
+		color: inherit;
+		text-decoration: none;
 		$background-colors: (pink, lightblue, lightgreen, lavender);
 		@for $i from 1 through length($background-colors) {
 			$color: nth($background-colors, $i);
@@ -55,13 +60,13 @@
 
 	.title {
 		margin: 0;
-    font-size: 4em;
+		font-size: 4em;
 		@include breakpoints.large {
-      font-size: 1.2em;
+			font-size: 1.2em;
 			transform: translateY(100%);
 			text-transform: lowercase;
-      transition: 200ms;
-      font-weight: normal;
+			transition: 200ms;
+			font-weight: normal;
 
 			&::before {
 				content: '(';

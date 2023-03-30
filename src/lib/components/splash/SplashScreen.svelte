@@ -7,10 +7,10 @@
     <h1>Quangdao is a</h1>
   </div>
   <div class="panels">
-    <SplashPanel label="well-versed," title="Blog" />
-    <SplashPanel label="multi-talented," title="Uses" />
-    <SplashPanel label="highly-functional" title="Projects" />
-    <SplashPanel label="robot." title="Bio" />
+    <SplashPanel href="/blog" label="well-versed," title="Blog" />
+    <SplashPanel href="/uses" label="multi-talented," title="Uses" />
+    <SplashPanel href="/projects" label="highly-functional" title="Projects" />
+    <SplashPanel href="/bio" label="robot." title="Bio" />
   </div>
 </div>
 
