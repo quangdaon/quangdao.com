@@ -41,8 +41,11 @@
 	@use '~/variables';
 
 	:global(.panel) {
+		display: flex;
+		flex-direction: column;
 		position: relative;
 		flex: 1 0 0;
+		background-color: var(--color-background);
 		--color-background: var(--color-green);
 		--color-foreground: var(--color-orange);
 
@@ -61,18 +64,21 @@
 	}
 
 	.panel-link {
+		flex: 1 1 auto;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
 		height: 100%;
 		color: var(--color-foreground);
-		background-color: var(--color-background);
 		text-decoration: none;
 	}
 
 	.content {
 		text-align: center;
+		@include breakpoints.large {
+			margin-top: 6em;
+		}
 	}
 
 	.label {

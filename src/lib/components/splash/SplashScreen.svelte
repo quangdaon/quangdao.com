@@ -8,7 +8,7 @@
 <div class="splash">
 	<div class="intro">
 		<h1 transition:fly={{ x: '-100%', duration: 750, opacity: 1, easing: sineInOut }}>
-			Hi, I'm Quangdao, and I am a
+			<span class="hand">👋</span> I'm Quangdao, and I am a
 		</h1>
 	</div>
 	<div class="panels">
@@ -31,14 +31,14 @@
 		overflow: hidden;
 		@include mixins.fill-container;
 		@include breakpoints.large {
-			font-size: 1.5vw;
+			font-size: 1.75vw;
 		}
 	}
 
 	.intro {
 		display: none;
 		position: absolute;
-		top: 10%;
+		top: 4em;
 		left: 0;
 		right: 0;
 		z-index: 2;
@@ -50,11 +50,43 @@
 			background: var(--color-blue);
 			color: var(--color-orange);
 			line-height: 1;
-			font-size: 4em;
+			font-size: 3em;
 			pointer-events: all;
+		}
+		.hand {
+			position: relative;
+			display: inline-block;
+			transform-origin: 90% 100%;
+			transition: transform 200ms;
+			&:hover {
+				transition: none;
+				animation: wave 1s 1 forwards;
+			}
 		}
 		@include breakpoints.large {
 			display: block;
+		}
+	}
+
+	@keyframes wave {
+		$amt: 5deg;
+		0% {
+			transform: rotate(0deg);
+		}
+		12.5% {
+			transform: rotate($amt);
+		}
+		37.5% {
+			transform: rotate(-$amt);
+		}
+		62.5% {
+			transform: rotate($amt);
+		}
+		87.5% {
+			transform: rotate(-$amt);
+		}
+		100% {
+			transform: rotate(0deg);
 		}
 	}
 
