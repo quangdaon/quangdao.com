@@ -1,5 +1,7 @@
 <script lang="ts">
-	import SplashTransition from './SplashTransition.svelte';
+	import { isDesktop } from '$lib/data/store';
+	import { sineInOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 
 	export let title: string;
 	export let label: string;
@@ -9,7 +11,16 @@
 	const dir = order % 2 ? -1 : 1;
 </script>
 
-<SplashTransition class="panel" {dir}>
+<div
+	class="panel"
+	transition:fly={{
+		x: $isDesktop ? 0 : `${100 * dir}vw`,
+		y: $isDesktop ? `${100 * dir}vh` : 0,
+		duration: 750,
+		opacity: 1,
+		easing: sineInOut
+	}}
+>
 	<a class="panel-link" {href}>
 		<div class="content">
 			<h2 class="label">{label}</h2>
@@ -23,7 +34,7 @@
 			<slot />
 		</div>
 	{/if}
-</SplashTransition>
+</div>
 
 <style lang="scss">
 	@use '~/breakpoints';

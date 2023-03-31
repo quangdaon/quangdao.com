@@ -1,18 +1,14 @@
 <script>
+	import { sineInOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	import SplashPanel from './SplashPanel.svelte';
-	import SplashTransition from './SplashTransition.svelte';
 </script>
 
 <div class="splash">
 	<div class="intro">
-		<h1>
-			<span>
-				<SplashTransition>Quangdao is a</SplashTransition>
-			</span>
-			<span aria-hidden="true">
-				<SplashTransition dir={-1}>Quangdao is a</SplashTransition>
-			</span>
+		<h1 transition:fly={{ x: '-100%', duration: 750, opacity: 1, easing: sineInOut }}>
+			Hi, I'm Quangdao, and I am a
 		</h1>
 	</div>
 	<div class="panels">
@@ -47,32 +43,15 @@
 		right: 0;
 		z-index: 2;
 		pointer-events: none;
-		text-align: center;
 		h1 {
 			display: inline-block;
 			margin: 0;
-			color: var(--color-white);
+			padding: 0.25em;
+			background: var(--color-blue);
+			color: var(--color-orange);
 			line-height: 1;
-			font-size: 5em;
-			span {
-				display: block;
-				overflow: visible;
-				&:nth-child(1) {
-					> :global(div) {
-						pointer-events: all;
-						color: var(--color-green);
-						clip-path: polygon(0 0, 50% 0, 50% 120%, 0 120%);
-					}
-				}
-				&:nth-child(2) {
-					> :global(div) {
-						color: var(--color-orange);
-						pointer-events: all;
-						clip-path: polygon(50% 0, 100% 0, 100% 120%, 50% 120%);
-						transform: translateY(-100%);
-					}
-				}
-			}
+			font-size: 4em;
+			pointer-events: all;
 		}
 		@include breakpoints.large {
 			display: block;
