@@ -1,10 +1,15 @@
 <script lang="ts">
+	import SplashTransition from './SplashTransition.svelte';
+
 	export let title: string;
 	export let label: string;
 	export let href: string;
+	export let order: number;
+
+	const dir = order % 2 ? -1 : 1;
 </script>
 
-<div class="panel">
+<SplashTransition class="panel" {dir}>
 	<a class="panel-link" {href}>
 		<div class="content">
 			<h2 class="label">{label}</h2>
@@ -18,13 +23,13 @@
 			<slot />
 		</div>
 	{/if}
-</div>
+</SplashTransition>
 
 <style lang="scss">
 	@use '~/breakpoints';
 	@use '~/variables';
 
-	.panel {
+	:global(.panel) {
 		position: relative;
 		flex: 1 0 0;
 		--color-background: var(--color-green);
