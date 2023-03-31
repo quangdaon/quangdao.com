@@ -22,16 +22,17 @@
 
 <style lang="scss">
 	@use '~/breakpoints';
+	@use '~/variables';
 
 	.panel {
 		position: relative;
 		flex: 1 0 0;
-		$background-colors: (pink, lightblue, lightgreen, lavender);
-		@for $i from 1 through length($background-colors) {
-			$color: nth($background-colors, $i);
-			&:nth-child(#{$i}) {
-				background-color: $color;
-			}
+		--color-background: var(--color-green);
+		--color-foreground: var(--color-orange);
+
+		&:nth-child(even) {
+			--color-background: var(--color-orange);
+			--color-foreground: var(--color-green);
 		}
 
 		@include breakpoints.large {
@@ -43,15 +44,16 @@
 		}
 	}
 
-  .panel-link {
+	.panel-link {
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
 		height: 100%;
-		color: currentColor;
+		color: var(--color-foreground);
+		background-color: var(--color-background);
 		text-decoration: none;
-  }
+	}
 
 	.content {
 		text-align: center;
@@ -72,12 +74,12 @@
 	.footer {
 		width: 100%;
 		@include breakpoints.large {
-      position: absolute;
+			position: absolute;
 			bottom: 0;
-      pointer-events: none;
-      :global(*) {
-        pointer-events: all;
-      }
+			pointer-events: none;
+			:global(*) {
+				pointer-events: all;
+			}
 		}
 	}
 
