@@ -6,7 +6,7 @@ tags: ['jekyll']
 date: '2020-05-24'
 ---
 
-A little over two weeks ago, [I launched this new site using Jekyll](/2020/05/a-hopefully-temporary-facelift/). My goal was to get something up quick and easily so I can have a platform for blogging while I work on actually rebuilding a website from scratch. In this time, beyond just writing blog posts, I took some time to customize the theme and add a custom [portfolio](/projects) layout. I have yet to fully explore the capabilities of Jekyll, so I'll try not to spend too much time on thing that are likely adjustable or features I have barely touched. In any case, here are my thoughts on Jekyll so far.
+A little over two weeks ago, [I launched this new site using Jekyll](/blog/a-hopefully-temporary-facelift/). My goal was to get something up quick and easily so I can have a platform for blogging while I work on actually rebuilding a website from scratch. In this time, beyond just writing blog posts, I took some time to customize the theme and add a custom [portfolio](/projects) layout. I have yet to fully explore the capabilities of Jekyll, so I'll try not to spend too much time on thing that are likely adjustable or features I have barely touched. In any case, here are my thoughts on Jekyll so far.
 
 ## Cons
 

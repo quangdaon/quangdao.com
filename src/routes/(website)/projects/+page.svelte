@@ -11,7 +11,7 @@
 		<ul>
 			{#each project.links as link}
 				<li>
-					<a href={link.url} target="_blank" rel="noreferrer">{link.label}</a>
+					<a href={link.url} rel="external">{link.label}</a>
 				</li>
 			{/each}
 		</ul>

@@ -8,3 +8,5 @@ export async function load({ params }: PageLoadEvent): Promise<ComicPost> {
 	if (!post) throw error(404);
 	return post;
 }
+
+export const prerender = false;
