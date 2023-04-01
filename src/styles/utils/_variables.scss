@@ -2,13 +2,20 @@ $font-primary: 'ff-tisa-sans-web-pro', sans-serif;
 
 $color-black: #04080F;
 $color-white: #F7F7F9;
-$color-brand: #92AD94;
-$color-tint: #403D39;
-$color-highlight: #4DAA57;
 
 $container-max-width: 1080px;
 
-$color-green: #224102;
-$color-orange: #FFA630;
-$color-blue: #222E50;
-$color-purple: #9F2042;
+$brand-colors: (
+  green: (
+    base: #224102
+  ),
+  orange: (
+    base: #FFA630
+  ),
+  blue: (
+    base: #222E50
+  ),
+  purple: (
+    base: #9F2042
+  )
+)

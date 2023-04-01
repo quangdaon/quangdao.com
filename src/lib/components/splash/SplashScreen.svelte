@@ -47,8 +47,8 @@
 			display: inline-block;
 			margin: 0;
 			padding: 0.25em;
-			background: var(--color-blue);
-			color: var(--color-orange);
+			background: var(--color-blue-base);
+			color: var(--color-orange-base);
 			line-height: 1;
 			font-size: 3em;
 			pointer-events: all;
@@ -115,7 +115,7 @@
 			padding: 0.5rem;
 			color: inherit;
 			&:hover {
-				--color-foreground: var(--color-purple);
+				--color-foreground: var(--color-purple-base);
 			}
 		}
 	}

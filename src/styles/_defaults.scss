@@ -1,35 +1,34 @@
 @import url('https://use.typekit.net/zxo6has.css');
 
 :root {
-  --font-primary: #{$font-primary};
+	--font-primary: #{$font-primary};
 
-  --color-black: #{$color-black};
-  --color-white: #{$color-white};
-  --color-brand: #{$color-brand};
-  
-  --color-foreground: var(--color-black);
-  --color-background: var(--color-white);
-  --color-link: #{$color-tint};
+	--color-black: #{$color-black};
+	--color-white: #{$color-white};
 
-  --color-green: #{$color-green};
-  --color-orange: #{$color-orange};
-  --color-blue: #{$color-blue};
-  --color-purple: #{$color-purple};
+	--color-foreground: var(--color-black);
+	--color-background: var(--color-white);
+
+	@each $hue, $shades in $brand-colors {
+		@each $shade, $value in $shades {
+			--color-#{""+ $hue}-#{$shade}: #{$value};
+		}
+	}
 }
 
 body {
-  font-family: var(--font-primary);
-  font-weight: 200;
-  margin: auto;
-  padding: 0;
-  text-align: left;
-  background-color: var(--color-background);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.5;
-  color: var(--color-foreground);
+	font-family: var(--font-primary);
+	font-weight: 200;
+	margin: auto;
+	padding: 0;
+	text-align: left;
+	background-color: var(--color-background);
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	line-height: 1.5;
+	color: var(--color-foreground);
 }
 
 svg {
-  fill: var(--color-foreground);
+	fill: var(--color-foreground);
 }

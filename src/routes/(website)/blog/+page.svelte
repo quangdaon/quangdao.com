@@ -2,6 +2,10 @@
 	export let data;
 </script>
 
+<h1>
+  Quangdao's Blog
+</h1>
+
 {#each data.posts as post}
   <div>
     <h1>{post.title}</h1>

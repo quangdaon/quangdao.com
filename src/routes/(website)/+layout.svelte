@@ -1,5 +1,7 @@
 <main>
-	<slot />
+	<section class="content">
+		<slot />
+	</section>
 </main>
 
 <footer />

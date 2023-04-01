@@ -46,12 +46,12 @@
 		position: relative;
 		flex: 1 0 0;
 		background-color: var(--color-background);
-		--color-background: var(--color-green);
-		--color-foreground: var(--color-orange);
+		--color-background: var(--color-green-base);
+		--color-foreground: var(--color-orange-base);
 
 		&:nth-child(even) {
-			--color-background: var(--color-orange);
-			--color-foreground: var(--color-green);
+			--color-background: var(--color-orange-base);
+			--color-foreground: var(--color-green-base);
 		}
 
 		@include breakpoints.large {
