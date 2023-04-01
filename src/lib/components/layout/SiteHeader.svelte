@@ -4,7 +4,7 @@
 </script>
 
 <header>
-	<a href="/">
+	<a class="brand" href="/">
     <Logo />
 	</a>
 	<nav>
@@ -29,6 +29,16 @@
 		align-items: center;
 		margin-bottom: 2rem;
 	}
+
+	.brand {
+		display: block;
+		padding: 1rem 0;
+		margin: auto;
+		@include breakpoints.large {
+			margin-left: 0;
+		}
+	}
+
 	nav {
 		display: none;
 		@include breakpoints.large {
