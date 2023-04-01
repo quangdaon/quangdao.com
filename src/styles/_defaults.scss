@@ -2,6 +2,7 @@
 
 :root {
 	--font-primary: #{$font-primary};
+	--font-code: #{$font-code};
 
 	--color-black: #{$color-black};
 	--color-white: #{$color-white};
@@ -11,7 +12,7 @@
 	--color-link: var(--color-blue-base);
 	--color-link-hover: var(--color-green-base);
 
-	font-size: 1.5em;
+	--spacing: 1rem;
 
 	@each $hue, $shades in $brand-colors {
 		@each $shade, $value in $shades {
@@ -32,6 +33,7 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
+	font-size: 1.5em;
 	color: var(--color-foreground);
 }
 
@@ -43,10 +45,10 @@ a,
 a:active,
 a:visited {
 	color: currentColor;
-  text-decoration-color: var(--color-orange-base);
-  &:hover {
-    color: var(--color-link-hover);
-  }
+	text-decoration-color: var(--color-orange-base);
+	&:hover {
+		color: var(--color-link-hover);
+	}
 }
 
 h1,
@@ -54,10 +56,23 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-	margin: 0;
+h6,
+p,
+ul,
+ol {
+	margin: 0 0 var(--spacing);
 }
 
-p {
-	margin: 0;
+pre,
+code {
+	font-family: var(--font-code);
+}
+
+p code {
+	color: var(--color-purple-base);
+}
+
+article {
+	margin: 1.2em 0;
+	--spacing: 0.25rem;
 }

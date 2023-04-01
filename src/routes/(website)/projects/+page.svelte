@@ -8,7 +8,7 @@
 	<h1 slot="title">Projects</h1>
 
 	{#each data.projects as project}
-		<div>
+		<article>
 			<h2>{project.title}</h2>
 			<p>{project.description}</p>
 			<ul>
@@ -18,6 +18,6 @@
 					</li>
 				{/each}
 			</ul>
-		</div>
+		</article>
 	{/each}
 </PageLayout>

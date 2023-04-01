@@ -15,3 +15,7 @@
 		</article>
 	{/each}
 </PageLayout>
+
+
+<style lang="scss">
+</style>
