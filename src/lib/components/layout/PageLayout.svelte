@@ -1,0 +1,2 @@
+<slot name="title"/>
+<slot/>
