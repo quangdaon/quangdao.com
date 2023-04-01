@@ -8,14 +8,16 @@
 
 	--color-foreground: var(--color-black);
 	--color-background: var(--color-white);
-	--color-link: var(--color-purple-base);
-	--color-link-hover: var(--color-blue-base);
+	--color-link: var(--color-blue-base);
+	--color-link-hover: var(--color-green-base);
 
 	font-size: 1.5em;
 
 	@each $hue, $shades in $brand-colors {
 		@each $shade, $value in $shades {
 			--color-#{""+ $hue}-#{$shade}: #{$value};
+			--color-#{""+ $hue}-#{$shade}-opacity-5: #{rgba($value, 0.5)};
+			--color-#{""+ $hue}-#{$shade}-opacity-8: #{rgba($value, 0.8)};
 		}
 	}
 }
@@ -40,7 +42,8 @@ svg {
 a,
 a:active,
 a:visited {
-	color: var(--color-link);
+	color: currentColor;
+  text-decoration-color: var(--color-orange-base);
   &:hover {
     color: var(--color-link-hover);
   }

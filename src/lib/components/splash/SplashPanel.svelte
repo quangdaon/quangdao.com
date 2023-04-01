@@ -46,6 +46,12 @@
 		position: relative;
 		flex: 1 0 0;
 		background-color: var(--color-background);
+		font-size: 0.75em;
+		
+		@include breakpoints.large {
+			font-size: 1em;
+		}
+
 		--color-background: var(--color-green-base);
 		--color-foreground: var(--color-orange-base);
 
@@ -72,6 +78,10 @@
 		height: 100%;
 		color: var(--color-foreground);
 		text-decoration: none;
+
+		&:hover {
+			color: var(--color-foreground);
+		}
 	}
 
 	.content {

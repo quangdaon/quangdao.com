@@ -2,8 +2,11 @@
 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.51 27.65">
   <defs>
     <style>
-        .cls-1 { fill: #bada55; }
-        .cls-2 { fill: #000; }
+        .cls-1 { fill: #224102; }
+        .cls-2 { fill: #04080F; }
+        @media (prefers-color-scheme: dark) {
+          .cls-1 { fill: #FFA630; }
+        }
     </style>
   </defs>
   <path class="cls-1" d="m4.1,27.65H0L8.96,0h4.03L4.1,27.65Z"/>
