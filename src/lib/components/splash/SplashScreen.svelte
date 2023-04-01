@@ -29,6 +29,7 @@
 	.splash {
 		position: fixed;
 		overflow: hidden;
+		z-index: 10;
 		@include mixins.fill-container;
 		@include breakpoints.large {
 			font-size: 1.75vw;

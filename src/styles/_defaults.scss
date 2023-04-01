@@ -8,6 +8,10 @@
 
 	--color-foreground: var(--color-black);
 	--color-background: var(--color-white);
+	--color-link: var(--color-purple-base);
+	--color-link-hover: var(--color-blue-base);
+
+	font-size: 1.5em;
 
 	@each $hue, $shades in $brand-colors {
 		@each $shade, $value in $shades {
@@ -31,4 +35,26 @@ body {
 
 svg {
 	fill: var(--color-foreground);
+}
+
+a,
+a:active,
+a:visited {
+	color: var(--color-link);
+  &:hover {
+    color: var(--color-link-hover);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
 }

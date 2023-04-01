@@ -7,9 +7,9 @@
 </h1>
 
 {#each data.posts as post}
-  <div>
-    <h1>{post.title}</h1>
+  <article>
+    <h2>{post.title}</h2>
     <p>{post.description}</p>
     <p><a href={`/blog/${post.slug}`}>Read More</a></p>
-  </div>
+  </article>
 {/each}
