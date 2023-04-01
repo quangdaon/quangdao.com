@@ -8,11 +8,11 @@
 <div class="splash">
 	<div class="intro">
 		<h1 transition:fly={{ x: '-100%', duration: 750, opacity: 1, easing: sineInOut }}>
-			<span class="hand">👋</span> I'm Quangdao, and I am a
+			<span class="hand">👋</span> I'm Quangdao, and I am an
 		</h1>
 	</div>
 	<div class="panels">
-		<SplashPanel href="/blog" label="well-versed," title="Blog" order={1} />
+		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1} />
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />
 		<SplashPanel href="/projects" label="highly-functional" title="Projects" order={3} />
 		<SplashPanel href="/bio" label="robot." title="Bio" order={4}>
