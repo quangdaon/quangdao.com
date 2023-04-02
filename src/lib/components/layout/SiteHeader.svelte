@@ -31,6 +31,7 @@
 		position: sticky;
 		top: 0;
 		background: var(--color-background);
+		z-index: 5;
 		@include breakpoints.large {
 			position: relative;
 		}
