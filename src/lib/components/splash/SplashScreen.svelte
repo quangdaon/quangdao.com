@@ -1,13 +1,19 @@
-<script>
+<script lang="ts">
+	import { prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	import SplashPanel from './SplashPanel.svelte';
+
+	$: animation = (node: Element) =>
+		$prefersReducedMotion
+			? fade(node, { duration: 250, easing: sineInOut })
+			: fly(node, { x: '-100%', duration: 750, opacity: 1, easing: sineInOut });
 </script>
 
 <div class="splash">
 	<div class="intro">
-		<h1 transition:fly={{ x: '-100%', duration: 750, opacity: 1, easing: sineInOut }}>
+		<h1 transition:animation>
 			<span class="hand">👋</span> I'm Quangdao, and I am an
 		</h1>
 	</div>

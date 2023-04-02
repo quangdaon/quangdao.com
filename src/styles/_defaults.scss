@@ -1,6 +1,8 @@
 @import url('https://use.typekit.net/zxo6has.css');
 
 :root {
+	font-size: 1.5em;
+
 	--font-primary: #{$font-primary};
 	--font-code: #{$font-code};
 
@@ -23,6 +25,25 @@
 	}
 }
 
+html, body {
+	scrollbar-color: var(--color-green-base) var(--color-white);
+	scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+	/* the "track" of the bar - great for customizing "background" colors */
+	background: var(--color-white);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-green-base);
+}
+
 body {
 	font-family: var(--font-primary);
 	font-weight: 200;
@@ -33,7 +54,6 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	font-size: 1.5em;
 	color: var(--color-foreground);
 }
 
@@ -79,4 +99,10 @@ article {
 
 img {
 	max-width: 100%;
+}
+
+
+::-webkit-scrollbar-thumb {
+	/* the actual draggable element, the star of the show! */
+	background: var(--color-orange-base);
 }

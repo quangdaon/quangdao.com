@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { isDesktop } from '$lib/data/store';
+	import { isDesktop, prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	export let title: string;
 	export let label: string;
@@ -9,18 +9,19 @@
 	export let order: number;
 
 	const dir = order % 2 ? -1 : 1;
+	$: animation = (node: Element) =>
+		$prefersReducedMotion
+			? fade(node, { duration: 250, easing: sineInOut })
+			: fly(node, {
+					x: $isDesktop ? 0 : `${100 * dir}vw`,
+					y: $isDesktop ? `${100 * dir}vh` : 0,
+					duration: 750,
+					opacity: 1,
+					easing: sineInOut
+			  });
 </script>
 
-<div
-	class="panel"
-	transition:fly={{
-		x: $isDesktop ? 0 : `${100 * dir}vw`,
-		y: $isDesktop ? `${100 * dir}vh` : 0,
-		duration: 750,
-		opacity: 1,
-		easing: sineInOut
-	}}
->
+<div class="panel" transition:animation>
 	<a class="panel-link" {href}>
 		<div class="content">
 			<h2 class="label">{label}</h2>
@@ -47,7 +48,7 @@
 		flex: 1 0 0;
 		background-color: var(--color-background);
 		font-size: 0.75em;
-		
+
 		@include breakpoints.large {
 			font-size: 1em;
 		}

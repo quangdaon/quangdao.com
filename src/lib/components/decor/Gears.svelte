@@ -11,12 +11,11 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	x="0px"
 	y="0px"
-	width="275.5129213557434px"
-	height="258.54154428917195px"
 	viewBox="0 0 275.5129213557434 258.54154428917195"
 	overflow="scroll"
 	xml:space="preserve"
 	style="--rotate-amount: {scroll}"
+	aria-hidden="true"
 >
 	<g transform="translate(-54.49,-71.46) rotate(0)">
 		<g transform="translate(240,240) rotate(306.61)">
@@ -170,9 +169,11 @@
 	.geargroup {
 		--gear-ratio: 0;
 		transition: transform 100ms;
-		transform: rotate(
-			calc(var(--rotate-amount) * var(--rotate-intensity) * var(--gear-ratio) * 1deg)
-		);
+		@media (prefers-reduced-motion: no-preference) {
+			transform: rotate(
+				calc(var(--rotate-amount) * var(--rotate-intensity) * var(--gear-ratio) * 1deg)
+			);
+		}
 	}
 
 	.gear {
