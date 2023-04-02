@@ -1,28 +1,25 @@
 <script lang="ts">
-	import PageLayout from '$lib/components/layout/PageLayout.svelte';
 	import { toFormattedDate } from '$lib/utils';
 
 	export let data;
 </script>
 
-<PageLayout>
-	<h1 slot="title">Quangdao's Blog</h1>
+<h1>Quangdao's Blog</h1>
 
-	{#each data.posts as post}
-		<article>
-			<h2>
-        <a href={`/blog/${post.slug}`}>{post.title}</a>
-        <time>{toFormattedDate(post.date)}</time>
-      </h2>
-			<p>{post.description}</p>
-			<p class="tags">
-				{#each post.tags as tag}
-					<span>#{tag}</span>
-				{/each}
-			</p>
-		</article>
-	{/each}
-</PageLayout>
+{#each data.posts as post}
+	<article>
+		<h2>
+			<a href={`/blog/${post.slug}`}>{post.title}</a>
+			<time>{toFormattedDate(post.date)}</time>
+		</h2>
+		<p>{post.description}</p>
+		<p class="tags">
+			{#each post.tags as tag}
+				<span>#{tag}</span>
+			{/each}
+		</p>
+	</article>
+{/each}
 
 <style lang="scss">
 	h2 {
@@ -33,11 +30,11 @@
 				color: currentColor;
 			}
 		}
-    time {
-      font-size: 1rem;
-      margin-left: 0.5em;
-      font-weight: normal;
-    }
+		time {
+			font-size: 1rem;
+			margin-left: 0.5em;
+			font-weight: normal;
+		}
 	}
 
 	.tags {

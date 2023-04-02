@@ -23,6 +23,7 @@
 	@each $hue, $shades in $brand-colors {
 		@each $shade, $value in $shades {
 			--color-#{""+ $hue}-#{$shade}: #{$value};
+			--color-#{""+ $hue}-#{$shade}-op-1: #{rgba($value, 0.2)};
 		}
 	}
 }
