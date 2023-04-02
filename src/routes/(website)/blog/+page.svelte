@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PageLayout from '$lib/components/layout/PageLayout.svelte';
+	import { toFormattedDate } from '$lib/utils';
 
 	export let data;
 </script>
@@ -9,13 +10,41 @@
 
 	{#each data.posts as post}
 		<article>
-			<h2>{post.title}</h2>
+			<h2>
+        <a href={`/blog/${post.slug}`}>{post.title}</a>
+        <time>{toFormattedDate(post.date)}</time>
+      </h2>
 			<p>{post.description}</p>
-			<p><a href={`/blog/${post.slug}`}>Read More</a></p>
+			<p class="tags">
+				{#each post.tags as tag}
+					<span>#{tag}</span>
+				{/each}
+			</p>
 		</article>
 	{/each}
 </PageLayout>
 
-
 <style lang="scss">
+	h2 {
+		a {
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+				color: currentColor;
+			}
+		}
+    time {
+      font-size: 1rem;
+      margin-left: 0.5em;
+      font-weight: normal;
+    }
+	}
+
+	.tags {
+		opacity: 0.5;
+		font-size: 0.75em;
+		span {
+			margin-right: 0.5em;
+		}
+	}
 </style>

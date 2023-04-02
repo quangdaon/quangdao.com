@@ -18,5 +18,5 @@
 
 	<Comic {...comic} />
 
-	<a href={`/comics/${comic.slug}#transcript`}>View Transcript</a>
+	<p><a href={`/comics/${comic.slug}#transcript`}>View Transcript</a></p>
 {/if}

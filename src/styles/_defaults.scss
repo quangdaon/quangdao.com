@@ -11,6 +11,8 @@
 
 	--color-foreground: var(--color-black);
 	--color-background: var(--color-white);
+	--color-heading: var(--color-green-base);
+	--color-subheading: var(--color-blue-base);
 	--color-link: var(--color-blue-base);
 	--color-link-hover: var(--color-green-base);
 
@@ -23,7 +25,8 @@
 	}
 }
 
-html, body {
+html,
+body {
 	scrollbar-color: var(--color-green-base) var(--color-white);
 	scrollbar-width: thin;
 	scroll-behavior: smooth;
@@ -65,9 +68,20 @@ a:active,
 a:visited {
 	color: currentColor;
 	text-decoration-color: var(--color-orange-base);
+	transition: 500ms;
 	&:hover {
 		color: var(--color-link-hover);
+		text-decoration-thickness: 0.125em;
 	}
+}
+
+h1 {
+	color: var(--color-heading);
+}
+
+h2,
+h3 {
+	color: var(--color-subheading);
 }
 
 h1,
@@ -99,7 +113,6 @@ article {
 img {
 	max-width: 100%;
 }
-
 
 ::-webkit-scrollbar-thumb {
 	/* the actual draggable element, the star of the show! */
