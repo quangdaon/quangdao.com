@@ -168,7 +168,6 @@
 
 	.geargroup {
 		--gear-ratio: 0;
-		transition: transform 100ms;
 		@media (prefers-reduced-motion: no-preference) {
 			transform: rotate(
 				calc(var(--rotate-amount) * var(--rotate-intensity) * var(--gear-ratio) * 1deg)

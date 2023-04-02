@@ -28,6 +28,12 @@
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 2rem;
+		position: sticky;
+		top: 0;
+		background: var(--color-background);
+		@include breakpoints.large {
+			position: relative;
+		}
 	}
 
 	.brand {

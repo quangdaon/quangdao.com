@@ -19,8 +19,6 @@
 	@each $hue, $shades in $brand-colors {
 		@each $shade, $value in $shades {
 			--color-#{""+ $hue}-#{$shade}: #{$value};
-			--color-#{""+ $hue}-#{$shade}-opacity-5: #{rgba($value, 0.5)};
-			--color-#{""+ $hue}-#{$shade}-opacity-8: #{rgba($value, 0.8)};
 		}
 	}
 }
@@ -28,6 +26,7 @@
 html, body {
 	scrollbar-color: var(--color-green-base) var(--color-white);
 	scrollbar-width: thin;
+	scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
