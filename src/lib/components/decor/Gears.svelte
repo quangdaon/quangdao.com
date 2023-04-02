@@ -139,9 +139,12 @@
 
 <style lang="scss">
 	@use '~/breakpoints';
+	@use '~/variables';
 	.svggear {
 		--rotate-intensity: 0.2;
+		--guides-opacity: 0.05;
 		--color-outline: #fff;
+		--color-guides: #666;
 		--color-gear-close: #e6e6e6;
 		--color-gear-far: #f2f2f2;
 		--color-marker: #ccc;
@@ -155,6 +158,15 @@
 		z-index: -1;
 		@include breakpoints.large {
 			--gearset-size: 50vw;
+		}
+		@media (prefers-color-scheme: dark) {
+			opacity: 0.1;
+			--guides-opacity: 0.5;
+			--color-outline: var(--color-black);
+			--color-guides: var(--color-blue-base);
+			--color-gear-close: var(--color-blue-base);
+			--color-gear-far: var(--color-blue-base);
+			--color-marker: var(--color-outline);
 		}
 	}
 
@@ -201,12 +213,12 @@
 	}
 
 	.gearguides {
-		opacity: 0.05;
+		opacity: var(--guides-opacity);
 		.pitch,
 		.outer,
 		.base {
 			fill: none;
-			stroke: #666;
+			stroke: var(--color-blue-base);
 		}
 	}
 </style>

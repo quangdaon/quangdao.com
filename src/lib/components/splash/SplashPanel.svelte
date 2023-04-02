@@ -95,6 +95,7 @@
 	.label {
 		display: none;
 		margin: 0;
+		color: var(--color-foreground);
 		@include breakpoints.large {
 			display: block;
 		}
@@ -119,6 +120,7 @@
 	.title {
 		margin: 0;
 		font-size: 4em;
+		color: var(--color-foreground);
 		@include breakpoints.large {
 			font-size: 1.2em;
 			transform: translateY(100%);

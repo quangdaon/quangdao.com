@@ -14,5 +14,10 @@
 		&.active {
 			text-decoration-color: var(--color-purple-base);
 		}
+		@media (prefers-color-scheme: dark) {
+			&.active {
+				text-decoration-color: var(--color-green-base);
+			}
+		}
 	}
 </style>
