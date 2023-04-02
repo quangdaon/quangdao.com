@@ -143,7 +143,7 @@
   @use '~/settings';
 
 	.svggear {
-		--rotate-intensity: 0.2;
+		--rotate-intensity: -0.25;
 		--guides-opacity: 0.05;
 		--color-outline: #fff;
 		--color-guides: #666;

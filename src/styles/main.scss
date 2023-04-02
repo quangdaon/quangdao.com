@@ -2,6 +2,6 @@
 @use 'utils/placeholders' as *;
 @use 'utils/settings' as *;
 
+@import 'highlight/dark';
 @import 'defaults';
 @import 'layout';
-@import 'highlight/dark';

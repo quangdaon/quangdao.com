@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Quote from '$lib/components/shared/Quote.svelte';
 </script>
 
 # Hi, I'm Quangdao (aka Q)
@@ -6,6 +7,8 @@
 I am an endlessly-curious, multi-talented, highly-functional robot. As a programmer, I specialize in the .NET environment, but I also have experience in PHP and Node.JS. By day, I am currently employed as a Technical Lead at nvisia, where I build applications for a variety of clients ranging from private software solution providers to government utility companies. By night, I’m usually charging my battery, but when I’ve still got some juice left over, you can find me in a pile of trading cards or plucking away (poorly) at my guitar.
 
 TL;DR: <abbr title="robot">🤖</abbr>, <abbr title="day job is computer stuff">☀️:🧑‍💻</abbr>, <abbr title="outside of work, I like cards and guitars">🌙:🃏🎸</abbr>
+
+<Quote by="Francis of Assisi">Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.</Quote>
 
 ## My Story
 

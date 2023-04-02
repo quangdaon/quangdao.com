@@ -5,6 +5,7 @@
 
 	--font-primary: #{$font-primary};
 	--font-code: #{$font-code};
+	--font-script: #{$font-script};
 
 	--color-black: #{$color-black};
 	--color-white: #{$color-white};
@@ -122,7 +123,7 @@ p code {
 }
 
 article {
-	margin: 1.2em 0;
+	margin: 2em 0;
 	--spacing: 0.25rem;
 }
 
@@ -133,4 +134,11 @@ img {
 ::-webkit-scrollbar-thumb {
 	/* the actual draggable element, the star of the show! */
 	background: var(--color-orange-base);
+}
+
+pre.language-info, code.language-info {
+	white-space: normal;
+	background: transparent;
+	font-family: var(--font-primary);
+	color: var(--color-foreground);
 }
