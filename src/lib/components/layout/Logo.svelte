@@ -9,7 +9,9 @@
 	<path class="cls-3" d="m59.26,16.26l-12.23,6.83v-13.67l12.23,6.84Z" />
 </svg>
 
-<style>
+<style lang="scss">
+  @use '~/settings';
+  
 	svg {
 		width: 120px;
 	}
@@ -23,7 +25,7 @@
 		fill: var(--color-black);
 	}
 
-	@media (prefers-color-scheme: dark) {
+	@include settings.dark-theme {
 		.cls-3 {
 			fill: var(--color-white);
 		}

@@ -22,5 +22,7 @@
 
 	main {
 		@extend %container;
+		position: relative;
+		z-index: 2;
 	}
 </style>

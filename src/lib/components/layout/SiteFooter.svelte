@@ -7,5 +7,6 @@
 	footer {
 		@extend %container;
     margin-top: 2rem;
+    padding: 1px;
 	}
 </style>

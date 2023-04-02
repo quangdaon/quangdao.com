@@ -8,15 +8,18 @@
 <a class:active {href}><slot /></a>
 
 <style lang="scss">
-	a {
+  @use '~/settings';
+
+  a {
 		display: block;
 		padding: 1em;
 		&.active {
 			text-decoration-color: var(--color-purple-base);
 		}
-		@media (prefers-color-scheme: dark) {
+		@include settings.dark-theme {
+      text-decoration-color: var(--color-green-base);
 			&.active {
-				text-decoration-color: var(--color-green-base);
+				text-decoration-color: var(--color-orange-base);
 			}
 		}
 	}

@@ -140,6 +140,8 @@
 <style lang="scss">
 	@use '~/breakpoints';
 	@use '~/variables';
+  @use '~/settings';
+
 	.svggear {
 		--rotate-intensity: 0.2;
 		--guides-opacity: 0.05;
@@ -155,11 +157,11 @@
 		width: var(--gearset-size);
 		height: auto;
 		opacity: 0.5;
-		z-index: -1;
+		z-index: 1;
 		@include breakpoints.large {
 			--gearset-size: 50vw;
 		}
-		@media (prefers-color-scheme: dark) {
+		@include settings.dark-theme {
 			opacity: 0.1;
 			--guides-opacity: 0.5;
 			--color-outline: var(--color-black);

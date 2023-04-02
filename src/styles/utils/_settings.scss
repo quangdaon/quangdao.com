@@ -1,0 +1,5 @@
+@mixin dark-theme {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
