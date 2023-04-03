@@ -7,8 +7,8 @@
 	--font-code: #{$font-code};
 	--font-script: #{$font-script};
 
-	--color-black: #{$color-black};
-	--color-white: #{$color-white};
+	--color-black: var(--color-gray-900);
+	--color-white: var(--color-gray-0);
 
 	--color-foreground: var(--color-black);
 	--color-background: var(--color-white);
@@ -25,6 +25,7 @@
 		@each $shade, $value in $shades {
 			--color-#{""+ $hue}-#{$shade}: #{$value};
 			--color-#{""+ $hue}-#{$shade}-op-1: #{rgba($value, 0.2)};
+			--color-#{""+ $hue}-#{$shade}-op-5: #{rgba($value, 0.5)};
 		}
 	}
 }
@@ -109,7 +110,8 @@ h5,
 h6,
 p,
 ul,
-ol {
+ol,
+summary {
 	margin: 0 0 var(--spacing);
 }
 
@@ -136,7 +138,8 @@ img {
 	background: var(--color-orange-base);
 }
 
-pre.language-info, code.language-info {
+pre.language-info,
+code.language-info {
 	white-space: normal;
 	background: transparent;
 	font-family: var(--font-primary);

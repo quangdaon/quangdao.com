@@ -3,11 +3,18 @@ $font-code: ubuntu-mono, monospace;
 $font-script: "gloria-hallelujah", serif;
 
 $color-black: #04080F;
+$color-gray: #e6e6e6;
 $color-white: #F7F7F9;
 
 $container-max-width: 1080px;
 
 $brand-colors: (
+  gray: (
+    0: #F7F7F9,
+    200: #e6e6e6,
+    300: #b9babb,
+    900: #04080F
+  ),
   green: (
     base: #224102
   ),

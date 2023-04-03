@@ -147,7 +147,7 @@
 		--guides-opacity: 0.05;
 		--color-outline: #fff;
 		--color-guides: #666;
-		--color-gear-close: #e6e6e6;
+		--color-gear-close: var(--color-gray-200);
 		--color-gear-far: #f2f2f2;
 		--color-marker: #ccc;
 		--gearset-size: 140vw;
