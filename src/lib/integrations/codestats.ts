@@ -41,8 +41,8 @@ export const calculateStats = (data: XpSet): CalculatedStats => {
 	const obtained = data.xps - currentLevelXp;
 	const required = nextLevelXp - currentLevelXp;
 	const progress = obtained / required;
-	const progressPrevious = (obtained - data.new_xps) / required;
-	const progressNew = data.new_xps / required;
+	const progressPrevious = Math.max(0, obtained - data.new_xps) / required;
+	const progressNew = Math.min(obtained, data.new_xps) / required;
 	const remaining = required - obtained;
 
 	return {
