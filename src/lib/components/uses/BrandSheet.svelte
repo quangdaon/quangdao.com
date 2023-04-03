@@ -27,7 +27,7 @@
 
 <div class="font font-script">
 	<h4><a href="https://fonts.google.com/specimen/Gloria+Hallelujah">Gloria Hallelujah</a></h4>
-  <p>A fun handwritten font-face I use for quotes throughout the site.1</p>
+  <p>A fun handwritten font-face I use for quotes throughout the site.</p>
 </div>
 
 <style lang="scss">
