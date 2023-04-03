@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { windowHeight } from '$lib/data/store';
 	let scroll: number;
-	let pageHeight: number;
 
-	$: scrollFactor = 360 / pageHeight;
+	$: scrollFactor = 360 / $windowHeight;
 	$: rotation = scroll * scrollFactor;
 </script>
 
-<svelte:window bind:scrollY={scroll} bind:innerHeight={pageHeight} />
+<svelte:window bind:scrollY={scroll} />
 
 <svg
 	version="1.2"
