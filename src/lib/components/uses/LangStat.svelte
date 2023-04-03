@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { calculateStats, type XpSet } from '$lib/integrations/codestats';
 
-	export let lang: String;
+	export let lang: string;
 	export let xp: XpSet;
 
 	const stats = calculateStats(xp);

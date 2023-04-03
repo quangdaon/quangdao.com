@@ -51,9 +51,8 @@ Because the sequence was no longer stored as a vector, and arrays in C++ are fix
 
 After figuring out the map, the rest was pretty straightforward. For my first attempt, I just used a few global variables to keep track of timestamps and sensor state. Within the Arduino runtime loop, it first checks the stored `state` value and compared that to the current state.
 
-
 ```cpp
-// If the stored state is off, but the current state is true, the light has been "activated". 
+// If the stored state is off, but the current state is true, the light has been "activated".
 if (!state && isOn)
 {
   state = true;

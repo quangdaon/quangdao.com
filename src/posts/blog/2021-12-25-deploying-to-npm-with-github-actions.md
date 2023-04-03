@@ -19,7 +19,7 @@ name: NPM Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -61,24 +61,24 @@ Following that are the steps to run for your workflow. `steps` is a YAML array, 
 
 ## Deploying to NPM
 
-The example I showcased above will build your package and run tests, but won't actually interact with NPM in any way. To do that, you will first need to generate an access token on NPM. 
+The example I showcased above will build your package and run tests, but won't actually interact with NPM in any way. To do that, you will first need to generate an access token on NPM.
 
 1. First, navigate to [npmjs.com](https://www.npmjs.com).
 1. At the top-right corner, click on your avatar, then "Access Tokens"
-![Access Tokens link](http://s3.quangdao.com/captures/211225154017.png)
+   ![Access Tokens link](http://s3.quangdao.com/captures/211225154017.png)
 1. Click on the "Generate New Token" button. This is located to the right of the header.
 1. Check the "Automation" option. If you need a read-only token to access a private organization's package or a token to publish your packages manually, this is also where you can generate those. But for our purposes, we only need an Automation token.
-![Automation token](http://s3.quangdao.com/captures/211225154726.png)
+   ![Automation token](http://s3.quangdao.com/captures/211225154726.png)
 1. Generate the token! After you click the button, you will get a notice with the full access token. Like with any access token, you'll want to keep it handy, at least until you can configure your workflow.
 
 Once you have your access token, there's only one thing left to do: add the deployment to your workflow. Using the same example from above, just add this step:
 
 ```yaml
-  - name: Publish to NPM
-    uses: JS-DevTools/npm-publish@v1
-    with:
-      token: npm_<your token>
-      access: public
+- name: Publish to NPM
+  uses: JS-DevTools/npm-publish@v1
+  with:
+    token: npm_<your token>
+    access: public
 ```
 
 That's it. You're done.
@@ -88,11 +88,11 @@ That's it. You're done.
 Just kidding! You never _ever_ want to be committing secrets to your repo like this. Instead, we'll save this as a secret on your GitHub repo. Let's update the workflow first so we don't forget. Replace your access token with `${{ secrets.NPM_TOKEN }}`. Your publish step should actually look like this:
 
 ```yaml
-  - name: Publish to NPM
-    uses: JS-DevTools/npm-publish@v1
-    with:
-      token: ${{ secrets.NPM_TOKEN }}
-      access: public
+- name: Publish to NPM
+  uses: JS-DevTools/npm-publish@v1
+  with:
+    token: ${{ secrets.NPM_TOKEN }}
+    access: public
 ```
 
 You might also notice the `access` option. In my case, the action defaults to `restricted` because it's scoped under `@quangdao/`, however if your package is not scoped, you can leave this out. [More information about this action can be found here.](https://github.com/JS-DevTools/npm-publish)
@@ -110,7 +110,7 @@ name: NPM Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -138,7 +138,7 @@ jobs:
 
       - name: Run Linting
         run: npm run lint
-        
+
       - name: Publish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
@@ -146,7 +146,7 @@ jobs:
           access: public
 ```
 
-This will trigger a deploy to NPM each time a change is made to your `main` branch. Although NPM will automatically reject any attempt to deploy an existing version  and protect you from premature changes, this can get spammy and, well, it's kind of rude. Instead, here is how I configure vue-signalr:
+This will trigger a deploy to NPM each time a change is made to your `main` branch. Although NPM will automatically reject any attempt to deploy an existing version and protect you from premature changes, this can get spammy and, well, it's kind of rude. Instead, here is how I configure vue-signalr:
 
 ```yaml
 on:
@@ -160,7 +160,7 @@ This will run whenever a tag is pushed to the repo. It doesn't check the branch,
 1. Merge changes to `main`.
 1. Pull `main` down locally.
 1. Run `npm version <patch|minor|major>` (depending on the version change)
-    - This will bump the version in the `package.json` and add a Git tag with the appropriate version
+   - This will bump the version in the `package.json` and add a Git tag with the appropriate version
 1. Push the change to GitHub (with tags!)
 
 As I alluded to at the beginning of this post, I am no expert on DevOps, and my workflow can definitely be improved. The deployment process is still _somewhat_ manual, since I still need to manually bump the version. This makes sense, because I want to control my releases. But if you have ideas on what I could do better, I'm open to any feedback!
@@ -172,7 +172,7 @@ I actually have a confession to make. The example workflow I showed at the begin
 ```yaml
 on:
   pull_request:
-    branches: [ main, release/* ]
+    branches: [main, release/*]
 ```
 
 I had touched on this earlier, but GitHub will actually run this Action as a check and will disallow a PR from being merged if it fails. You can [view the configurations for both workflows here.](https://github.com/quangdaon/vue-signalr/tree/main/.github/workflows)

@@ -17,22 +17,25 @@
 
 <div class="font font-primary">
 	<h4><a href="https://www.fontshop.com/families/ff-tisa-sans">FF Tisa Sans Pro</a></h4>
-  <p>My primary font face.</p>
+	<p>My primary font face.</p>
 </div>
 
 <div class="font font-code">
-  <h4><a href="https://design.ubuntu.com/font">Ubuntu Mono</a></h4>
-  <p>The font face I use for code snippets on the website. Also the font I set for all of my code editors!</p>
+	<h4><a href="https://design.ubuntu.com/font">Ubuntu Mono</a></h4>
+	<p>
+		The font face I use for code snippets on the website. Also the font I set for all of my code
+		editors!
+	</p>
 </div>
 
 <div class="font font-script">
 	<h4><a href="https://fonts.google.com/specimen/Gloria+Hallelujah">Gloria Hallelujah</a></h4>
-  <p>A fun handwritten font-face I use for quotes throughout the site.</p>
+	<p>A fun handwritten font-face I use for quotes throughout the site.</p>
 </div>
 
 <style lang="scss">
 	@use '~/breakpoints';
-	
+
 	.colors {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -60,7 +63,7 @@
 	.font {
 		h4 {
 			font-weight: normal;
-      font-size: 2em;
+			font-size: 2em;
 		}
 		&-primary h4 {
 			font-family: var(--font-primary);

@@ -1,6 +1,5 @@
 import type { ContentPost } from './ContentPost';
 
-
 export interface BlogPost extends ContentPost {
 	description: string;
 	tags: string[];

@@ -11,32 +11,31 @@
 </script>
 
 <details>
-  <summary>Usage Stats</summary>
-  <div class="codestats">
-    <ul>
-      {#each statsToUse as [lang, xp]}
-        <LangStat {lang} {xp} />
-      {/each}
-      <li class="attribution">
-        Powered by <a href="https://codestats.net/users/QuangdaoN">Code::Stats</a>
-      </li>
-    </ul>
-  
-  </div>
+	<summary>Usage Stats</summary>
+	<div class="codestats">
+		<ul>
+			{#each statsToUse as [lang, xp]}
+				<LangStat {lang} {xp} />
+			{/each}
+			<li class="attribution">
+				Powered by <a href="https://codestats.net/users/QuangdaoN">Code::Stats</a>
+			</li>
+		</ul>
+	</div>
 </details>
 
 <style lang="scss">
-  @use '~/settings';
-  @use '~/breakpoints';
+	@use '~/settings';
+	@use '~/breakpoints';
 
 	.codestats {
-    font-size: 0.75em;
+		font-size: 0.75em;
 		background: var(--color-gray-200-op-5);
 		padding: 1em;
-    margin: var(--spacing) 0;
-    @include settings.dark-theme {
-      background: var(--color-green-base-op-5);
-    }
+		margin: var(--spacing) 0;
+		@include settings.dark-theme {
+			background: var(--color-green-base-op-5);
+		}
 	}
 
 	ul {
@@ -45,18 +44,18 @@
 		padding: 0;
 		display: grid;
 		gap: 1em;
-    @include breakpoints.large {
-      grid-template-columns: repeat(4, 1fr);
-    }
+		@include breakpoints.large {
+			grid-template-columns: repeat(4, 1fr);
+		}
 	}
 
 	.attribution {
 		font-style: italic;
 		margin: 1rem 0 0 auto;
 		font-size: 0.75em;
-    text-align: right;
-    @include breakpoints.large {
-      grid-column-start: 4;
-    }
+		text-align: right;
+		@include breakpoints.large {
+			grid-column-start: 4;
+		}
 	}
 </style>

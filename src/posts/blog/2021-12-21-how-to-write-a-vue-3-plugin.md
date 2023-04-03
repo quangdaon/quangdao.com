@@ -10,9 +10,9 @@ If you want to get technical, a Vue plugin is really just an object that contain
 
 ```typescript
 export const MyCustomPlugin = {
-  install() {
-    console.log('Hello world!');
-  },
+	install() {
+		console.log('Hello world!');
+	}
 };
 ```
 
@@ -34,9 +34,9 @@ When a plugin is installed, Vue actually passes in a couple of arguments to it. 
 
 ```typescript
 export const MyCustomPlugin = {
-  install(app: App, options: any) {
-    console.log('Hello world!');
-  },
+	install(app: App, options: any) {
+		console.log('Hello world!');
+	}
 };
 ```
 
@@ -46,31 +46,31 @@ Coming from a .NET background, and having been working a lot with Angular at the
 
 ```typescript
 export interface CounterConfig {
-  initialValue?: number;
-  step?: number;
+	initialValue?: number;
+	step?: number;
 }
 
 export class CounterService {
-  public readonly count: Ref<number>;
-  private options: CounterConfig;
+	public readonly count: Ref<number>;
+	private options: CounterConfig;
 
-  constructor(options: CounterConfig) {
-    this.options = {
-      initialValue: 0,
-      step: 1,
-      ...options,
-    };
+	constructor(options: CounterConfig) {
+		this.options = {
+			initialValue: 0,
+			step: 1,
+			...options
+		};
 
-    count = ref(this.options.initialValue);
-  }
+		count = ref(this.options.initialValue);
+	}
 
-  increment() {
-    count.value += this.options.step;
-  }
+	increment() {
+		count.value += this.options.step;
+	}
 
-  decrement() {
-    count.value -= this.options.step;
-  }
+	decrement() {
+		count.value -= this.options.step;
+	}
 }
 ```
 
@@ -86,10 +86,10 @@ import { InjectionKey } from 'vue';
 export const CounterSymbol: InjectionKey<CounterService> = Symbol('CounterService');
 
 export const CounterPlugin = {
-  install(app: App, options: CounterConfig) {
-    const service = new CounterService(options);
-    app.provide(CounterSymbol, service);
-  }
+	install(app: App, options: CounterConfig) {
+		const service = new CounterService(options);
+		app.provide(CounterSymbol, service);
+	}
 };
 ```
 
@@ -98,9 +98,9 @@ At this point, we're pretty much done with our plugin. Users can now use it like
 ```vue
 {% raw %}
 <template>
-  <p>{{count}}</p>
-  <button @click="decrement">-</button>
-  <button @click="increment">+</button>
+	<p>{{ count }}</p>
+	<button @click="decrement">-</button>
+	<button @click="increment">+</button>
 </template>
 
 <script lang="ts">
@@ -108,20 +108,20 @@ import { defineComponent, inject } from 'vue';
 import { CounterSymbol } from './counter-plugin';
 
 export default defineComponent({
-  name: 'App',  
-  setup() {
-    const counter = inject(CounterSymbol);
+	name: 'App',
+	setup() {
+		const counter = inject(CounterSymbol);
 
-    if (!counter) {
-      throw new Error('Failed to inject counter!');
-    }
+		if (!counter) {
+			throw new Error('Failed to inject counter!');
+		}
 
-    return {
-      count: counter.count,
-      increment: counter.increment,
-      decrement: counter.decrement
-    }
-  }
+		return {
+			count: counter.count,
+			increment: counter.increment,
+			decrement: counter.decrement
+		};
+	}
 });
 </script>
 {% endraw %}
@@ -131,13 +131,13 @@ As you might have noticed, there is a catch with this approach. Because of the w
 
 ```typescript
 export function useCounter() {
-    const counter = inject(CounterSymbol);
+	const counter = inject(CounterSymbol);
 
-    if (!counter) {
-      throw new Error('Failed to inject counter!');
-    }
+	if (!counter) {
+		throw new Error('Failed to inject counter!');
+	}
 
-    return counter;
+	return counter;
 }
 ```
 

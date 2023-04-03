@@ -8,7 +8,7 @@ date: '2017-03-14'
 
 Last year, I started an initiative to build my own website. With all the website builders and content management systems out there, I originally planned on using one of those. At the time, I already had a website on Wix.com that I'd built for school, but felt like it wasn't quite... me. In fact, with all my experience with website builders, including Wix, Weebly, Webs (FreeWebs at the time), and WordPress (man, I never realized how many of them started with a W), they all felt very limiting. As a developer, I wanted _power_.
 
-I originally started building my website using PHP, which was something I was already learning at the time. Outside of being a good learning experience, PHP was ridiculously easy too host. Without prior knowledge to hosting any sort of website, it was a pretty easy choice. In fact, when I purchased my domain last April from GoDaddy, it came with LAMP hosting. 
+I originally started building my website using PHP, which was something I was already learning at the time. Outside of being a good learning experience, PHP was ridiculously easy too host. Without prior knowledge to hosting any sort of website, it was a pretty easy choice. In fact, when I purchased my domain last April from GoDaddy, it came with LAMP hosting.
 
 While that started out okay, several months in, I ended up taking somewhat of a hiatus. And everything changed when I started getting more involved in Node JS. I mean, JavaScript on the backend? Heck yeah! On August 2016, having almost completed the entire website, I started rebuilding the whole thing using Node and Express. Here's what's running my server:
 

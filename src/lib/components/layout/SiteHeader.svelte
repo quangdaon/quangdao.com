@@ -5,7 +5,7 @@
 
 <header>
 	<a class="brand" href="/">
-    <Logo />
+		<Logo />
 	</a>
 	<nav>
 		<ul>
@@ -22,9 +22,9 @@
 	@use '~/placeholders';
 
 	header {
-    @extend %container;
+		@extend %container;
 
-    display: flex;
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 2rem;

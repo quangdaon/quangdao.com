@@ -18,7 +18,7 @@ export function definePostType<T extends ContentPost>(
 			const allKeys = [
 				...new Set(Object.keys(raw).concat(Object.keys(transformations)))
 			] as (keyof T)[];
-			
+
 			for (const key of allKeys) {
 				const transform = transformations[key];
 				result[key] = transform ? transform(raw[key], raw) : (raw[key] as T[typeof key]);

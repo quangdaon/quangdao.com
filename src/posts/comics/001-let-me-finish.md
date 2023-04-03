@@ -13,7 +13,7 @@ _A boy is talking on a cell phone to his dad on a landline._
 **Dad:** Fine! Just don't think of me as your father anymore!  
 **Boy:** YOU DON'T UNDERSTAND I'M--  
 **Dad:** You know what? Just do whatever the hell you want!  
-**Boy:** But I'm just getting drunk...  
+**Boy:** But I'm just getting drunk...
 
 _Dad slams the phone onto its stand, and it shakes as he walks away angrily._
 

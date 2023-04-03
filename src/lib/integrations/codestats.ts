@@ -49,9 +49,9 @@ export const calculateStats = (data: XpSet): CalculatedStats => {
 		level,
 		currentLevelXp,
 		nextLevelXp,
-    progress,
-    progressPrevious,
-    progressNew,
+		progress,
+		progressPrevious,
+		progressNew,
 		remaining
 	};
 };

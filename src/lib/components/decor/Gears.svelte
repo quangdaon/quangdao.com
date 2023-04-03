@@ -140,7 +140,7 @@
 <style lang="scss">
 	@use '~/breakpoints';
 	@use '~/variables';
-  @use '~/settings';
+	@use '~/settings';
 
 	.svggear {
 		--rotate-intensity: -0.25;

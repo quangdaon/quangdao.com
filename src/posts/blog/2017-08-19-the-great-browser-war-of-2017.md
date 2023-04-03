@@ -8,10 +8,9 @@ date: '2017-08-19'
 
 I have a confession to make: I use NetScape as my primary web browser. As in NetScape Navigator. Yes, I understand that it's been discontinued since 2008 and no one supports it anymore, but I've yet to find a browser that can outclass it. Okay, that's not true.
 
-One look at Navigator and one can easily see why the thought of needing to support it would bring any web developer to tears. Having been out of development for almost ten years, NetScape has missed out on (in technology-time) centuries worth of advancements. So it makes sense that no one would want to use it today. But what about modern browsers? Why do some people prefer Chrome, Firefox, or Opera? Here is a *totally* fair comparison from someone who is totally biased towards Firefox.
+One look at Navigator and one can easily see why the thought of needing to support it would bring any web developer to tears. Having been out of development for almost ten years, NetScape has missed out on (in technology-time) centuries worth of advancements. So it makes sense that no one would want to use it today. But what about modern browsers? Why do some people prefer Chrome, Firefox, or Opera? Here is a _totally_ fair comparison from someone who is totally biased towards Firefox.
 
-Winning The Popularity Contest
-------------------------------
+## Winning The Popularity Contest
 
 Very few people use a bad product by choice. Therefore, the amount of people using a product is a fair way to judge how it compares against its counterparts. As of August 15, 2017, [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html) is leading the browser race by a large margin. According to [StatCounter](http://gs.statcounter.com/), Chrome is responsible for handling over 54% of web traffic, with Safari following at a distant second place at 14%. Surprisingly, third place goes to [UC Browser](https://uc-browser.en.softonic.com/), a mobile browser that is particularly popular in China. Sadly, [Firefox](https://www.mozilla.org/en-US/) falls way behind in fourth place, with less than 6% of the market share. However, these stats account for all platforms, combining mobile and desktop usage into a single set of data.
 
@@ -21,8 +20,7 @@ It wouldn't be a fair comparison if we just stopped there, however. Mobile devic
 
 **Winner: Chrome (No Surprise)**
 
-The Need For Speed
-------------------
+## The Need For Speed
 
 Let's get the obvious out of the way: speed. A big part of Chrome's popularity is due to how fast it is to open and navigate from site to site. However, it may be a surprise to learn that Chrome is not the fastest, even of the mainstream browsers. While my biased instincts are urging me to lie and say that Firefox is faster, alas, it is not. The biggest surprise here, is that the browsers that consistently rank the faster according to benchmarks are... the default browsers. Recently, with the release of Edge, Microsoft has been slowly easing its way back into the browser race.
 
@@ -32,8 +30,7 @@ If you're really looking for speed and are willing to give up the other essentia
 
 **Winner: OS Defaults -- Edge**
 
-Cutting Edge Technology
------------------------
+## Cutting Edge Technology
 
 Developers move fast. We have to if we want to keep up with the ever-increasing "speed of technology." Therefore, when a new feature comes out, we want it right away. We want to take advantage of all the resources we can, to make our websites look and behave the best that they possibly can. One thing that may be contributing the Edge and Safari's victory in the last race was their lack of additional features. [CanIUse](http://caniuse.com/), a website the compares browser's compatibility with newer web technology, gives each browser a score based on how many features are supported. When it comes to full support, Firefox has a slight lead at 294. Chrome is close behind at 291, while Safari and Edge are slacking by more than 40 points. Chrome scores an additional 32 points for partially supported features, totalling 223, whereas Firefox has 24 partially supported features.
 
@@ -43,8 +40,7 @@ According to the [ECMAScript compatibility chart](https://kangax.github.io/compa
 
 **Winner: Chrome** -- It really depends on what's more important. In reality, most new features won't see much use for a while, and those that do are pretty well supported already. Although Firefox outpaces Chrome in JavaScript support and full features support on CanIUse, it's not by much. Chrome and Firefox have pretty even scores, with the only outlier being Chrome's better support for HTML 5, so I've decided to give this one to Chrome.
 
-Making It Yours
----------------
+## Making It Yours
 
 The key selling point to Firefox is its customizability. While Chrome's add-on store is higher in numbers, Firefox allows for more flexibility to their developers. This flexibility opens up the ability to fully change the appearance and behavior of your browser. Add-ons such as Stylish and Classic Theme Restorer makes it possible for Firefox on one computer to look like an entirely different browser on another. And one classic feature preventing Mozilla powerusers like myself from making the switch is "about:config." Almost every single setting used by the browser, even internal and experimental ones, can be found here.
 
@@ -52,17 +48,15 @@ An up and coming browser, [Vivaldi](https://vivaldi.com/?lang=en_US), might be a
 
 **Winner: Firefox**
 
-Portability
------------
+## Portability
 
 The biggest advantage of browsers like Chrome and Firefox is that they are cross-platform. Therefore, they are available on multiple devices and operating systems, from Windows, to Mac, to Android, and iOS. On the other hand, proprietary browsers like Edge and Safari limit you to a single platform. Syncing technology provided by Google and Mozilla ensures that users can keep their bookmarks and even their sessions intact when moving from one machine to another.
 
-From my experience, Firefox provides a more seamless experience between multiple computers, even when going from Windows to Linux. With supports for bookmarks, browsing history, and add-ons, it's almost like having the same installation on both machines. However, when it comes to the transition to mobile, Chrome has a massive *edge* here. This is because *nobody* uses Firefox on mobile, including desktop Firefox users. As we've discovered, Firefox is non-existent in the mobile market, even with cross-platform applications. Because we owe so much of the web to mobile phones, Chrome wins here.
+From my experience, Firefox provides a more seamless experience between multiple computers, even when going from Windows to Linux. With supports for bookmarks, browsing history, and add-ons, it's almost like having the same installation on both machines. However, when it comes to the transition to mobile, Chrome has a massive _edge_ here. This is because _nobody_ uses Firefox on mobile, including desktop Firefox users. As we've discovered, Firefox is non-existent in the mobile market, even with cross-platform applications. Because we owe so much of the web to mobile phones, Chrome wins here.
 
 **Winner: Chrome**
 
-Going Undercover
-----------------
+## Going Undercover
 
 Privacy and security are at the top of everyone's minds today. We've all heard the stories of hackers and identity thieves accessing confidential personal information for malicious purposes. But many people don't stop to concern the vulnerabilities of their browser. The good news is, you're probably safe. According to an [ITPro article published in July 2017](http://www.itpro.co.uk/web-browsers/24796/which-is-the-best-browser-chrome-vs-firefox-vs-Microsoft-edge), "At Pwn2Own 2017 [...] Edge came off as the least secure browser, with hackers successfully exploiting it five times. Chrome was the most secure as it wasn't hacked at all, while Firefox was beaten once. Safari was compromised 3.5 times."
 
@@ -72,7 +66,6 @@ For those truly concerned with security and privacy, there is one browser that t
 
 **Winner: Tor (Firefox if we're going more mainstream)**
 
-Conclusion
-----------
+## Conclusion
 
 There's a good reason Chrome is dominating the web browser market. With its speed, ease of use, and stability, Chrome is an easy choice for most users. However, there are other browsers out there, with advantages and disadvantages over Google Chrome. There are even niche browsers meant for very particular kinds of people. When it comes to choosing a browser, many people simply settle for what they're familiar with, and stick with it for years. But it's good to know what the differences are so you can make a better choice.

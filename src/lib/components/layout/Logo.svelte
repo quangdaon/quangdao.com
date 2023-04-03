@@ -10,8 +10,8 @@
 </svg>
 
 <style lang="scss">
-  @use '~/settings';
-  
+	@use '~/settings';
+
 	svg {
 		width: 120px;
 	}
