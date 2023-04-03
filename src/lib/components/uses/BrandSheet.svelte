@@ -31,13 +31,18 @@
 </div>
 
 <style lang="scss">
+	@use '~/breakpoints';
+	
 	.colors {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 0.5em;
 		padding: 0;
 		max-width: 600px;
 		list-style-type: none;
+		@include breakpoints.large {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 
 	.color {
