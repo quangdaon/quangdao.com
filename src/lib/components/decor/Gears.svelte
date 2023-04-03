@@ -1,8 +1,12 @@
 <script lang="ts">
 	let scroll: number;
+	let pageHeight: number;
+
+	$: scrollFactor = 360 / pageHeight;
+	$: rotation = scroll * scrollFactor;
 </script>
 
-<svelte:window bind:scrollY={scroll} />
+<svelte:window bind:scrollY={scroll} bind:innerHeight={pageHeight} />
 
 <svg
 	version="1.2"
@@ -14,7 +18,7 @@
 	viewBox="0 0 275.5129213557434 258.54154428917195"
 	overflow="scroll"
 	xml:space="preserve"
-	style="--rotate-amount: {scroll}"
+	style="--rotate-amount: {rotation}"
 	aria-hidden="true"
 >
 	<g transform="translate(-54.49,-71.46) rotate(0)">
@@ -143,7 +147,7 @@
 	@use '~/settings';
 
 	.svggear {
-		--rotate-intensity: -0.25;
+		--rotate-intensity: -2;
 		--guides-opacity: 0.05;
 		--color-outline: #fff;
 		--color-guides: #666;
