@@ -26,11 +26,18 @@
 	.footer-content {
 		@extend %container;
 		padding: 1em;
-		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		text-align: center;
 		p {
-			margin: 0;
+			margin: 1em 0;
+		}
+		@include breakpoints.large {
+			display: flex;
+			text-align: left;
+			p {
+				margin: 0;
+			}
 		}
 	}
 
@@ -41,7 +48,10 @@
 		}
 		:global(svg) {
 			width: 1em;
-			padding: 1em;
+			padding: 0 1em;
+			@include breakpoints.large {
+				padding: 1em;
+			}
 		}
 	}
 </style>
