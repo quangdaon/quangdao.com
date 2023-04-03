@@ -4,8 +4,6 @@
 	import '../styles/main.scss';
 
 	export let data;
-
-	console.log(data);
 </script>
 
 <svelte:window bind:innerHeight={$windowHeight} bind:innerWidth={$windowWidth} />

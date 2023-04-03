@@ -3,9 +3,6 @@
 	export let href: string;
 
 	$: active = $page.url.pathname.indexOf(href) === 0;
-	$: {
-		console.log($page, href);
-	}
 </script>
 
 <a class:active {href}><slot /></a>

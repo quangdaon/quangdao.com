@@ -11,7 +11,6 @@ export const prefersReducedMotion = readable(false, (set) => {
 	set(mediaQuery.matches);
 
 	const listener = function (e: MediaQueryListEvent) {
-		console.log(e.matches);
 		set(e.matches);
 	};
 
