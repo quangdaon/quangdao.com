@@ -22,6 +22,8 @@
 {/each}
 
 <style lang="scss">
+  @use '~/breakpoints';
+
 	h2 {
 		a {
 			text-decoration: none;
@@ -32,8 +34,12 @@
 		}
 		time {
 			font-size: 1rem;
-			margin-left: 0.5em;
 			font-weight: normal;
+      display: block;
+      @include breakpoints.large {
+        display: inline-block;
+        margin-left: 0.5em;
+      }
 		}
 	}
 
@@ -41,6 +47,7 @@
 		opacity: 0.5;
 		font-size: 0.75em;
 		span {
+      display: inline-block;
 			margin-right: 0.5em;
 		}
 	}

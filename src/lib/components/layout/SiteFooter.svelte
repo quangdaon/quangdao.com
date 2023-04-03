@@ -5,7 +5,7 @@
 <footer>
 	<div class="footer-content">
 		<div>
-			<p>&copy; Quangdao</p>
+			<p>Quangdao Nguyen</p>
 		</div>
 		<div class="social">
 			<SocialIcons />
@@ -32,26 +32,17 @@
 		p {
 			margin: 1em 0;
 		}
-		@include breakpoints.large {
-			display: flex;
-			text-align: left;
-			p {
-				margin: 0;
-			}
-		}
 	}
 
 	.social {
-		display: flex;
+		margin: auto;
+		text-align: center;
 		:global(a:hover) {
 			--color-foreground: var(--color-purple-base);
 		}
 		:global(svg) {
 			width: 1em;
 			padding: 0 1em;
-			@include breakpoints.large {
-				padding: 1em;
-			}
 		}
 	}
 </style>
