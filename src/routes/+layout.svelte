@@ -11,10 +11,6 @@
 		name="description"
 		content="Quangdao is a creative, adaptable, and resourceful software engineer with a passion for pushing limits and challenging impossiblities."
 	/>
-
-	{#if import.meta.env.DEV}
-		<script defer data-domain="quangdao.com" src="https://plausible.io/js/script.js"></script>
-	{/if}
 </svelte:head>
 
 <div class="app">
