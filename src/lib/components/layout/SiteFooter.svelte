@@ -4,8 +4,9 @@
 
 <footer>
 	<div class="footer-content">
-		<div>
+		<div class="name">
 			<p>Quangdao Nguyen</p>
+			<p class="pronunciation">(<abbr title='Rhymes with "Ron"'>kwahn</abbr>&bull;<abbr title='As in "Dow Jones"'>dow</abbr> <abbr title='Like "when" but with another N in front'>nwen</abbr>)</p>
 		</div>
 		<div class="social">
 			<SocialIcons />
@@ -32,6 +33,17 @@
 		p {
 			margin: 1em 0;
 		}
+	}
+
+	.name {
+		margin: var(--spacing) 0;
+		p {
+			margin: 0;
+		}
+	}
+
+	.pronunciation {
+		font-size: 0.75em;
 	}
 
 	.social {
