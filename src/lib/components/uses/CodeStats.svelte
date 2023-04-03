@@ -11,7 +11,7 @@
 </script>
 
 <details>
-  <summary>Show Usage Stats</summary>
+  <summary>Usage Stats</summary>
   <div class="codestats">
     <ul>
       {#each statsToUse as [lang, xp]}

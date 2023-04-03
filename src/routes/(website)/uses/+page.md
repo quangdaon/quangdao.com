@@ -8,7 +8,13 @@
 
 # Uses
 
-## Programming Languages
+## Programming Languages & Frameworks
+
+### Primary:
+
+- C# / .NET
+- JavaScript (Primarily TypeScript)
+- Svelte / Sveltekit
 
 <CodeStats stats={stats.languages} />
 

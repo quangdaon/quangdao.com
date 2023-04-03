@@ -5,17 +5,37 @@
 	export let xp: XpSet;
 
 	const stats = calculateStats(xp);
-	const progressPercent = (stats.progress * 100).toFixed(2);
+	const toPercent = (dec: number) => (dec * 100).toFixed(2);
+
+	let xpDisplayValue = `${xp.xps.toLocaleString()} XP`;
+
+	if (xp.new_xps) {
+		xpDisplayValue += ` (${xp.new_xps.toLocaleString()} XP Gained Today)`;
+	}
 </script>
 
 <li class="stat">
-	<p>{lang} <abbr title="{xp.xps.toLocaleString()} XP">Lv. {stats.level}</abbr></p>
+	<p>
+		{lang}
+		<abbr title={xpDisplayValue}>Lv. {stats.level}</abbr>
+	</p>
 
 	<div
 		class="progress"
-		title="{progressPercent}% | {stats.remaining.toLocaleString()} XP to Level {stats.level + 1}"
+		title="{toPercent(
+			stats.progress
+		)}% | {stats.remaining.toLocaleString()} XP to Level {stats.level + 1}"
 	>
-		<div class="completed" style="--amount: {progressPercent}%" />
+		<div
+			class="progress-previous"
+			style="--amount: {toPercent(stats.progressPrevious)}%"
+			title="{toPercent(stats.progressPrevious)}%"
+		/>
+		<div
+			class="progress-new"
+			style="--amount: {toPercent(stats.progressNew)}%"
+			title="{toPercent(stats.progressNew)}%"
+		/>
 	</div>
 </li>
 
@@ -25,17 +45,23 @@
 	}
 
 	.progress {
+		display: flex;
 		height: 0.25rem;
 		width: 100%;
 		background: var(--color-gray-900-op-1);
-	}
-
-	.completed {
-		height: 100%;
-		width: var(--amount);
-		background: var(--color-orange-base);
-		&:hover {
-			transform: scaleY(2);
+		&-previous,
+		&-new {
+			height: 100%;
+			width: var(--amount);
+			&:hover {
+				transform: scaleY(2);
+			}
+		}
+		&-previous {
+			background: var(--color-orange-base);
+		}
+		&-new {
+			background: var(--color-purple-base);
 		}
 	}
 </style>
