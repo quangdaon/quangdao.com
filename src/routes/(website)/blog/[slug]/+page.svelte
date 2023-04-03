@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { toFormattedDate } from '$lib/utils';
 	export let data;
+
+	const { post } = data;
 </script>
 
-<h1>{data.title}</h1>
+<h1>{post.title}</h1>
 
-<time>{toFormattedDate(data.date)}</time>
+<time>{toFormattedDate(post.date)}</time>
 
-<svelte:component this={data.component} />
+<svelte:component this={post.component} />

@@ -2,12 +2,14 @@
 	import Comic from '$lib/components/comics/Comic.svelte';
 
 	export let data;
+
+	const { post } = data;
 </script>
 
-<h1>{data.title}</h1>
+<h1>{post.title}</h1>
 
-<Comic {...data} />
+<Comic {...post} />
 
 <h3 id="transcript">Transcript:</h3>
 
-<svelte:component this={data.component} />
+<svelte:component this={post.component} />

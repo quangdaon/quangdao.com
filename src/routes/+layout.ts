@@ -4,7 +4,10 @@ export const load = ({ url }: { url: URL }): PageData => {
 	const path: string = url.pathname;
 
 	return {
-		path
+		path,
+		pageTitle: 'Quangdao Nguyen',
+		pageDescription:
+			'Quangdao is a creative, adaptable, and resourceful software engineer with a passion for pushing limits and challenging impossiblities.'
 	};
 };
 
