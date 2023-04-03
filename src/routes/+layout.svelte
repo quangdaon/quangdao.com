@@ -1,6 +1,11 @@
 <script>
+	import PageLayout from '$lib/components/layout/PageLayout.svelte';
 	import { windowHeight, windowWidth } from '$lib/data/store';
 	import '../styles/main.scss';
+
+	export let data;
+
+	console.log(data);
 </script>
 
 <svelte:window bind:innerHeight={$windowHeight} bind:innerWidth={$windowWidth} />
@@ -14,5 +19,11 @@
 </svelte:head>
 
 <div class="app">
-	<slot />
+	{#if data.path === '/'}
+		<slot />
+	{:else}
+		<PageLayout>
+			<slot />
+		</PageLayout>
+	{/if}
 </div>

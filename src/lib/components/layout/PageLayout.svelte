@@ -3,9 +3,11 @@
 	import SiteFooter from '$lib/components/layout/SiteFooter.svelte';
 	import SiteHeader from '$lib/components/layout/SiteHeader.svelte';
 	import { fade } from 'svelte/transition';
+
+  export let delay = true;
 </script>
 
-<div out:fade={{ delay: 1000 }}>
+<div out:fade={{ delay: delay ? 1000 : 0, duration : 0 }}>
 	<!-- <GearsTop /> -->
 	<SiteHeader />
 
