@@ -22,10 +22,10 @@
 	$: teeth = key.split('');
 </script>
 
-<svg viewBox="0 0 400 100">
-	<ellipse class="ring" cx="370" cy="50" rx="20" ry="40" />
-	<rect class="rod" x="0" y="30" height="20" width="350" ry="10" />
-	<rect class="glare" x="10" y="32" height="5" width="300" ry="10" />
+<svg viewBox="0 0 300 100">
+	<ellipse class="ring" cx="270" cy="50" rx="20" ry="40" />
+	<rect class="rod" x="0" y="30" height="20" width="250" ry="10" />
+	<rect class="glare" x="10" y="32" height="5" width="200" ry="10" />
 	<g class="teeth">
 		{#each teeth as tooth, i}
 			<polygon class="tooth" points={convertPoints(calcPoints(+tooth, i))} />

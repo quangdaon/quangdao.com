@@ -43,7 +43,7 @@
 	</button>
 
 	{#if showBuilder}
-		<form class="keymaker" on:submit={checkKey}>
+		<form class="keymaker" on:submit|preventDefault={checkKey}>
 			<div class="sizer" in:slide|local out:fade|local>
 				<KeySizer disabled={failed} />
 			</div>
@@ -65,19 +65,15 @@
 
 	.keymaker {
 		z-index: 20;
-		// padding: 0.25em;
 		border-radius: 1em;
 		--color-foreground: var(--color-white);
 	}
 
 	.keyhole {
-		display: none;
 		margin: auto;
 		background-color: transparent;
 		border: none;
-		@include breakpoints.large {
-			display: block;
-		}
+		display: block;
 	}
 
 	.sizer {
@@ -94,7 +90,7 @@
 
 	.key {
 		position: absolute;
-		width: 250px;
+		width: 175px;
 		top: 0;
 		left: 50%;
 		background: transparent;

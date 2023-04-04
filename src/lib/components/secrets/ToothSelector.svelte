@@ -40,12 +40,17 @@
 </div>
 
 <style lang="scss">
+	@use '~/breakpoints';
+
 	.picker {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		width: fit-content;
 		width: 1em;
+		font-size: 1.5em;
+		@include breakpoints.large {
+			font-size: 1em;
+		}
 	}
 
 	input {

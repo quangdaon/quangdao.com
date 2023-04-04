@@ -21,8 +21,10 @@
 	</div>
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
-			<!-- TODO: Find out why goto doesn't work on its own -->
-			<KeyHole on:solved={() => setTimeout(() => goto('/secrets'), 0)} />
+			<div class="unlock">
+				<!-- TODO: Find out why goto doesn't work on its own -->
+				<KeyHole on:solved={() => setTimeout(() => goto('/secrets'), 0)} />
+			</div>
 		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />
 		<SplashPanel href="/projects" label="highly-functional" title="Projects" order={3} />
@@ -75,6 +77,13 @@
 				animation: wave 1s 1 forwards;
 			}
 		}
+		@include breakpoints.large {
+			display: block;
+		}
+	}
+
+	.unlock {
+		display: none;
 		@include breakpoints.large {
 			display: block;
 		}

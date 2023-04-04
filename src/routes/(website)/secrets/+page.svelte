@@ -10,10 +10,9 @@
 </script>
 
 <Quote by="OneRepublic">
-	So tell me what you want to hear
-	Something that will light those ears
-	I'm sick of all the insincere
-	So I'm gonna give <mark>all my secrets</mark> away</Quote>
+	So tell me what you want to hear Something that will light those ears I'm sick of all the
+	insincere So I'm gonna give <mark>all my secrets</mark> away</Quote
+>
 
 {#if browser}
 	{#if !solved}
@@ -27,11 +26,15 @@
 	{/if}
 {/if}
 
-<style>
+<style lang="scss">
+	@use '~/breakpoints';
 	.keymaker {
 		width: 200px;
-		margin: 4rem auto auto;
+		margin: 8rem auto auto;
 		text-align: center;
-		filter: drop-shadow(0 0 60px #fff)
+		filter: drop-shadow(0 0 60px #fff);
+		@include breakpoints.large {
+			margin-top: 4rem;
+		}
 	}
 </style>
