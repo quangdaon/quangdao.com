@@ -10,9 +10,10 @@
 </script>
 
 <Quote by="OneRepublic">
-	So tell me what you want to hear Something that will light those ears I'm sick of all the
-	insincere So I'm gonna give <mark>all my secrets</mark> away</Quote
->
+So tell me what you want to hear 
+Something that will light those ears 
+I'm sick of all the insincere
+So I'm gonna give <mark>all my secrets</mark> away</Quote>
 
 {#if browser}
 	{#if !solved}
