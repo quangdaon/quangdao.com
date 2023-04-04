@@ -25,7 +25,6 @@
 		z-index: 20;
 		padding: 0.25em;
 		border-radius: 1em;
-		background: var(--color-blue-base);
 		--color-foreground: var(--color-white);
 	}
 
