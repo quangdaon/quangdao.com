@@ -62,9 +62,10 @@
 			margin: 0;
 			padding: 0.25em;
 			background: var(--color-blue-base);
-			color: var(--color-orange-base);
+			color: var(--color-white);
 			line-height: 1;
 			font-size: 3em;
+			font-family: var(--font-script);
 			pointer-events: all;
 		}
 		.hand {
@@ -77,13 +78,6 @@
 				animation: wave 1s 1 forwards;
 			}
 		}
-		@include breakpoints.large {
-			display: block;
-		}
-	}
-
-	.unlock {
-		display: none;
 		@include breakpoints.large {
 			display: block;
 		}
@@ -121,6 +115,14 @@
 
 		@include breakpoints.large {
 			flex-direction: row;
+		}
+	}
+
+	.unlock {
+		display: none;
+		--color-foreground: var(--color-white);
+		@include breakpoints.large {
+			display: block;
 		}
 	}
 

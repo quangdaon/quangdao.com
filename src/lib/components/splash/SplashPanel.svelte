@@ -41,7 +41,7 @@
 	@use '~/breakpoints';
 	@use '~/variables';
 
-	:global(.panel) {
+	.panel {
 		display: flex;
 		flex-direction: column;
 		position: relative;
@@ -49,16 +49,16 @@
 		background-color: var(--color-background);
 		font-size: 0.75em;
 
-		@include breakpoints.large {
-			font-size: 1em;
-		}
-
 		--color-background: var(--color-green-base);
 		--color-foreground: var(--color-orange-base);
 
 		&:nth-child(even) {
 			--color-background: var(--color-orange-base);
 			--color-foreground: var(--color-green-base);
+		}
+
+		@include breakpoints.large {
+			font-size: 1em;
 		}
 
 		@include breakpoints.large {
@@ -105,18 +105,6 @@
 		overflow: hidden;
 	}
 
-	.footer {
-		width: 100%;
-		@include breakpoints.large {
-			position: absolute;
-			bottom: 0;
-			pointer-events: none;
-			:global(*) {
-				pointer-events: all;
-			}
-		}
-	}
-
 	.title {
 		margin: 0;
 		font-size: 4em;
@@ -133,6 +121,18 @@
 			}
 			&::after {
 				content: ')';
+			}
+		}
+	}
+
+	.footer {
+		width: 100%;
+		@include breakpoints.large {
+			position: absolute;
+			bottom: 0;
+			pointer-events: none;
+			:global(*) {
+				pointer-events: all;
 			}
 		}
 	}
