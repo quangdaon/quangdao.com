@@ -15,11 +15,11 @@ const config = {
 			'~': './src/styles/utils'
 		}
 	},
-	extensions: ['.svelte', '.md'],
+	extensions: ['.svelte', '.md', '.svx'],
 	preprocess: [
 		vitePreprocess(),
 		mdsvex({
-			extensions: ['.md']
+			extensions: ['.md', '.svx']
 		})
 	]
 };

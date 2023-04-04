@@ -1,28 +1,36 @@
 <script>
+	import { browser } from '$app/environment';
+	import { keyValue } from '$lib/data/store';
+	import { getKey } from '$lib/secrets';
+	import { createEventDispatcher } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import Key from './Key.svelte';
 	import ToothSelector from './ToothSelector.svelte';
-	const teeth = [0, 0, 0, 0, 0, 0];
-	$: key = teeth.join('');
+	const teeth = $keyValue.split('').map((e) => +e);
+
+	const dispatch = createEventDispatcher();
+
+	const checkKey = () => {
+		const match = $keyValue === getKey(new Date());
+		if (match && browser) dispatch('solved');
+	};
+
+	$: $keyValue = teeth.join('');
 </script>
 
-<div class="keybuilder" transition:slide>
+<form class="keymaker" transition:slide on:submit={checkKey}>
 	<div class="keysizer">
 		{#each teeth as tooth}
 			<ToothSelector bind:value={tooth} />
 		{/each}
 	</div>
-	<div class="key">
-		<Key {key} />
-	</div>
-</div>
+	<button type="submit" class="key">
+		<Key key={$keyValue} />
+	</button>
+</form>
 
 <style>
-	.keybuilder {
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		bottom: calc(100% + 1rem);
+	.keymaker {
 		z-index: 20;
 		padding: 0.25em;
 		border-radius: 1em;
@@ -30,12 +38,14 @@
 	}
 
 	.keysizer {
-		display: flex;
+		display: inline-flex;
 	}
 
 	.key {
 		margin-top: 1rem;
 		width: 0;
 		min-width: 100%;
+		background: transparent;
+		border: none;
 	}
 </style>

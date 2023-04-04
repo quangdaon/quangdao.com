@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import KeyMaker from './KeyMaker.svelte';
 	let showBuilder = false;
 </script>
@@ -15,7 +16,10 @@
 </button>
 
 {#if showBuilder}
-	<KeyMaker />
+	<div class="maker">
+		<!-- TODO: Find out why goto doesn't work -->
+		<KeyMaker on:solved={() => window.location.assign('/secrets')} />
+	</div>
 {/if}
 
 <style lang="scss">
@@ -33,6 +37,13 @@
 		@include breakpoints.large {
 			display: block;
 		}
+	}
+
+	.maker {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: calc(100% + 1rem);
 	}
 
 	.keyhole-shape {

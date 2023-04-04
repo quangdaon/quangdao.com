@@ -5,7 +5,7 @@
 	const decrement = () => (value = value <= 0 ? 5 : value - 1);
 
 	const mapEntry = (e: KeyboardEvent) => {
-		if (e.key === 'Tab') return;
+		if (e.key === 'Tab' || e.key === 'Enter') return;
 
 		e.preventDefault();
 
@@ -25,9 +25,9 @@
 </script>
 
 <div class="picker">
-	<button on:click={increment} tabindex="-1">▲</button>
+	<button type="button" on:click={increment} tabindex="-1">▲</button>
 	<input bind:value max="5" min="0" pattern="[0-5]" maxlength="1" on:keydown={mapEntry} />
-	<button on:click={decrement} tabindex="-1">▼</button>
+	<button type="button" on:click={decrement} tabindex="-1">▼</button>
 </div>
 
 <style lang="scss">

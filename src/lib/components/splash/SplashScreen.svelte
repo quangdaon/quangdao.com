@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
