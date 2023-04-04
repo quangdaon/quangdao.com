@@ -72,12 +72,16 @@
 	.social {
 		margin: auto;
 		text-align: center;
+		:global(a) {
+			display: inline-block;
+			padding: 0 1em;
+		}
 		:global(a:hover) {
 			--color-foreground: var(--color-purple-base);
 		}
 		:global(svg) {
+			display: block;
 			width: 1em;
-			padding: 0 1em;
 		}
 	}
 </style>

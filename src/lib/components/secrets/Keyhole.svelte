@@ -1,7 +1,10 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { goto, preloadCode } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import KeyMaker from './KeyMaker.svelte';
 	let showBuilder = false;
+
+	onMount(() => preloadCode('/secrets'));
 </script>
 
 <button
@@ -17,8 +20,8 @@
 
 {#if showBuilder}
 	<div class="maker">
-		<!-- TODO: Find out why goto doesn't work -->
-		<KeyMaker on:solved={() => window.location.assign('/secrets')} />
+		<!-- TODO: Find out why goto doesn't work on its own -->
+		<KeyMaker on:solved={() => setTimeout(() => goto('/secrets'), 0)} />
 	</div>
 {/if}
 
