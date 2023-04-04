@@ -19,7 +19,11 @@ $brand-colors: (
 		base: #224102
 	),
 	orange: (
-		base: #ffa630
+		200: #ffd49b,
+		400: #ffb14a,
+		500: #ffa630,
+		600: #d68822,
+		base: var(--color-orange-500)
 	),
 	blue: (
 		base: #222e50

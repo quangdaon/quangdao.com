@@ -2,42 +2,57 @@
 	export let key: String;
 	const toothWidth = 20;
 
+	const calcPoints = (tooth: number, i: number) => {
+		const x = i * toothWidth + 20;
+		const y = 50;
+		const h = 12 + Number(tooth) * 6;
+
+		return [
+			[x, y],
+			[x, y + h - (i % 2 ? 0 : 6)],
+			[x + toothWidth + 3, y + h - (i % 2 ? 6 : 0)],
+			[x + toothWidth + 3, y]
+		];
+	};
+
+	const convertPoints = (arr: number[][]) => {
+		return arr.map((e) => e.join(',')).join(' ');
+	};
+
 	$: teeth = key.split('');
 </script>
 
 <svg viewBox="0 0 400 100">
 	<ellipse class="ring" cx="370" cy="50" rx="20" ry="40" />
 	<rect class="rod" x="0" y="30" height="20" width="350" ry="10" />
+	<rect class="glare" x="10" y="32" height="5" width="300" ry="10" />
 	<g class="teeth">
 		{#each teeth as tooth, i}
-			{@const x = i * toothWidth + 20}
-			{@const y = 50}
-			{@const h = 12 + Number(tooth) * 6}
-			
-			<polygon
-				class="tooth"
-				points="{x},{y} {x},{y + h - (i % 2 ? 0 : 6)} {x + toothWidth},{y +
-					h -
-					(i % 2 ? 6 : 0)} {x + toothWidth},{y}"
-			/>
+			<polygon class="tooth" points={convertPoints(calcPoints(+tooth, i))} />
 		{/each}
 	</g>
 </svg>
 
 <style>
 	svg {
-		width: 200px;
-		--color-key: var(--color-orange-base);
+		width: 100%;
 	}
 
 	.ring {
 		fill: transparent;
-		stroke: var(--color-key);
+		stroke: var(--color-orange-base);
 		stroke-width: 15;
 	}
 
-	.rod,
+	.rod {
+		fill: var(--color-orange-base);
+	}
+
+	.glare {
+		fill: var(--color-orange-200);
+	}
+
 	.tooth {
-		fill: var(--color-key);
+		fill: var(--color-orange-600);
 	}
 </style>

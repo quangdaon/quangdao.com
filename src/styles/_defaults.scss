@@ -31,6 +31,12 @@
 	}
 }
 
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	margin: 0;
@@ -156,4 +162,8 @@ strong {
 mark {
 	background: transparent;
 	color: var(--color-highlight);
+}
+
+button {
+	cursor: pointer;
 }

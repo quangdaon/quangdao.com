@@ -20,7 +20,7 @@
 	</div>
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
-			<!-- <Keyhole /> -->
+			<Keyhole />
 		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />
 		<SplashPanel href="/projects" label="highly-functional" title="Projects" order={3} />
