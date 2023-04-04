@@ -102,6 +102,17 @@
 		filter: drop-shadow(0 0 60px var(--color-black));
 		z-index: 30;
 		overflow: hidden;
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 5px;
+			bottom: 5px;
+			height: 100%;
+			background: linear-gradient(to right, var(--color-black), transparent);
+			width: 10px;
+			z-index: 3;
+		}
 	}
 
 	.key-animation {
