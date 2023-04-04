@@ -35,7 +35,7 @@ I... don't remember. Not the full story anyway. It started off as a joke at work
 		}
 		@include settings.dark-theme {
 			&:hover {
-				background: var(--color-orange-base-op-1);
+				background: var(--color-orange-500-op-1);
 			}
 		}
 	}
