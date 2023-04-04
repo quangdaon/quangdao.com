@@ -1,11 +1,12 @@
 <script>
+	import { slide } from 'svelte/transition';
 	import Key from './Key.svelte';
 	import ToothSelector from './ToothSelector.svelte';
 	const teeth = [0, 0, 0, 0, 0, 0];
 	$: key = teeth.join('');
 </script>
 
-<div class="keybuilder">
+<div class="keybuilder" transition:slide>
 	<div class="keysizer">
 		{#each teeth as tooth}
 			<ToothSelector bind:value={tooth} />

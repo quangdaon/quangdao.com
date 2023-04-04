@@ -2,13 +2,13 @@
 	import { page } from '$app/stores';
 	import { getKey } from '$lib/secrets';
 	import { tweened } from 'svelte/motion';
-	import Key from '$lib/components/secrets/Key.svelte';
 	import { cubicOut } from 'svelte/easing';
+	import Key from '$lib/components/secrets/Key.svelte';
 	const key = getKey(new Date());
 
 	let xStart = 0;
 	let xNow = 0;
-	let lastOffset = -110;
+	let lastOffset = 0;
 	let offset = tweened(lastOffset, { easing: cubicOut });
 
 	const dragOn = (e: MouseEvent) => {
@@ -20,7 +20,7 @@
 	};
 
 	const dragOff = () => {
-		const target = $offset > lastOffset ? 0 : -110;
+		const target = $offset > lastOffset ? 110 : 0;
 
 		offset.set(target);
 
@@ -33,13 +33,13 @@
 	};
 
 	$: {
-		offset.set(Math.min(0, Math.max(-110, lastOffset + (xNow - xStart))), { duration: 0 });
+		offset.set(Math.max(0, Math.min(110, lastOffset + (xNow - xStart))), { duration: 0 });
 	}
 </script>
 
 {#if $page.status === 404}
 	<h1>
-		<span class="key" title={key}><Key {key} /></span>
+		<span aria-hidden="true" class="key" title={key}><Key {key} /></span>
 		<span class="title" style="--offset: {$offset}" on:mousedown={dragOn}>
 			Nothing to See Here!
 		</span>
@@ -54,6 +54,7 @@
 	.key {
 		width: 100px;
 		display: inline-block;
+		position: absolute;
 	}
 
 	.title {
