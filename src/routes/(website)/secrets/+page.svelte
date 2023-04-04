@@ -6,6 +6,7 @@
 	import { browser } from '$app/environment';
 	let solved = $keyValue === getKey(new Date());
 	import Quote from '$lib/components/shared/Quote.svelte';
+	import { fade } from 'svelte/transition';
 </script>
 
 <Quote by="OneRepublic">
@@ -20,7 +21,9 @@
 			<KeyMaker on:solved={() => (solved = true)} />
 		</div>
 	{:else}
-		<Secrets />
+		<div in:fade={{ duration: 200, delay: 500 }}>
+			<Secrets />
+		</div>
 	{/if}
 {/if}
 

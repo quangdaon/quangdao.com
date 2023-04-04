@@ -3,7 +3,7 @@
 	import { keyValue } from '$lib/data/store';
 	import { getKey } from '$lib/secrets';
 	import { createEventDispatcher } from 'svelte';
-	import { slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import Key from './Key.svelte';
 	import ToothSelector from './ToothSelector.svelte';
 	const teeth = $keyValue.split('').map((e) => +e);
@@ -18,7 +18,7 @@
 	$: $keyValue = teeth.join('');
 </script>
 
-<form class="keymaker" transition:slide on:submit={checkKey}>
+<form class="keymaker" in:slide out:fade on:submit={checkKey}>
 	<div class="keysizer">
 		{#each teeth as tooth}
 			<ToothSelector bind:value={tooth} />
