@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let value: number;
+	export let disabled = false;
 
 	const increment = () => (value = value >= 5 ? 0 : value + 1);
 	const decrement = () => (value = value <= 0 ? 5 : value - 1);
@@ -25,9 +26,17 @@
 </script>
 
 <div class="picker">
-	<button type="button" on:click={increment} tabindex="-1">▲</button>
-	<input bind:value max="5" min="0" pattern="[0-5]" maxlength="1" on:keydown={mapEntry} />
-	<button type="button" on:click={decrement} tabindex="-1">▼</button>
+	<button type="button" on:click={increment} tabindex="-1" {disabled}>▲</button>
+	<input
+		bind:value
+		max="5"
+		min="0"
+		pattern="[0-5]"
+		maxlength="1"
+		on:keydown={mapEntry}
+		{disabled}
+	/>
+	<button type="button" on:click={decrement} tabindex="-1" {disabled}>▼</button>
 </div>
 
 <style lang="scss">
@@ -46,16 +55,16 @@
 		background: transparent;
 		border: none;
 		max-width: 100%;
-    color: var(--color-foreground);
+		color: var(--color-foreground);
 		&:focus {
-      outline: none;
+			outline: none;
 		}
 	}
-  
-  button {
-    font-size: 0.5em;
-    background: transparent;
-    border: none;
-    color: var(--color-foreground);
-  }
+
+	button {
+		font-size: 0.5em;
+		background: transparent;
+		border: none;
+		color: var(--color-foreground);
+	}
 </style>
