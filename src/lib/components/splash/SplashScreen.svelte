@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
@@ -20,7 +21,8 @@
 	</div>
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
-			<KeyHole />
+			<!-- TODO: Find out why goto doesn't work on its own -->
+			<KeyHole on:solved={() => setTimeout(() => goto('/secrets'), 0)} />
 		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />
 		<SplashPanel href="/projects" label="highly-functional" title="Projects" order={3} />

@@ -2,11 +2,12 @@
 	import { keyValue } from '$lib/data/store';
 	import { getKey } from '$lib/secrets';
 	import Secrets from './secrets.md';
-	import KeyMaker from '$lib/components/secrets/KeyMaker.svelte';
+	import KeyMaker from '$lib/components/secrets/KeySizer.svelte';
 	import { browser } from '$app/environment';
 	let solved = $keyValue === getKey(new Date());
 	import Quote from '$lib/components/shared/Quote.svelte';
 	import { fade } from 'svelte/transition';
+	import KeyHole from '$lib/components/secrets/KeyHole.svelte';
 </script>
 
 <Quote by="OneRepublic">
@@ -18,7 +19,7 @@
 {#if browser}
 	{#if !solved}
 		<div class="keymaker">
-			<KeyMaker on:solved={() => (solved = true)} />
+			<KeyHole on:solved={() => (solved = true)} />
 		</div>
 	{:else}
 		<div in:fade={{ duration: 200, delay: 500 }}>
@@ -30,7 +31,8 @@
 <style>
 	.keymaker {
 		width: 200px;
-		margin: auto;
+		margin: 4rem auto auto;
 		text-align: center;
+		filter: drop-shadow(0 0 60px #fff)
 	}
 </style>
