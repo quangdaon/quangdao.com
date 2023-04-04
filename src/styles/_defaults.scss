@@ -9,6 +9,7 @@
 
 	--color-black: var(--color-gray-900);
 	--color-white: var(--color-gray-0);
+	--color-highlight: var(--color-green-base);
 
 	--color-foreground: var(--color-black);
 	--color-background: var(--color-white);
@@ -71,6 +72,7 @@ body {
 		--color-background: var(--color-black);
 		--color-heading: var(--color-orange-base);
 		--color-subheading: var(--color-white);
+		--color-highlight: var(--color-orange-base);
 		--color-link: var(--color-white);
 		--color-link-hover: var(--color-white);
 		--color-code: var(--color-orange-base);
@@ -149,4 +151,9 @@ code.language-info {
 b,
 strong {
 	font-weight: bold;
+}
+
+mark {
+	background: transparent;
+	color: var(--color-highlight);
 }

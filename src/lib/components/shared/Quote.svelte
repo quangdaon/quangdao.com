@@ -4,7 +4,9 @@
 
 <blockquote>
 	<p class="quote"><slot /></p>
-	<p class="author">&mdash; {by}</p>
+	{#if by}
+		<p class="author">&mdash; {by}</p>
+	{/if}
 </blockquote>
 
 <style lang="scss">
@@ -17,14 +19,12 @@
 		max-width: 80%;
 		text-align: center;
 		.quote {
+			white-space: pre-line;
 			&::before,
 			&::after {
 				display: inline;
 				pointer-events: none;
-				color: var(--color-green-base);
-				@include settings.dark-theme {
-					color: var(--color-orange-base);
-				}
+				color: var(--color-highlight);
 			}
 
 			&::before {
