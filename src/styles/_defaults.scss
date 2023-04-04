@@ -167,3 +167,8 @@ mark {
 button {
 	cursor: pointer;
 }
+
+input,
+button {
+	font-family: var(--font-primary);
+}
