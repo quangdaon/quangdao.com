@@ -2,7 +2,6 @@
 	import { keyValue } from '$lib/data/store';
 	import { getKey } from '$lib/secrets';
 	import Secrets from './secrets.md';
-	import KeyMaker from '$lib/components/secrets/KeySizer.svelte';
 	import { browser } from '$app/environment';
 	let solved = $keyValue === getKey(new Date());
 	import Quote from '$lib/components/shared/Quote.svelte';
