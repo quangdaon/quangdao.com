@@ -2,6 +2,7 @@
 	import { prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
+	import Keyhole from '../secrets/Keyhole.svelte';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	import SplashPanel from './SplashPanel.svelte';
 
@@ -18,7 +19,9 @@
 		</h1>
 	</div>
 	<div class="panels">
-		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1} />
+		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
+			<Keyhole />
+		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />
 		<SplashPanel href="/projects" label="highly-functional" title="Projects" order={3} />
 		<SplashPanel href="/bio" label="robot." title="Bio" order={4}>
