@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { keyMax } from '$lib/secrets';
+
+
 	export let value: number;
 	export let disabled = false;
 
@@ -29,9 +32,9 @@
 	<button type="button" on:click={increment} tabindex="-1" {disabled}>▲</button>
 	<input
 		bind:value
-		max="5"
+		max={keyMax}
 		min="0"
-		pattern="[0-5]"
+		pattern="[0-{keyMax}]"
 		maxlength="1"
 		on:keydown={mapEntry}
 		{disabled}
