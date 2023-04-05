@@ -161,3 +161,11 @@
 		}
 	}
 </style>
+
+<noscript>
+	<style>
+		.keyhole-container {
+			display: none;
+		}
+	</style>
+</noscript>
