@@ -5,6 +5,7 @@ Congratulations, you found the hidden page! Here is a (allegedly) comprehensive 
   2. If you build the key correctly, you will be redirected to this hidden page, where I unveil all of my deepest, darkest secrets.
   3. The correct combination can be found on my error page. If you manage to navigate to an incorrect URL, you be greeted with a generic-looking 404 / "Page Not Found" message.
   4. Drag the title over to the right, and you will find the key.
+  5. Don't bother with memorizing it or writing it down, the key rotates daily.
 - On my homepage, you can hover over the waving hand to make it wave.
 - My footer shows my name, along with a phonetic pronunciation guide. If you double-click on it, it transforms into the Vietnamese spelling, as well as my poor attempt at transcribing the proper Vietnamese pronunciation.
 - You might have already noticed the gears hanging around the bottom-right ([shoutout to Abel Vincze!](https://geargenerator.com/beta/)), but did you notice that each rotation of the large gear corresponds to exactly one page of scrolling?
