@@ -7,7 +7,6 @@
 	<div
 		class="tooltip"
 		style="--x: {$tooltipParams.x}px; --y: {$tooltipParams.y}px"
-		transition:fly={{ y: '10%' }}
 	>
 		{$tooltipParams?.message}
 	</div>
