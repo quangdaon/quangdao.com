@@ -5,6 +5,7 @@
 	import { fade, slide } from 'svelte/transition';
 	import Key from './Key.svelte';
 	import KeySizer from './KeySizer.svelte';
+	import { tooltip } from '$lib/actions/tooltip';
 	let showBuilder = false;
 
 	let animationElement: Element;
@@ -32,8 +33,8 @@
 
 <div class="keyhole-container">
 	<button
+		use:tooltip={showBuilder ? null : 'Hmm... What could this possibly be?'}
 		class="keyhole"
-		title="Hmm... What could this possibly be?"
 		on:click={() => (showBuilder = !showBuilder)}
 	>
 		<svg viewBox="0 0 100 150">

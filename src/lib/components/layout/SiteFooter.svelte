@@ -1,4 +1,5 @@
 <script>
+	import { tooltip } from '$lib/actions/tooltip';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	let useVietnameseName = false;
 </script>
@@ -9,22 +10,22 @@
 			{#if useVietnameseName}
 				<p lang="vn">Nguyễn Quang Đạo</p>
 				<p class="pronunciation">
-					(<abbr title={'"ng" is like the suffix -ing; upward pitch like you are asking a question'}
+					(<abbr use:tooltip={'"ng" is like the suffix -ing; upward pitch like you are asking a question'}
 						>ngween</abbr
 					>
 					<abbr
-						title={'Exactly how someone trying to impersonate a stereotypical eastern accent would say "one"; neutral tone'}
+						use:tooltip={'Exactly how someone trying to impersonate a stereotypical eastern accent would say "one"; neutral tone'}
 						>wahng</abbr
 					>
-					<abbr title={'same as the anglocized "dow (Jones)" except with a heavy tone'}>dow</abbr>)
+					<abbr use:tooltip={'same as the anglocized "dow (Jones)" except with a heavy tone'}>dow</abbr>)
 				</p>
 			{:else}
 				<p>Quangdao Nguyen</p>
 				<p class="pronunciation">
-					(<abbr title={'Rhymes with "Ron"'}>kwahn</abbr>&bull;<abbr title={'As in "Dow Jones"'}
+					(<abbr use:tooltip={'Rhymes with "Ron"'}>kwahn</abbr>&bull;<abbr use:tooltip={'As in "Dow Jones"'}
 						>dow</abbr
 					>
-					<abbr title={'Like "win" but with another N in front'}>nwin</abbr>)
+					<abbr use:tooltip={'Like "win" but with another N in front'}>nwin</abbr>)
 				</p>
 			{/if}
 		</div>

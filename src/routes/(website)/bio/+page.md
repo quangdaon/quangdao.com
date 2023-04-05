@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tooltip } from '$lib/actions/tooltip';
 	import Quote from '$lib/components/shared/Quote.svelte';
 </script>
 

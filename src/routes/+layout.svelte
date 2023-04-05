@@ -1,6 +1,7 @@
 <script>
 	import PageLayout from '$lib/components/layout/PageLayout.svelte';
 	import PageMeta from '$lib/components/layout/PageMeta.svelte';
+	import Tooltip from '$lib/components/shared/Tooltip.svelte';
 	import { windowHeight, windowWidth } from '$lib/data/store';
 	import '../styles/main.scss';
 
@@ -19,4 +20,5 @@
 			<slot />
 		</PageLayout>
 	{/if}
+	<Tooltip />
 </div>

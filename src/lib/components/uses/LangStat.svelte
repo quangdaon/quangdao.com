@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { calculateStats, type XpSet } from '$lib/integrations/codestats';
+	import { tooltip } from '$lib/actions/tooltip';
+import { calculateStats, type XpSet } from '$lib/integrations/codestats';
 
 	export let lang: string;
 	export let xp: XpSet;
@@ -17,24 +18,24 @@
 <li class="stat">
 	<p>
 		{lang}
-		<abbr title={xpDisplayValue}>Lv. {stats.level}</abbr>
+		<abbr use:tooltip={xpDisplayValue}>Lv. {stats.level}</abbr>
 	</p>
 
 	<div
 		class="progress"
-		title="{toPercent(
+		use:tooltip={`${toPercent(
 			stats.progress
-		)}% | {stats.remaining.toLocaleString()} XP to Level {stats.level + 1}"
+		)}% | ${stats.remaining.toLocaleString()} XP to Level ${stats.level + 1}`}
 	>
 		<div
 			class="progress-previous"
 			style="--amount: {toPercent(stats.progressPrevious)}%"
-			title="{toPercent(stats.progressPrevious)}%"
+			use:tooltip={`${toPercent(stats.progressPrevious)}%`}
 		/>
 		<div
 			class="progress-new"
 			style="--amount: {toPercent(stats.progressNew)}%"
-			title="{toPercent(stats.progressNew)}%"
+			use:tooltip={`${toPercent(stats.progressNew)}%`}
 		/>
 	</div>
 </li>

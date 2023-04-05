@@ -4,6 +4,7 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 	import Key from '$lib/components/secrets/Key.svelte';
+	import { tooltip } from '$lib/actions/tooltip';
 	const key = getKey(new Date());
 
 	let xStart = 0;
@@ -39,7 +40,7 @@
 
 {#if $page.status === 404}
 	<h1>
-		<span aria-hidden="true" class="key" title={key}><Key {key} /></span>
+		<span aria-hidden="true" class="key" use:tooltip={key}><Key {key} /></span>
 		<span class="title" style="--offset: {$offset}" on:mousedown={dragOn}>
 			Nothing to See Here!
 		</span>

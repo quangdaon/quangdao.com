@@ -27,6 +27,7 @@
 			--color-#{""+ $hue}-#{$shade}: #{$value};
 			--color-#{""+ $hue}-#{$shade}-op-1: #{rgba($value, 0.2)};
 			--color-#{""+ $hue}-#{$shade}-op-5: #{rgba($value, 0.5)};
+			--color-#{""+ $hue}-#{$shade}-op-8: #{rgba($value, 0.8)};
 		}
 	}
 }
@@ -171,4 +172,8 @@ button {
 input,
 button {
 	font-family: var(--font-primary);
+}
+
+abbr {
+	text-decoration: underline dotted;
 }
