@@ -67,7 +67,6 @@
 	.keymaker {
 		z-index: 20;
 		border-radius: 1em;
-		--color-foreground: var(--color-white);
 	}
 
 	.keyhole {

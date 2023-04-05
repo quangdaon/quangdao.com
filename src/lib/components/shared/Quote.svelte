@@ -18,6 +18,7 @@
 		font-size: 1.5rem;
 		max-width: 80%;
 		text-align: center;
+		transform: rotate(-2deg);
 		.quote {
 			white-space: pre-line;
 			&::before,

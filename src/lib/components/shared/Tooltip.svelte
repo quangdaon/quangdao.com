@@ -20,6 +20,7 @@
 		top: var(--y);
 		z-index: 99;
 		--color-background: var(--color-blue-base);
+		color: var(--color-white);
 		background: var(--color-background);
 		padding: 0.25rem 0.5rem;
 		border-radius: 0.25rem;
