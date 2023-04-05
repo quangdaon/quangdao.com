@@ -5,14 +5,13 @@ import { derived, readable, writable } from 'svelte/store';
 export function localStorageWritable<T>(
 	key: string,
 	value: T,
-	sanitizer: ((storedValue: T) => boolean) | null = null
+	sanitizer: (storedValue: T) => boolean = () => true
 ) {
 	if (!browser) return writable<T>(value);
 
 	const stored = localStorage.getItem(key);
-	const store = writable<T>(
-		stored && (!sanitizer || sanitizer(JSON.parse(stored))) ? JSON.parse(stored) : value
-	);
+	const parsed = stored ? JSON.parse(stored) : null;
+	const store = writable<T>(parsed && sanitizer(parsed) ? parsed : value);
 
 	store.subscribe((v) => localStorage.setItem(key, JSON.stringify(v)));
 
