@@ -5,8 +5,15 @@
 	const { post } = data;
 </script>
 
-<h1>{post.title}</h1>
-
-<time>{toFormattedDate(post.date)}</time>
+<header>
+	<h1>{post.title}</h1>
+	<time>{toFormattedDate(post.date)}</time>
+</header>
 
 <svelte:component this={post.component} />
+
+<style>
+	header {
+		margin-bottom: 2rem;
+	}
+</style>
