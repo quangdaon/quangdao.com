@@ -1,6 +1,5 @@
 <script>
 	import { tooltipParams } from '$lib/actions/tooltip';
-	import { fly } from 'svelte/transition';
 </script>
 
 {#if $tooltipParams}
