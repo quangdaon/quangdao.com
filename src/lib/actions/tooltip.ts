@@ -14,8 +14,6 @@ export const tooltip = (node: Element, message: string | null) => {
 
 		const bounds = node.getBoundingClientRect();
 
-		console.log(e);
-
 		const x = bounds.x + window.scrollX + bounds.width / 2;
 		const y = bounds.y + window.scrollY;
 
