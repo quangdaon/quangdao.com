@@ -18,15 +18,14 @@
 
 	const checkKey = () => {
 		const match = $keyValue === getKey(new Date());
+		tracker.track('Key Attempt', { props: { success: match, key: $keyValue } });
 		if (match) {
 			passed = true;
-			tracker.track('Secret Unlock Success');
 			animationElement.addEventListener('animationend', () => {
 				dispatch('solved');
 			});
 		} else {
 			failed = true;
-			tracker.track('Secret Unlock Fail', { props: { attempt: $keyValue } });
 			animationElement.addEventListener('animationend', () => {
 				failed = false;
 			});
