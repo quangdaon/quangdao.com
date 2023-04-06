@@ -9,10 +9,10 @@
 	</a>
 	<nav>
 		<ul>
-			<li><HeaderLink href="/bio">Bio</HeaderLink></li>
 			<li><HeaderLink href="/blog">Blog</HeaderLink></li>
 			<li><HeaderLink href="/projects">Projects</HeaderLink></li>
 			<li><HeaderLink href="/uses">Uses</HeaderLink></li>
+			<li><HeaderLink href="/bio">Bio</HeaderLink></li>
 		</ul>
 	</nav>
 </header>

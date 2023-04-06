@@ -2,19 +2,17 @@
 	import { page } from '$app/stores';
 </script>
 
-<svelte:head>
-	<title>{$page.data.pageTitle}</title>
-	<meta name="description" content={$page.data.pageDescription} />
+<title>{$page.data.pageTitle}</title>
+<meta name="description" content={$page.data.pageDescription} />
 
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={$page.url.toString()} />
-	<meta property="og:title" content={$page.data.pageTitle} />
-	<meta property="og:description" content={$page.data.pageDescription} />
-	<meta property="og:image" content="/images/social.png" />
-	
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={$page.url.toString()} />
-	<meta property="twitter:title" content={$page.data.pageTitle} />
-	<meta property="twitter:description" content={$page.data.pageDescription} />
-	<meta property="twitter:image" content="/images/social.png" />
-</svelte:head>
+<meta property="og:type" content="website" />
+<meta property="og:url" content={$page.url.toString()} />
+<meta property="og:title" content={$page.data.pageTitle} />
+<meta property="og:description" content={$page.data.pageDescription} />
+<meta property="og:image" content="/images/social.png" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={$page.url.toString()} />
+<meta property="twitter:title" content={$page.data.pageTitle} />
+<meta property="twitter:description" content={$page.data.pageDescription} />
+<meta property="twitter:image" content="/images/social.png" />

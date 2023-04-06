@@ -6,6 +6,7 @@
 	import Key from './Key.svelte';
 	import KeySizer from './KeySizer.svelte';
 	import { tooltip } from '$lib/actions/tooltip';
+	import { plausible } from '$lib/utils/plausible';
 	let showBuilder = false;
 
 	let animationElement: Element;
@@ -19,11 +20,13 @@
 		const match = $keyValue === getKey(new Date());
 		if (match) {
 			passed = true;
+			plausible.trackEvent('Secret Unlock Success');
 			animationElement.addEventListener('animationend', () => {
 				dispatch('solved');
 			});
 		} else {
 			failed = true;
+			plausible.trackEvent('Secret Unlock Fail', { props: { attempt: $keyValue } });
 			animationElement.addEventListener('animationend', () => {
 				failed = false;
 			});
@@ -56,6 +59,14 @@
 		</form>
 	{/if}
 </div>
+
+<noscript>
+	<style>
+		.keyhole-container {
+			display: none;
+		}
+	</style>
+</noscript>
 
 <style lang="scss">
 	@use '~/breakpoints';
@@ -161,11 +172,3 @@
 		}
 	}
 </style>
-
-<noscript>
-	<style>
-		.keyhole-container {
-			display: none;
-		}
-	</style>
-</noscript>

@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"plausible-tracker": "^0.3.8",
 		"sass": "^1.60.0"
 	}
 }
