@@ -26,7 +26,7 @@
     max-width: 200px;
     line-height: 1.2;
 		transform: translate(-50%, calc(-100% - 1em));
-    box-shadow: 0 0.25rem 1rem var(--color-black);
+    box-shadow: 0 0.25rem 1rem var(--color-gray-900-op-1);
 		&::after {
 			content: '';
 			position: absolute;
