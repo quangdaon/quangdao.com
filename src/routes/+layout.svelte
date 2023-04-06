@@ -9,7 +9,7 @@
 
 	export let data;
 
-	if (browser) plausible.enableAutoPageviews();
+	if (browser && !dev) plausible.enableAutoPageviews();
 </script>
 
 <svelte:window bind:innerHeight={$windowHeight} bind:innerWidth={$windowWidth} />
