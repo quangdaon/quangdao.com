@@ -6,7 +6,7 @@
 	import Key from './Key.svelte';
 	import KeySizer from './KeySizer.svelte';
 	import { tooltip } from '$lib/actions/tooltip';
-	import { plausible } from '$lib/utils/plausible';
+	import { tracker } from '$lib/utils/tracking';
 	let showBuilder = false;
 
 	let animationElement: Element;
@@ -20,13 +20,13 @@
 		const match = $keyValue === getKey(new Date());
 		if (match) {
 			passed = true;
-			plausible.trackEvent('Secret Unlock Success');
+			tracker.track('Secret Unlock Success');
 			animationElement.addEventListener('animationend', () => {
 				dispatch('solved');
 			});
 		} else {
 			failed = true;
-			plausible.trackEvent('Secret Unlock Fail', { props: { attempt: $keyValue } });
+			tracker.track('Secret Unlock Fail', { props: { attempt: $keyValue } });
 			animationElement.addEventListener('animationend', () => {
 				failed = false;
 			});

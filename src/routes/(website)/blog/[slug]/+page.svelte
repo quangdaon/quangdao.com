@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { toFormattedDate } from '$lib/utils';
+	import { toFormattedDate } from '$lib/utils/datetime';
 	export let data;
 
 	const { post } = data;
