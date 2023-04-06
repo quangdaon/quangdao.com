@@ -127,8 +127,8 @@ if (t % 400 == 0)
 I have since refactored the code, mostly to move most of the logic into their own dedicated classes. You can find the [final codebase on GitHub][1].
 
 [1]: https://github.com/quangdaon/morse-reader
-[2]: http://s3.quangdao.com/captures/Morse_bb.png
-[3]: http://s3.quangdao.com/captures/Morse.mp4
+[2]: https://s3.quangdao.com/captures/Morse_bb.png
+[3]: https://s3.quangdao.com/captures/Morse.mp4
 [4]: https://www.amazon.com/ELEGOO-Project-Tutorial-Controller-Projects/dp/B01D8KOZF4/ref=sr_1_3?dchild=1&keywords=arduino+kit&qid=1615060331&sr=8-3
 [5]: https://www.youtube.com/watch?v=dZZynJLmTn8
 [6]: https://arduino.stackexchange.com/a/7923

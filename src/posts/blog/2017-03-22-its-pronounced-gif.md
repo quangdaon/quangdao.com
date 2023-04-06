@@ -22,12 +22,8 @@ All in all, pretty much any argument one can come up with can be nullified by a 
 
 In the end, it's all a matter of preference. I believe the majority of people prefer the hard G pronunciation because that sounds more natural to them. Words like give, gift, and git are more common than giraffe, gist, and ginger. So where do _I_ stand on this debate? Well, I've come to accept both pronunciations. Except if you think it's hard G, you're stupid and wrong.
 
-Sources:
-
-<ol id="sources"></ol>
-
-[1]: http://www.muller-godschalk.com/acronyms.html
-[2]: http://www.abbreviations.com/RADAR
-[3]: http://www.businessinsider.com/the-true-story-behind-googles-first-name-backrub-2015-10
-[4]: http://gizmodo.com/the-creator-of-the-gif-says-its-pronounced-jif-he-is-509179289
-[5]: http://www.alphadictionary.com/articles/ling006.html
+[1]: https://www.muller-godschalk.com/acronyms.html
+[2]: https://www.abbreviations.com/RADAR
+[3]: https://www.businessinsider.com/the-true-story-behind-googles-first-name-backrub-2015-10
+[4]: https://gizmodo.com/the-creator-of-the-gif-says-its-pronounced-jif-he-is-509179289
+[5]: https://www.alphadictionary.com/articles/ling006.html

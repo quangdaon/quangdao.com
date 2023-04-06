@@ -51,7 +51,7 @@ jobs:
 
 Some of the steps might not apply to your project so you can remove them. This is more or less the actual workflow for `@quangdao/vue-signalr`. Let's break down what's actually happening here. If you're not familiar with YAML, I recommend catching up on the syntax as I won't be covering it in depth. At the start of the file, there's a declaration for `name`. This is pretty self-explanatory; it is the name of the workflow, and how it will appear on your Actions dashboard:
 
-![GitHub Actions](http://s3.quangdao.com/captures/211225150934.png)
+![GitHub Actions](https://s3.quangdao.com/captures/211225150934.png)
 
 After that, the `on` object is how you declare when the workflow triggers. In this example, the workflow will run whenever a change happens on your `main` branch. Although it says `push`, this will also include changes from merges and pull requests. You can also configure this to watch for pull requests to have a check that runs on PRs and ensure that your tests pass before the changes are merged in. Instead of a particular branch, you can also watch for tags. This is how I'm managing deployments to npm, so I'll cover that later.
 
@@ -65,10 +65,10 @@ The example I showcased above will build your package and run tests, but won't a
 
 1. First, navigate to [npmjs.com](https://www.npmjs.com).
 1. At the top-right corner, click on your avatar, then "Access Tokens"
-   ![Access Tokens link](http://s3.quangdao.com/captures/211225154017.png)
+   ![Access Tokens link](https://s3.quangdao.com/captures/211225154017.png)
 1. Click on the "Generate New Token" button. This is located to the right of the header.
 1. Check the "Automation" option. If you need a read-only token to access a private organization's package or a token to publish your packages manually, this is also where you can generate those. But for our purposes, we only need an Automation token.
-   ![Automation token](http://s3.quangdao.com/captures/211225154726.png)
+   ![Automation token](https://s3.quangdao.com/captures/211225154726.png)
 1. Generate the token! After you click the button, you will get a notice with the full access token. Like with any access token, you'll want to keep it handy, at least until you can configure your workflow.
 
 Once you have your access token, there's only one thing left to do: add the deployment to your workflow. Using the same example from above, just add this step:
@@ -99,7 +99,7 @@ You might also notice the `access` option. In my case, the action defaults to `r
 
 Now that we're done with our little detour, let's get back to that token. Go to your GitHub repo, click on "Settings", then "Secrets" on the sidebar. This should default to Action secrets, which is what we want. When you're here, click on "New repository secret."
 
-![GitHub Secrets Settings](http://s3.quangdao.com/captures/211225160922.png)
+![GitHub Secrets Settings](https://s3.quangdao.com/captures/211225160922.png)
 
 The name needs to match your workflow configuration, so unless you changed it from my example, this will be `NPM_TOKEN`. The value will be the token you generated.
 
