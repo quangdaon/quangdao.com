@@ -1,7 +1,7 @@
 ---
 title: At Long Last, it's Live
 description: Let's celebrate the launch of my personal website.
-tags: [website, launch, celebrate, Quangdao]
+tags: [website, launch]
 categories: [Random]
 date: '2017-03-14'
 ---
