@@ -2,7 +2,7 @@
 title: Get to Know Me - My Biggest Pet Peeves
 description: Get to know a few small things that annoy me more than they should.
 category: ['Personal']
-tags: []
+tags: [personal, opinions]
 date: '2020-05-17'
 ---
 
