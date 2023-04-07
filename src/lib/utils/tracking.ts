@@ -1,4 +1,5 @@
-import { browser, dev } from '$app/environment';
+import { browser } from '$app/environment';
+import { PUBLIC_TRACKING_DOMAIN } from '$env/static/public';
 import Plausible from 'plausible-tracker';
 
 class TrackingService {
@@ -8,10 +9,10 @@ class TrackingService {
   }
 
   start() {
-    if (!browser || dev) return;
+    if (!browser || !PUBLIC_TRACKING_DOMAIN) return;
 
     this.plausible = Plausible({
-      domain: 'quangdao.com-test'
+      domain: PUBLIC_TRACKING_DOMAIN
     });
 
     this.plausible.enableAutoPageviews();
