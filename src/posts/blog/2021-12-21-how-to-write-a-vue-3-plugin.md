@@ -96,7 +96,6 @@ export const CounterPlugin = {
 At this point, we're pretty much done with our plugin. Users can now use it like this:
 
 ```vue
-{% raw %}
 <template>
 	<p>{{ count }}</p>
 	<button @click="decrement">-</button>
@@ -124,7 +123,6 @@ export default defineComponent({
 	}
 });
 </script>
-{% endraw %}
 ```
 
 As you might have noticed, there is a catch with this approach. Because of the way Vue sets it up, `inject` technically _could_ return undefined. Therefore, if you're using TypeScript, you need a null check before using it. Thanks to a tip from [a helpful GitHub user], I found out that a relatively common pattern in Vue 3 is to provide a function (or "composable") that injects the service. Simply add this to the plugin file:
