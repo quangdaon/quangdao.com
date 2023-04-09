@@ -12,7 +12,8 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		alias: {
-			'~': './src/styles/utils'
+			'~': './src/styles/utils',
+			'commentbox.io': './node_modules/commentbox.io/dist/commentBox.min.js'
 		}
 	},
 	extensions: ['.svelte', '.md', '.svx'],

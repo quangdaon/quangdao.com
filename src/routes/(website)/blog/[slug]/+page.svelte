@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Comments from '$lib/components/blog/Comments.svelte';
 	import { toFormattedDate } from '$lib/utils/datetime';
 	export let data;
 
@@ -11,6 +12,8 @@
 </header>
 
 <svelte:component this={post.component} />
+
+<Comments />
 
 <style>
 	header {
