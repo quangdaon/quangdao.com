@@ -6,7 +6,7 @@
 	const pageUrl = canonicalBaseUrl + $page.url.pathname;
 </script>
 
-<link rel="canonical" href="{canonicalBaseUrl}" />
+<link rel="canonical" href="{pageUrl}" />
 
 <title>{$page.data.pageTitle}</title>
 <meta name="description" content={$page.data.pageDescription} />
