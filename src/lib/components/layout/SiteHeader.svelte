@@ -19,6 +19,7 @@
 
 <style lang="scss">
 	@use '~/breakpoints';
+	@use '~/settings';
 	@use '~/placeholders';
 
 	header {
@@ -34,6 +35,9 @@
 		z-index: 5;
 		@include breakpoints.large {
 			position: relative;
+		}
+		@include settings.media-print {
+			display: none;
 		}
 	}
 

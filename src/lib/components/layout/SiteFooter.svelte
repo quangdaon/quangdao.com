@@ -14,12 +14,17 @@
 
 <style lang="scss">
 	@use '~/breakpoints';
+	@use '~/settings';
 	@use '~/placeholders';
 
 	footer {
 		position: relative;
 		z-index: 2;
 		margin-top: 2rem;
+
+		@include settings.media-print {
+			display: none;
+		}
 	}
 
 	.footer-content {

@@ -5,3 +5,7 @@
 @import 'highlight/dark';
 @import 'defaults';
 @import 'layout';
+
+@include media-print {
+  @import 'print';
+}

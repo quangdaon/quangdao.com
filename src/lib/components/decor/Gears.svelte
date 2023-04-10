@@ -227,4 +227,9 @@
 			stroke: var(--color-blue-base);
 		}
 	}
+	@include settings.media-print {
+		.svggear {
+			display: none;
+		}
+	}
 </style>
