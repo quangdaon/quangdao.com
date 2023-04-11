@@ -204,7 +204,7 @@ The next step is to draw the beak.
   </g>
 </svg>
 
-Hopefully, you are catching on to how SVG elements work by now. Here, we are declaring a `<polygon>` to draw a triangle. Unlike the elements we've seen so far, polygons do not have individual attributes for each coordinate. Instead, polygons are drawn as a series of points that are connected to form a solid shape. The `points` attribute takes any number of coordinates in the format of `x,y`, which themselves are then separated by spaces. Technically, commas don't really matter, but they are useful for separating pairs of coordinates. As far as the broswer is concerned, `points="45 35 35 45 45 55"` or `points="45,35,35,45,45,55"` are just as valid, as long as you have an even set of coordinates.
+You might be catching on to how SVG elements work by now. Here, we are declaring a `<polygon>` to draw a triangle. Unlike the elements we've seen so far, polygons do not have individual attributes for each coordinate. Instead, polygons are drawn as a series of points that are connected to form a solid shape. The `points` attribute takes any number of coordinates in the format of `x,y`, which themselves are then separated by spaces. Technically, commas don't really matter, but they are useful for separating pairs of coordinates. As far as the broswer is concerned, `points="45 35 35 45 45 55"` or `points="45,35,35,45,45,55"` are just as valid, as long as you have an even set of coordinates.
 
 One important thing to notice is that I am drawing the polygon "behind" the head, so that I can use the circle to mask the parts of the triangle that I don't want to be visible. If you're good at math, you can be more thoughtful and precise with the placement, but for this beak, I'm just estimating again.
 
@@ -222,7 +222,7 @@ The first step to drawing this crest is identifying the start and end points. I'
 
 <div class="diagram"><ChickenCrestStarts /></div>
 
-I've called out three known points here, as well as our angle of rotation. `o` is the center of our chicken's head (`60,42`). We will be using points `a` and `b` as our points of reference, since we can easily determine what they are. `b` is the very top of our circle. Since our circle has a radius of 20 units, we just need to subtract 20 from our center's y-coordinate to find the coordinates for `b`. Similarly, since we want the base of the crest to extend two units from the head, we can subtract an additional 2 units from `b`'s y-coordinate to get the location of `a`.
+I have called out three known points here, as well as our angle of rotation. `o` is the center of our chicken's head (`60,42`). We will be using points `a` and `b` as our points of reference, since we can easily determine what they are. `b` is the very top of our circle. Since our circle has a radius of 20 units, we just need to subtract 20 from our center's y-coordinate to find the coordinates for `b`. Similarly, since we want the base of the crest to extend two units from the head, we can subtract an additional 2 units from `b`'s y-coordinate to get the location of `a`.
 
 The "north" 90° slice of our chicken's head is the slice from point `b'` to point `b"`. Since we don't have those coordinates offhand, we can calculate them by rotating `b`. We can do that with a little bit of trigonometry, using these functions to calculate the new x and y coordinates:
 
@@ -522,7 +522,7 @@ With the arc in place, we have officially completed our chicken! Here's the comp
 
 Realistically, unless you're really, _really_ bad at using vector graphic editors like Adobe Illustrator or Inkscape, those tools are probably going to be quicker and easier than drawing the graphics in code. However, it is still a useful skill to understand how SVGs work. Where understanding SVG code really becomes useful is when you need to programmatically manipulate one, such as in animation or procedurally generated graphics.
 
-For instance, if you've found the lock and key on my homepage, you may have noticed that the key changes shape as you change the combination. I'm using SVG in conjunction with Svelte to achieve this effect. You can check out [the source code in my git repository](https://github.com/quangdaon/quangdao.com/blob/main/src/lib/components/secrets/Key.svelte).
+For instance, the interactive diagrams in this post are all built using SVG. Additionally, if you have found the lock and key on my homepage, you may have noticed that the key changes shape as you change the combination. I'm using SVG in conjunction with Svelte to achieve this effect. You can check out [the source code in my git repository](https://github.com/quangdaon/quangdao.com/blob/main/src/lib/components/secrets/Key.svelte).
 
 <KeyAnimated />
 
