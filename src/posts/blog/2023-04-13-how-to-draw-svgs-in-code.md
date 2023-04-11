@@ -1,6 +1,6 @@
 ---
 title: How to Draw with SVG Code
-description: Ever wished you can draw with nothing but a text editor? I don't know why, but here is how you can!
+description: Ever wished you can draw with nothing but a text editor? I don't know why, but this is how you can!
 tags: [svg, tutorial]
 categories: [Technology]
 date: '2023-04-13'
