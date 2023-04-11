@@ -386,7 +386,7 @@ Going back to our chicken, the reason we want to use Bézier curves for the bump
 
 <div class="diagram"><ChickenCrestBump /></div>
 
-The offset we'll be using for our chicken is four units. From here, we can use the same calculation from [Identifying Our Starting Points](#identifying-our-starting-points-skip-to-code) to figure out our four control points. If you are feeling ambitious, you can try to calculate four units out from the point `a'` we already calculated. But I am a little worn out from all these curve calculations, so I am just going to go off our original point `a` instead because the numbers are a little cleaner. Four units out from point `a` is just straight up to `60,16`.
+The offset we'll be using for our chicken is four units. From here, we can use the same calculation from [Identifying Our Starting Points](#identifying-our-starting-points) to figure out our four control points. If you are feeling ambitious, you can try to calculate four units out from the point `a'` we already calculated. But I am a little worn out from all these curve calculations, so I am just going to go off our original point `a` instead because the numbers are a little cleaner. Four units out from point `a` is just straight up to `60,16`.
 
 The angle between the segments we have already defined for our crest is 22.5°, or 1/8π in radians. Since we're looking for the midpoint between the edges of each segment, we will want to offset our control points by 1/16π. So to find our control points we need to rotate our new point by -3/16π, -1/16π, 1/16π, and 3/16π.
 
