@@ -10,8 +10,8 @@
 		return [
 			[x, y],
 			[x, y + h - (i % 2 ? 0 : 6)],
-			[x + toothWidth + 3, y + h - (i % 2 ? 6 : 0)],
-			[x + toothWidth + 3, y]
+			[x + toothWidth + 1, y + h - (i % 2 ? 6 : 0)],
+			[x + toothWidth + 1, y]
 		];
 	};
 

@@ -147,12 +147,8 @@ img {
 	background: var(--color-orange-base);
 }
 
-pre.language-info,
-code.language-info {
-	white-space: normal;
-	background: transparent;
-	font-family: var(--font-primary);
-	color: var(--color-foreground);
+pre[class*=language-] {
+	margin: var(--spacing) 0;
 }
 
 b,
@@ -176,4 +172,13 @@ button {
 
 abbr {
 	text-decoration: underline dotted;
+}
+
+table {
+	margin: var(--spacing) auto;
+	border-collapse: collapse;
+	th, td {
+		padding: 0.25em 0.5em;
+		border: 1px solid var(--color-foreground);
+	}
 }

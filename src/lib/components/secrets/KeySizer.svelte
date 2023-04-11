@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let disabled: boolean = false;
 	import { keyValue } from '$lib/data/store';
+	import KeyAnimated from './KeyAnimated.svelte';
 	import ToothSelector from './ToothSelector.svelte';
 	const teeth = $keyValue.split('').map((e) => +e);
 
