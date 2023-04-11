@@ -4,7 +4,7 @@ description: Ever wished you can draw with nothing but a text editor? I don't kn
 tags: [svg, tutorial]
 categories: [Technology]
 date: '2023-04-13'
-socialImage: /images/blog/chicken.svg
+socialImage: /images/blog/chicken.png
 ---
 
 <script>
