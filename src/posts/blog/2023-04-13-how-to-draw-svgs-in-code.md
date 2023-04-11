@@ -11,7 +11,7 @@ date: '2023-04-13'
 	import ChickenCrestBump from '$lib/components/diagrams/chicken/ChickenCrestBump.svelte';
 	import QuadraticBezier from '$lib/components/diagrams/QuadraticBezier.svelte';
 	import KeyAnimated from '$lib/components/secrets/KeyAnimated.svelte';
-	// import Quote from '$lib/components/shared/Quote.svelte';
+	import Quote from '$lib/components/shared/Quote.svelte';
 </script>
 
 There are many different kinds of images, from high-resolution photographic JPEGs to flashy, graphical PNGs. Among the ocean of graphic formats resides the humble SVG. You might know of `.svg` as the file format that you can export from Adobe Illustrator so you can use it on the web. You might have even heard the notion that an SVG is a "vector" graphic format that uses math to draw images instead of pixels. What does that really mean? Follow me on this journey as we learn to draw an SVG graphic using nothing but a text editor, and find out exactly what they are along the way.
@@ -528,7 +528,7 @@ For instance, if you've found the lock and key on my homepage, you may have noti
 
 I have been an advocate for SVG for a long time, and it is not only because of all the cool things you can do like this. Because SVG files are ultimately a series of mathematical instructions rather than a collection of pixels, they tend to be much smaller in file size than their traditional counterparts like PNGs, especially at higher resolutions. In other words, not only are SVGs capable of these amazing effects, you are also saving your users in data costs by using them. So I encourage you to take what you learned today and continue exploring SVGs further.
 
-<!-- <Quote by="Walt Whitman">Now, Voyager, sail thou forth, to seek and find.</Quote> -->
+<Quote by="Walt Whitman">Now, Voyager, sail thou forth, to seek and find.</Quote>
 
 <style>
   svg, .diagram {
