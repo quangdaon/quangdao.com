@@ -177,8 +177,17 @@ abbr {
 table {
 	margin: var(--spacing) auto;
 	border-collapse: collapse;
+	overflow: scroll;
+	display: block;
 	th, td {
-		padding: 0.25em 0.5em;
+		padding: 0.25em 0.25em;
 		border: 1px solid var(--color-foreground);
+		line-height: 1.2;
+	}
+	@include breakpoints.large {
+		display: table;
+		th, td {
+			padding: 0.25em 0.5em;
+		}
 	}
 }
