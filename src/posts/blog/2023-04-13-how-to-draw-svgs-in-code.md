@@ -4,6 +4,7 @@ description: Ever wished you can draw with nothing but a text editor? I don't kn
 tags: [svg, tutorial]
 categories: [Technology]
 date: '2023-04-13'
+socialImage: /images/blog/chicken.svg
 ---
 
 <script>
@@ -59,7 +60,7 @@ Let's start off by defining the bounds of our canvas:
 ```
 
 
-Much like the `<html>` tag, the `<svg>` tag tells the browser that we are starting a block of SVG code. Already, one of the benefits here is we can either save this as a standalone `.svg` file or embed it directly into an HTML document. It will work the same either way.
+Much like the `<html>` tag, the `<svg>` tag tells the browser that we are starting a block of SVG code. Already, one of the benefits here is we can either save this as a standalone `.svg` file or embed it directly into an HTML document. The catch is that to use it as a standalone file, you will need to define a namespace be adding `xmlns="http://www.w3.org/2000/svg"` to your `<svg>` tag. Other than that, it will work the same either way.
 
 The `viewBox` attribute defines the bounds of the image that will be visible. The first two numbers represent the coordinates of our origin (aka the top-left corner). Generally, if you're hand-drawing, it's probably going to be at `0,0`, but this could be useful if, for example, you want to crop an existing SVG artwork.
 

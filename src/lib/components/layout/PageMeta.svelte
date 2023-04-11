@@ -15,10 +15,10 @@
 <meta property="og:url" content={pageUrl} />
 <meta property="og:title" content={$page.data.pageTitle} />
 <meta property="og:description" content={$page.data.pageDescription} />
-<meta property="og:image" content="/images/social.png" />
+<meta property="og:image" content={$page.data.pageSocialImage} />
 
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={pageUrl} />
 <meta property="twitter:title" content={$page.data.pageTitle} />
 <meta property="twitter:description" content={$page.data.pageDescription} />
-<meta property="twitter:image" content="/images/social.png" />
+<meta property="twitter:image" content={$page.data.pageSocialImage} />
