@@ -442,7 +442,7 @@ Let's apply these new points to our path.
 
 It may be difficult to notice at first because there are a lot of numbers, but we haven't actually _removed_ any lines of code. Take the command that drew a line to our second point for example. Previously, it was `L 51.58 21.67`. That line was changed to `Q 45.55 20.38, 51.58 21.67`. The original `51.58 21.67` coordinates are still there at the end, and the new `45.55 20.38` is the control point that we identified for our first segment. That should give us a hint as to what's going on with the `Q` command.
 
-The `Q` command accepts the paramters `cx`, `cy`, `dx`, and `dy` and draws a quadratic Bézier curve from the previous point to `(dx,dy)`, using `(cx,cy)` as our control point. Like other path commands, there is also a `q` command the does the same thing, but with parameters that are relative to the previous point.
+The `Q` command accepts the parameters `cx`, `cy`, `dx`, and `dy` and draws a quadratic Bézier curve from the previous point to `(dx,dy)`, using `(cx,cy)` as our control point. Like other path commands, there is also a `q` command the does the same thing, but with parameters that are relative to the previous point.
 
 ### Finishing Touch
 
@@ -488,7 +488,7 @@ The final step for our crest is to crop out the shape of the head. We can easily
 
 We are using a different kind of curve for this one. Since there's a specific ellipse (which happens to be a circle in our case) we want to trace around, we can use the `A`, or arc, command. This command takes in these parameters: `rx`, `ry`, `rotation`, `large-arc-flag`, `sweep-flag`, `x` and `y`. `rx` and `ry` define the size of the ellipse we want to trace our arc around. In our case, we are tracing around a circle with a radius of 20, so we will use 20 for both parameters. `rotation` becomes much more useful when you're tracing around an oblong ellipse. With a circle, we can rotate it as much as we want and it wouldn't make a difference, so we can keep this at zero. As usual, the last two `x` and `y` parameters define our destination point.
 
-The two remaining `flag` parameters are a little difficult to explain, but imagine you have two overlapping ellipses. The two points where they intersect are our previous point and the new point defined by the `x` and `y` parameters. There are four arcs you can trace along the circles between the two points, and these flags determine which of the arcs you would follow. For a more detailed explanation, check out [MDN's Tutorial on SVG Arcs](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#arcs).
+The two remaining `flag` parameters are a little difficult to explain, but imagine you have two overlapping ellipses. The two points where they intersect are our previous point and the new point defined by the `x` and `y` parameters. There are four arcs you can trace along the circles between the two points, and these flags determine which of the arcs you would follow. For a more detailed explanation, check out [MDN's Tutorial on SVG Arcs](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#arcs). As you may expect, there is also an `a` command that takes `x` and `y` parameters relative to the previous point.
 
 With the arc in place, we have officially completed our chicken! Here's the complete final SVG code:
 
