@@ -17,8 +17,11 @@
 
 <Comments />
 
-<style>
+<style lang="scss">
 	header {
 		margin-bottom: 2rem;
+		h1 {
+			font-size: 2em;
+		}
 	}
 </style>
