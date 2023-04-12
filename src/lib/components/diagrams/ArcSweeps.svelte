@@ -99,7 +99,7 @@
 		RY: <input type="range" bind:value={ry} min="10" max="60" step="1" />
 	</div>
 	<div class="row row-range">
-		Rotation: <input type="range" bind:value={rotate} min="0" max="360" step="1" />
+		Rotation: <input type="range" bind:value={rotate} min="0" max="180" step="11.25" />
 	</div>
 	<div class="row">
 		<label>
