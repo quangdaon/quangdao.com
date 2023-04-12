@@ -1,16 +1,25 @@
 <script lang="ts">
 	import type { Coordinates } from '$lib/utils/geotrig';
 
+	let rx = 25;
+	let ry = 10;
+	let rotate = 0;
+
+	enum ArcFlag {
+		LargeArc = 1,
+		Sweep = 2
+	}
+
+	let flagsChecked: ArcFlag[] = [ArcFlag.LargeArc];
+
 	const vpWidth = 100;
 	const vpHeight = 70;
-	let t = 0.5;
 
 	let svgRef: SVGSVGElement;
 
 	const points: Record<string, Coordinates> = {
-		a: [10, vpHeight - 10],
-		b: [vpWidth - 15, vpHeight - 20],
-		control: [50, 20]
+		a: [vpWidth / 2 - 5, vpHeight / 2 - 5],
+		b: [vpWidth / 2 + 5, vpHeight / 2 + 10]
 	};
 
 	let start: Coordinates;
@@ -36,62 +45,28 @@
 		});
 	};
 
-	$: ta = points.a.map((p: number, i: number) => p + (points.control[i] - p) * t);
-	$: tb = points.control.map((p: number, i: number) => p + (points.b[i] - p) * t);
-	$: tt = ta.map((p: number, i: number) => p + (tb[i] - p) * t);
+	$: flags = flagsChecked.reduce((a, b) => a + b, 0);
+	$: isFlagOn = (flags: number, flag: ArcFlag) => {
+		return (flags & flag) === flag ? 1 : 0;
+	};
 </script>
 
 <svg viewBox="0 0 {vpWidth} {vpHeight}" bind:this={svgRef}>
-	<path
-		class="line"
-		d="
-      M {points.a[0]} {points.a[1]}
-      Q {points.control[0]} {points.control[1]}, {points.b[0]} {points.b[1]}
-    "
-		stroke-width="0.1"
-		stroke-dasharray="1 1"
-	/>
-	<path
-		class="line"
-		d="
-      M {points.a[0]} {points.a[1]}
-      Q {ta[0]} {ta[1]}, {tt[0]} {tt[1]}
-    "
-		stroke-width="0.5"
-	/>
-	<line
-		class="line"
-		x1={points.a[0]}
-		y1={points.a[1]}
-		x2={points.b[0]}
-		y2={points.b[1]}
-		stroke-width="0.1"
-	/>
-	<line
-		class="line"
-		x1={points.a[0]}
-		y1={points.a[1]}
-		x2={points.control[0]}
-		y2={points.control[1]}
-		stroke-width="0.1"
-		stroke-dasharray="1 1"
-	/>
-	<line
-		class="line"
-		x1={points.control[0]}
-		y1={points.control[1]}
-		x2={points.b[0]}
-		y2={points.b[1]}
-		stroke-width="0.1"
-		stroke-dasharray="1 1"
-	/>
-	<g class="t">
-		<circle class="point" cx={ta[0]} cy={ta[1]} r="0.5" stroke="none" />
-		<circle class="point" cx={tb[0]} cy={tb[1]} r="0.5" stroke="none" />
-		<circle class="point" cx={tt[0]} cy={tt[1]} r="0.5" stroke="none" />
-		<line class="line" x1={ta[0]} y1={ta[1]} x2={tb[0]} y2={tb[1]} stroke-width="0.1" />
-		<text x={tt[0]} y={tt[1] - 2} font-size="3">t: {t}</text>
-	</g>
+	{#each Array(4) as _, i}
+		<path
+			class="line"
+			d="
+        M {points.a[0]} {points.a[1]}
+        A {rx} {ry},
+          {rotate},
+          {isFlagOn(i, ArcFlag.LargeArc)},
+          {isFlagOn(i, ArcFlag.Sweep)},
+          {points.b[0]} {points.b[1]}
+      "
+			stroke-width={flags === i ? 0.25 : 0.1}
+			stroke-dasharray={flags === i ? 0 : 1}
+		/>
+	{/each}
 	<g class="handle">
 		<circle
 			class="point"
@@ -114,49 +89,41 @@
 		/>
 		<text x={points.b[0] + 1} y={points.b[1] + 3} font-size="3">Point B</text>
 	</g>
-	<g class="handle">
-		<circle
-			class="point"
-			cx={points.control[0]}
-			cy={points.control[1]}
-			r="1"
-			stroke="none"
-			on:mousedown={(e) => dragStart(e, 'control')}
-		/>
-		<text x={points.control[0] + 1} y={points.control[1] + 3} font-size="3">Control</text>
-	</g>
 </svg>
 
 <div class="controls">
-	t: <input type="range" bind:value={t} min="0" max="1" step="0.01" />
+	<div class="row row-range">
+		RX: <input type="range" bind:value={rx} min="10" max="60" step="1" />
+	</div>
+	<div class="row row-range">
+		RY: <input type="range" bind:value={ry} min="10" max="60" step="1" />
+	</div>
+	<div class="row row-range">
+		Rotation: <input type="range" bind:value={rotate} min="0" max="360" step="1" />
+	</div>
+	<div class="row">
+		<label>
+			Large Arc Flag
+			<input type="checkbox" value={ArcFlag.LargeArc} bind:group={flagsChecked} name="arcflags" />
+		</label>
+		<label>
+			Sweep Flag
+			<input type="checkbox" value={ArcFlag.Sweep} bind:group={flagsChecked} name="arcflags" />
+		</label>
+	</div>
 </div>
 
 <style lang="scss">
 	@use '~/settings';
 
-	svg {
-		--t-color: #f00;
-		@include settings.dark-theme {
-			--t-color: #0f0;
-		}
-	}
-
 	.point {
 		fill: var(--color-foreground);
 		stroke: none;
 	}
+
 	.line {
 		fill: none;
 		stroke: var(--color-foreground);
-	}
-
-	g.t {
-		.point {
-			fill: var(--t-color);
-		}
-		.line {
-			stroke: var(--t-color);
-		}
 	}
 
 	.handle {
@@ -174,11 +141,18 @@
 	}
 
 	.controls {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		input {
-			margin: 0 0.5rem;
+		max-width: 400px;
+		margin: auto;
+		.row {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			&.row-range {
+				justify-content: space-between;
+			}
+			input {
+				margin: 0 0.5rem;
+			}
 		}
 	}
 

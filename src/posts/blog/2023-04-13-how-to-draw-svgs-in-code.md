@@ -11,6 +11,7 @@ socialImage: /images/blog/chicken.png
 	import ChickenCrestStarts from '$lib/components/diagrams/chicken/ChickenCrestStarts.svelte';
 	import ChickenCrestBump from '$lib/components/diagrams/chicken/ChickenCrestBump.svelte';
 	import QuadraticBezier from '$lib/components/diagrams/QuadraticBezier.svelte';
+	import ArcSweeps from '$lib/components/diagrams/ArcSweeps.svelte';
 	import KeyAnimated from '$lib/components/secrets/KeyAnimated.svelte';
 	import Quote from '$lib/components/shared/Quote.svelte';
 </script>
@@ -489,6 +490,8 @@ The final step for our crest is to crop out the shape of the head. We can easily
 We are using a different kind of curve for this one. Since there's a specific ellipse (which happens to be a circle in our case) we want to trace around, we can use the `A`, or arc, command. This command takes in these parameters: `rx`, `ry`, `rotation`, `large-arc-flag`, `sweep-flag`, `x` and `y`. `rx` and `ry` define the size of the ellipse we want to trace our arc around. In our case, we are tracing around a circle with a radius of 20, so we will use 20 for both parameters. `rotation` becomes much more useful when you're tracing around an oblong ellipse. With a circle, we can rotate it as much as we want and it wouldn't make a difference, so we can keep this at zero. As usual, the last two `x` and `y` parameters define our destination point.
 
 The two remaining `flag` parameters are a little difficult to explain, but imagine you have two overlapping ellipses. The two points where they intersect are our previous point and the new point defined by the `x` and `y` parameters. There are four arcs you can trace along the circles between the two points, and these flags determine which of the arcs you would follow. For a more detailed explanation, check out [MDN's Tutorial on SVG Arcs](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#arcs). As you may expect, there is also an `a` command that takes `x` and `y` parameters relative to the previous point.
+
+<div class="diagram"><ArcSweeps /></div>
 
 With the arc in place, we have officially completed our chicken! Here's the complete final SVG code:
 
