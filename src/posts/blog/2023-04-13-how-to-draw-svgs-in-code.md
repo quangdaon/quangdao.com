@@ -107,7 +107,7 @@ Let's draw a circle for our chicken's head.
 <svg viewBox="0 0 120 80">
   <rect x="4" y="4" width="112" height="72" stroke-width="8" stroke="#e2af48" fill="#e6e6e6" />
   <rect x="4" y="4" width="112" height="72" stroke-width="1" stroke="#674f1e" fill="none" />
-  <circle cx="60" cy="42" r="20" />
+  <circle cx="60" cy="42" r="20" fill="#fff" />
 </svg>
 ```
 
@@ -115,7 +115,6 @@ Let's draw a circle for our chicken's head.
   <rect x="4" y="4" width="112" height="72" stroke-width="8" stroke="#e2af48" fill="#e6e6e6" />
   <rect x="4" y="4" width="112" height="72" stroke-width="1" stroke="#674f1e" fill="none" />
   <circle cx="60" cy="42" r="20" fill="#fff" />
-  <circle cx="60" cy="42" r="20" />
 </svg>
 
 Unlike rectangles, circles are drawn relative to their centers. That's the `cx` and `cy` attributes -- center-x and center-y. We are drawing the circle slightly below the exact center of the SVG viewport at a radius (`r`) of 20 units. Let's draw an eye.
