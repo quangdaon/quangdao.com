@@ -6,17 +6,22 @@
 	const { post } = data;
 </script>
 
-<header>
-	<h1>{post.title}</h1>
-	<time>{toFormattedDate(post.date)}</time>
-</header>
+<section class="post">
+	<header>
+		<h1>{post.title}</h1>
+		<time>{toFormattedDate(post.date)}</time>
+	</header>
 
-<svelte:component this={post.component} />
+	<svelte:component this={post.component} />
+</section>
 
 <Comments />
 
-<style>
+<style lang="scss">
 	header {
 		margin-bottom: 2rem;
+		h1 {
+			font-size: 2em;
+		}
 	}
 </style>

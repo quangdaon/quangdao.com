@@ -5,4 +5,5 @@ export interface BlogPost extends ContentPost {
 	tags: string[];
 	categories: string[];
 	date: Date;
+	socialImage?: string;
 }

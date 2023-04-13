@@ -32,7 +32,7 @@ async function compilePosts() {
 			})
 		);
 
-		postsCache[postType] = posts as any;
+		postsCache[postType] = posts.filter(definitions[postType].filter as any) as any;
 	}
 }
 

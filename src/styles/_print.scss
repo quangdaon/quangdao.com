@@ -25,3 +25,7 @@ a[href^='/'] {
 		content: ' (link: https://www.quangdao.com' attr(href) ')';
 	}
 }
+
+.controls {
+	display: none;
+}

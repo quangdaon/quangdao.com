@@ -23,5 +23,17 @@
 	});
 </script>
 
-<noscript>JavaScript must be enabled to leave comments.</noscript>
-<div id="utterances-comments" />
+<div class="comments">
+	<noscript>JavaScript must be enabled to leave comments.</noscript>
+	<div id="utterances-comments" />
+</div>
+
+<style lang="scss">
+	@use '~/settings';
+
+	@include settings.media-print {
+		.comments {
+			display: none;
+		}
+	}
+</style>
