@@ -10,7 +10,7 @@
 		Sweep = 2
 	}
 
-	let flagsChecked: ArcFlag[] = [ArcFlag.LargeArc];
+	let flagsChecked: ArcFlag[] = [];
 
 	const vpWidth = 100;
 	const vpHeight = 70;
