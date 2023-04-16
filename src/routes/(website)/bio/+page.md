@@ -23,7 +23,7 @@ Over a decade later, my passion for technology has not diminished; it has only e
 
 ## What Makes Me a Robot?
 
-I... don't remember. Not the full story anyway. It started off as a joke at work, where certain things I did would be met with a comment about how I'm a robot. At one point, I created [a little app](https://www.quangdao.com/q-robometer/) where my coworkers could input records of my robotic behavior.
+I... don't remember. Not the full story anyway. It started off as a joke at work, where certain things I did would be met with a comment about how I'm a robot. At one point, I created [a little app](https://quangdaon.github.io/q-robometer/) where my coworkers could input records of my robotic behavior.
 
 <style lang="scss">
 	@use '~/breakpoints';
