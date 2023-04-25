@@ -22,8 +22,7 @@
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
 			<div class="unlock">
-				<!-- TODO: Find out why goto doesn't work on its own -->
-				<KeyHole on:solved={() => setTimeout(() => goto('/secrets'), 0)} />
+				<KeyHole on:solved={() => goto('/secrets')} />
 			</div>
 		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />
