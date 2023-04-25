@@ -3,7 +3,7 @@
 
 	export let data;
 
-	const { post } = data;
+	$: post = data.post;
 </script>
 
 <h1>{post.title}</h1>

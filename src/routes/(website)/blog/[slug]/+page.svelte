@@ -3,7 +3,7 @@
 	import { toFormattedDate } from '$lib/utils/datetime';
 	export let data;
 
-	const { post } = data;
+	$: post = data.post;
 </script>
 
 <section class="post">
