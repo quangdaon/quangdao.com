@@ -6,6 +6,10 @@
 	import KeyHole from '../secrets/KeyHole.svelte';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	import SplashPanel from './SplashPanel.svelte';
+	import { getCurrentTheme } from '$lib/config/splash/themes';
+	import SplashMessage from './SplashMessage.svelte';
+
+	const theme = getCurrentTheme();
 
 	$: animation = (node: Element) =>
 		$prefersReducedMotion
@@ -13,12 +17,15 @@
 			: fly(node, { x: '-100%', duration: 750, opacity: 1, easing: sineInOut });
 </script>
 
-<div class="splash">
+<div class="splash splash-theme-{theme?.name}">
 	<div class="intro">
 		<h1 transition:animation>
 			<span class="hand">👋</span> I'm Quangdao, and I am an
 		</h1>
 	</div>
+	{#if theme?.message}
+		<SplashMessage {theme} />
+	{/if}
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
 			<div class="unlock">
@@ -38,11 +45,14 @@
 <style lang="scss">
 	@use '~/mixins';
 	@use '~/breakpoints';
+
 	.splash {
 		position: fixed;
 		overflow: hidden;
 		z-index: 10;
 		@include mixins.fill-container;
+		display: flex;
+		flex-direction: column;
 		@include breakpoints.large {
 			font-size: 1.75vw;
 		}
@@ -60,7 +70,7 @@
 			display: inline-block;
 			margin: 0;
 			padding: 0.25em;
-			background: var(--color-blue-base);
+			background: var(--color-background);
 			color: var(--color-white);
 			line-height: 1;
 			font-size: 3em;

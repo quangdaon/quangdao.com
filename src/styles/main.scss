@@ -7,6 +7,8 @@
 @import 'defaults';
 @import 'layout';
 
+@import 'splash/themes'; // TODO: Find out how to move to component
+
 @include media-print {
   @import 'print';
 }
