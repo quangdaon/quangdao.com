@@ -49,14 +49,6 @@
 		background-color: var(--color-background);
 		font-size: 0.75em;
 
-		--color-background: var(--color-green-base);
-		--color-foreground: var(--color-orange-base);
-
-		&:nth-child(even) {
-			--color-background: var(--color-orange-base);
-			--color-foreground: var(--color-green-base);
-		}
-
 		@include breakpoints.large {
 			font-size: 1em;
 		}
@@ -88,7 +80,7 @@
 	.content {
 		text-align: center;
 		@include breakpoints.large {
-			margin-top: 6em;
+			margin-top: 4em;
 		}
 	}
 
