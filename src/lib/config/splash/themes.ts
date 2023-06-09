@@ -23,7 +23,7 @@ const themeConfigs: ThemeConfig[] = [
 			const month = date.getMonth();
 			const day = date.getDate();
 
-			return month === 6 && day > 4;
+			return month === 6 && day === 4;
 		}
 	},
 	{
@@ -35,7 +35,7 @@ const themeConfigs: ThemeConfig[] = [
 			const month = date.getMonth();
       const day = date.getDate();
       
-			return month === 9 && day > 30;
+			return month === 9 && day >= 30;
 		}
 	},
 	{
