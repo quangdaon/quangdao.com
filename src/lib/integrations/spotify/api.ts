@@ -5,6 +5,8 @@ import {
 	SPOTIFY_CLIENT_SECRET,
 	SPOTIFY_REFRESH_TOKEN
 } from '$env/static/private';
+import type { CurrentlyPlayingDetails } from '$lib/integrations/spotify/models';
+import { mapCurrentlyPlayingDetails } from '$lib/integrations/spotify/mapper';
 
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const NOW_PLAYING_URL = 'https://api.spotify.com/v1/me/player/currently-playing';
@@ -38,16 +40,16 @@ const getAccessToken = async () => {
 	return response.json();
 };
 
-export const getNowPlaying = async () => {
+export const getNowPlaying = async (): Promise<CurrentlyPlayingDetails | null> => {
 	const { access_token } = await getAccessToken();
 
 	const response = await fetch(NOW_PLAYING_URL, {
-		headers: {
-			Authorization: `Bearer ${access_token}`
-		}
+		headers: { Authorization: `Bearer ${access_token}` }
 	});
 
 	if (response.status === 204) return null;
 
-	return await response.json();
+	const details = await response.json();
+
+	return mapCurrentlyPlayingDetails(details);
 };
