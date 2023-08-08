@@ -3,10 +3,11 @@
 	import { prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
+	import { getCurrentTheme } from '$lib/config/splash/themes';
 	import KeyHole from '../secrets/KeyHole.svelte';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	import SplashPanel from './SplashPanel.svelte';
-	import { getCurrentTheme } from '$lib/config/splash/themes';
+	import SplashWidget from './SplashWidget.svelte';
 	import SplashMessage from './SplashMessage.svelte';
 
 	const theme = getCurrentTheme();
@@ -20,7 +21,7 @@
 <div class="splash splash-theme-{theme?.name}">
 	<div class="intro">
 		<h1 transition:animation>
-			<span class="hand">👋</span> I'm Quangdao, and I am an
+			<SplashWidget /> I'm Quangdao, and I am an
 		</h1>
 	</div>
 	{#if theme?.message}
@@ -77,40 +78,8 @@
 			font-family: var(--font-script);
 			pointer-events: all;
 		}
-		.hand {
-			position: relative;
-			display: inline-block;
-			transform-origin: 90% 100%;
-			transition: transform 200ms;
-			&:hover {
-				transition: none;
-				animation: wave 1s 1 forwards;
-			}
-		}
 		@include breakpoints.large {
 			display: block;
-		}
-	}
-
-	@keyframes wave {
-		$amt: 5deg;
-		0% {
-			transform: rotate(0deg);
-		}
-		12.5% {
-			transform: rotate($amt);
-		}
-		37.5% {
-			transform: rotate(-$amt);
-		}
-		62.5% {
-			transform: rotate($amt);
-		}
-		87.5% {
-			transform: rotate(-$amt);
-		}
-		100% {
-			transform: rotate(0deg);
 		}
 	}
 
