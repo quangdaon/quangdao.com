@@ -8,7 +8,7 @@ import {
 
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const NOW_PLAYING_URL = 'https://api.spotify.com/v1/me/player/currently-playing';
-const BASIC_AUTH_TOKEN = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64');
+const BASIC_AUTH = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64');
 
 // Source: https://stackoverflow.com/a/37562814
 const getFormEncodedBody = (details: Record<string, string>) => {
@@ -26,7 +26,7 @@ const getAccessToken = async () => {
 	const response = await fetch(TOKEN_URL, {
 		method: 'POST',
 		headers: {
-			Authorization: `Basic ${BASIC_AUTH_TOKEN}`,
+			Authorization: `Basic ${BASIC_AUTH}`,
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		body: getFormEncodedBody({
@@ -41,9 +41,13 @@ const getAccessToken = async () => {
 export const getNowPlaying = async () => {
 	const { access_token } = await getAccessToken();
 
-	return fetch(NOW_PLAYING_URL, {
+	const response = await fetch(NOW_PLAYING_URL, {
 		headers: {
 			Authorization: `Bearer ${access_token}`
 		}
 	});
+
+	if (response.status === 204) return null;
+
+	return await response.json();
 };
