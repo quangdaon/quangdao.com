@@ -30,5 +30,6 @@
 	.widget {
 		position: relative;
 		display: inline-block;
+
 	}
 </style>

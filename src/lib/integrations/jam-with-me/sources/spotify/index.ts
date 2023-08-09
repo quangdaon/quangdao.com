@@ -51,5 +51,7 @@ export const getNowPlaying = async (): Promise<JamWithMeDetails | null> => {
 
 	const details = await response.json();
 
+	if (!details?.item) return null;
+
 	return mapCurrentlyPlayingDetails(details);
 };
