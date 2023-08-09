@@ -49,7 +49,7 @@
 		padding: 0.5em;
 		background: var(--color-black);
 		display: inline-flex;
-		width: fit-content;
+		width: max-content;
 		min-width: 100%;
 		&-thumb {
 			width: 6vw;
@@ -62,7 +62,7 @@
 		}
 		&-message {
 			flex: auto 1 1;
-			white-space: nowrap;
+			max-width: 40vw;
 			padding-left: 0.5em;
 			font-size: 0.875em;
 			h3 {
