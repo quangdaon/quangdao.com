@@ -5,7 +5,20 @@
 </script>
 
 <div class="wrapper">
-	<div class="notes">🎵</div>
+	<div class="notes">
+		<div class="note-container">
+			<div class="note">🎵</div>
+		</div>
+		<div class="note-container">
+			<div class="note">🎵</div>
+		</div>
+		<div class="note-container">
+			<div class="note">🎵</div>
+		</div>
+		<div class="note-container">
+			<div class="note">🎵</div>
+		</div>
+	</div>
 	<div class="details-wrapper">
 		<div class="details">
 			<div class="details-thumb">
@@ -37,11 +50,12 @@
 		}
 	}
 	.details-wrapper {
+		--buffer: 0.5em;
 		display: none;
 		position: absolute;
 		top: 100%;
 		left: 0;
-		padding-top: 0.5em;
+		padding-top: 1em;
 		font-family: var(--font-primary);
 		font-size: 1rem;
 	}
@@ -72,6 +86,68 @@
 				margin: 0;
 				line-height: 1.5;
 			}
+		}
+	}
+
+	.notes {
+		.note-container {
+			transform-origin: 0 100%;
+
+			@media (prefers-reduced-motion: no-preference) {
+				animation: phase 8s linear infinite forwards;
+			}
+			&:not(:first-child) {
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				@media (prefers-reduced-motion: no-preference) {
+					display: block;
+				}
+			}
+			&:nth-child(2) {
+				animation-delay: -2s;
+			}
+			&:nth-child(3) {
+				animation-delay: -4s;
+			}
+			&:nth-child(4) {
+				animation-delay: -6s;
+			}
+			&:nth-child(even) {
+				.note {
+					animation-delay: -250ms;
+				}
+			}
+		}
+		.note {
+			@media (prefers-reduced-motion: no-preference) {
+				animation: wiggle 500ms linear infinite alternate;
+			}
+		}
+	}
+
+	@keyframes wiggle {
+		from {
+			transform: rotate(-10deg);
+		}
+		to {
+			transform: rotate(10deg);
+		}
+	}
+
+	@keyframes phase {
+		0% {
+			opacity: 1;
+			transform: scale(0) translate(0, 100%);
+		}
+		75% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			transform: scale(1) translate(100%, -100%);
 		}
 	}
 </style>

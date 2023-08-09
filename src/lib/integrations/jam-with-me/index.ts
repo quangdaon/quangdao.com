@@ -1,3 +1,3 @@
-import { getNowPlaying as spotifyNowPlaying } from './sources/sample';
+import { getNowPlaying as spotifyNowPlaying } from './sources/spotify';
 
 export const getJamDetails = spotifyNowPlaying;
