@@ -5,8 +5,8 @@ import {
 	SPOTIFY_CLIENT_SECRET,
 	SPOTIFY_REFRESH_TOKEN
 } from '$env/static/private';
-import type { CurrentlyPlayingDetails } from '$lib/integrations/spotify/models';
-import { mapCurrentlyPlayingDetails } from '$lib/integrations/spotify/mapper';
+import type { JamWithMeDetails } from '$lib/integrations/jam-with-me/models';
+import { mapCurrentlyPlayingDetails } from '$lib/integrations/jam-with-me/sources/spotify/mapper';
 
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const NOW_PLAYING_URL = 'https://api.spotify.com/v1/me/player/currently-playing';
@@ -40,7 +40,7 @@ const getAccessToken = async () => {
 	return response.json();
 };
 
-export const getNowPlaying = async (): Promise<CurrentlyPlayingDetails | null> => {
+export const getNowPlaying = async (): Promise<JamWithMeDetails | null> => {
 	const { access_token } = await getAccessToken();
 
 	const response = await fetch(NOW_PLAYING_URL, {

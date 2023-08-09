@@ -1,8 +1,8 @@
 import { json } from '@sveltejs/kit';
-import { getNowPlaying } from '$lib/integrations/spotify/api';
+import { getJamDetails } from '$lib/integrations/jam-with-me';
 
 export async function GET() {
-	const result = await getNowPlaying();
+	const result = await getJamDetails();
 
 	if (!result) return new Response(null, { status: 204 });
 
