@@ -8,8 +8,19 @@
 	let showWidget = false;
 	let music: JamWithMeDetails | null;
 
-	onMount(async () => {
+	const refreshJamWithMe = async () => {
 		music = await apiGet('/api/jam-with-me');
+		if (!music) return;
+
+		console.log('Now playing: ' + music.track.title);
+
+		const diff = music.track.duration - music.track.progress;
+
+		setTimeout(refreshJamWithMe, diff);
+	};
+
+	onMount(async () => {
+		await refreshJamWithMe();
 		showWidget = true;
 	});
 </script>
@@ -30,6 +41,5 @@
 	.widget {
 		position: relative;
 		display: inline-block;
-
 	}
 </style>
