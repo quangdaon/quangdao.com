@@ -4,42 +4,63 @@
 	import { apiGet } from '$lib/api';
 	import JamWithMeWidget from './widgets/JamWithMeWidget.svelte';
 	import type { JamWithMeDetails } from '$lib/integrations/jam-with-me/models';
+	import { fade } from 'svelte/transition';
 
-	let showWidget = false;
+	type Widget = 'hand' | 'jam-with-me';
+
 	let music: JamWithMeDetails | null;
+
+	let widget: Widget | null = 'hand';
+
+	const transitionDuration = 500;
+
+	// TODO: Move
+	const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 	const refreshJamWithMe = async () => {
 		music = await apiGet('/api/jam-with-me');
-		if (!music) return;
+		if (!music) {
+			setWidget('hand');
+			return;
+		}
 
 		console.log('Now playing: ' + music.track.title);
 
 		const diff = music.track.duration - music.track.progress;
 
+		// Not using delay because we don't want to wait on this
 		setTimeout(refreshJamWithMe, diff);
 	};
 
+	const setWidget = async (w: Widget) => {
+		if (widget === w) return;
+		widget = null;
+		await delay(transitionDuration);
+		widget = w;
+	};
+
 	onMount(async () => {
-		await refreshJamWithMe();
-		showWidget = true;
+		await Promise.all([delay(3000), refreshJamWithMe()]);
+		if (music) await setWidget('jam-with-me');
 	});
 </script>
 
-{#if showWidget}
-	<div class="widget">
-		<div class="widget-container">
-			{#if music}
+<div class="widget">
+	{#key widget}
+		<div class="widget-container" transition:fade={{ duration: transitionDuration }}>
+			{#if widget === 'jam-with-me' && !!music}
 				<JamWithMeWidget {music} />
-			{:else}
+			{:else if widget === 'hand'}
 				<HandWidget />
 			{/if}
 		</div>
-	</div>
-{/if}
+	{/key}
+</div>
 
 <style lang="scss">
 	.widget {
 		position: relative;
 		display: inline-block;
+		width: 1.4em;
 	}
 </style>
