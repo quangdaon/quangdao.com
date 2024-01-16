@@ -1,6 +1,6 @@
 ---
 title: How to Decipher ASCII Binary Messages
-description: Explore binary decoding and unveil its relevance in basic cryptography.
+description: 01001100 01100101 01110100 00100111 01110011 00100000 01100100 01100101 01100011 01101111 01100100 01100101 00100000 01100010 01101001 01110100 01110011
 tags: [tutorial, binary, ascii, encoding]
 categories: [Technology]
 date: '2024-01-18'
