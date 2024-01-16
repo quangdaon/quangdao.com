@@ -12,7 +12,9 @@
 		<time>{toFormattedDate(post.date)}</time>
 	</header>
 
-	<svelte:component this={post.component} />
+	<div class="post">
+		<svelte:component this={post.component} />
+	</div>
 </section>
 
 <Comments />
@@ -23,5 +25,12 @@
 		h1 {
 			font-size: 2em;
 		}
+	}
+
+	:global(.post svg, .post .diagram) {
+		display: block;
+		margin: 2em auto;
+		max-width: 600px;
+		overflow: hidden;
 	}
 </style>

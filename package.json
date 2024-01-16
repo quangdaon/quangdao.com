@@ -34,7 +34,9 @@
 	"type": "module",
 	"dependencies": {
 		"plausible-tracker": "^0.3.8",
+		"rehype-katex-svelte": "^1.2.0",
 		"rehype-slug": "^5.1.0",
+		"remark-math": "^3.0.0",
 		"sass": "^1.60.0"
 	}
 }
