@@ -44,17 +44,21 @@ If that doesn’t make sense, imagine if we came up with our own encoding system
 
 In binary, 5 is translated to 0101. To get the character code for a lowercase e, we add $01100000 + 0101$, to get `01100101`. Conversely, we can use this knowledge to infer that a binary expression that starts with 010 is an uppercase letter, and 011 represents a lowercase letter. Let's take 01001110. We can guess that it's going to be a capital letter by the fact that it start with 010. So what does the remaining 01110 tell us? This is equivalent to $(0 × 16) + (1 × 8) + (1 × 4) + (1 × 2) + (0 × 1)$, or 14. The 14th letter of the alphabet is n, so `01001110` is an uppercase N.
 
+### Filling in the Blanks
+
 Controls, punctuation, and other symbols can also be encoded in ASCII. However, the letters are the most important part of a binary message, and if you can decode them, you will likely obtain the core meaning of the message and can infer the symbols.
 
 Suppose we had a message that looks like this:
 
 > 01001001 00100000 01101100 01101001 01101011 01100101 00100000 01110100 01101111 00100000 01110011 01101100 01100101 01100101 01110000 00100001
 
-Using what we know, and using `_` to indicate the missing pieces, we already have a message that looks like this:
+Let's pretend we don't have an ASCII table readily available to us. Using what we know, and using `_` to indicate the missing pieces, we already have a message that looks like this:
 
 > I\_like\_to\_sleep\_
 
 Just from that, we can conclude that `00100000` is likely the space character, and `00100001` is some sort of punctuation. We don’t know what kind of punctuation it is so let’s say we assume it is a period. In actuality, `00100001` is an exclamation point (!); however, this fact doesn’t change the core meaning of the sentence, in that the author of the quote likes to sleep.
+
+### Conclusion
 
 Similar to [drawing SVGs by hand](https://www.quangdao.com/blog/how-to-draw-svgs-in-code), knowing how to manually decode binary ASCII messages is likely never going to be relevant in the day-to-day lives of most people. However, in the process of learning how binary encoding works, we were able to explore some fundamental concepts of basic cryptography. Cryptographers often have to decode messages by discovering patterns and inferring the missing pieces. Modern cryptographic algorithms also encrypt text by first translating them into bytes via a derivative of ASCII such as UTF-8. They will do some mumbo jumbo math stuff in between, but ultimately returns the ciphertext as some encoding of the resulting bytes. This commonly tends to be Base-64 rather than binary, but the idea remains the same.
 
