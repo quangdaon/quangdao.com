@@ -534,12 +534,3 @@ For instance, the interactive diagrams in this post are all built using SVG. Add
 I have been an advocate for SVG for a long time, and it is not only because of all the cool things you can do like this. Because SVG files are ultimately a series of mathematical instructions rather than a collection of pixels, they tend to be much smaller in file size than their traditional counterparts like PNGs, especially at higher resolutions. In other words, not only are SVGs capable of these amazing effects, but you are also saving your users in data costs by using them. So I encourage you to take what you learned today and continue exploring SVGs further.
 
 <Quote by="Walt Whitman">Now, Voyager, sail thou forth, to seek and find.</Quote>
-
-<style>
-  svg, .diagram {
-    display: block;
-    margin: 2em auto;
-    max-width: 600px;
-    overflow: hidden;
-  }
-</style>

@@ -13,6 +13,7 @@
 
 	--color-foreground: var(--color-black);
 	--color-background: var(--color-white);
+	--color-input: var(--color-gray-50);
 	--color-heading: var(--color-green-base);
 	--color-subheading: var(--color-blue-base);
 	--color-link: var(--color-blue-base);
@@ -77,6 +78,7 @@ body {
 	@include dark-theme {
 		--color-foreground: var(--color-white);
 		--color-background: var(--color-black);
+		--color-input: var(--color-gray-850);
 		--color-heading: var(--color-orange-base);
 		--color-subheading: var(--color-white);
 		--color-highlight: var(--color-orange-base);
@@ -147,7 +149,7 @@ img {
 	background: var(--color-orange-base);
 }
 
-pre[class*=language-] {
+pre[class*='language-'] {
 	margin: var(--spacing) 0;
 }
 
@@ -170,6 +172,20 @@ button {
 	font-family: var(--font-primary);
 }
 
+input,
+textarea {
+	color: inherit;
+	border: none;
+	outline: none;
+	background: var(--color-input);
+	font-size: 1em;
+	padding: 0.5em;
+}
+
+textarea {
+	font-family: var(--font-code);
+}
+
 abbr {
 	text-decoration: underline dotted;
 }
@@ -179,15 +195,22 @@ table {
 	border-collapse: collapse;
 	overflow: scroll;
 	display: block;
-	th, td {
+	th,
+	td {
 		padding: 0.25em 0.25em;
 		border: 1px solid var(--color-foreground);
 		line-height: 1.2;
 	}
 	@include breakpoints.large {
 		display: table;
-		th, td {
+		th,
+		td {
 			padding: 0.25em 0.5em;
 		}
 	}
+}
+
+.katex {
+	font-size: 1em;
+	font-family: var(--font-code);
 }
