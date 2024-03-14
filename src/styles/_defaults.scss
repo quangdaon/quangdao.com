@@ -213,4 +213,7 @@ table {
 .katex {
 	font-size: 1em;
 	font-family: var(--font-code);
+	svg {
+		margin: 0;
+	}
 }
