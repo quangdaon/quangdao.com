@@ -10,6 +10,7 @@
 
 	let start: Coordinates;
 	let startMouse: Coordinates;
+	let showGuides = true;
 
 	const getMouseMoveHandler = () => (evt: MouseEvent) => {
 		const ratio = width / graphRef.getBoundingClientRect().width;
@@ -46,10 +47,11 @@
 <SvgDiagram viewBox="-4 -4 400 250">
 	<g class="graph" bind:this={graphRef}>
 		<rect x="0" y="0" {width} height={width} class="stroke" />
-		<line x1={radius} y1="0" x2={radius} y2={width} stroke-dasharray="4 2" />
-		<line x1="0" y1={radius} x2={width} y2={radius} stroke-dasharray="4 2" />
+		{#if showGuides}
+			<line x1={radius} y1="0" x2={radius} y2={width} stroke-dasharray="4 2" />
+			<line x1="0" y1={radius} x2={width} y2={radius} stroke-dasharray="4 2" />
+		{/if}
 		<circle cx={radius} cy={radius} r={radius} class="stroke circle" class:inCircle />
-		<circle cx={radius} cy={radius} r="2" />
 		<circle
 			cx={controlPoint[0]}
 			cy={controlPoint[1]}
@@ -57,35 +59,44 @@
 			class="control"
 			on:mousedown={(e) => dragStart(e)}
 		/>
-		<line
-			x1={radius}
-			y1={radius}
-			x2={controlPoint[0]}
-			y2={controlPoint[1]}
-			stroke-dasharray="4 2"
-		/>
-		<line
-			x1={controlPoint[0]}
-			y1={radius}
-			x2={controlPoint[0]}
-			y2={controlPoint[1]}
-			stroke-dasharray="2 1"
-      stroke-width="0.5"
-		/>
-		<line
-			x1={radius}
-			y1={controlPoint[1]}
-			x2={controlPoint[0]}
-			y2={controlPoint[1]}
-			stroke-dasharray="2 1"
-      stroke-width="0.5"
-		/>
+		{#if showGuides}
+		<circle cx={radius} cy={radius} r="2" />
+			<line
+				x1={radius}
+				y1={radius}
+				x2={controlPoint[0]}
+				y2={controlPoint[1]}
+				stroke-dasharray="4 2"
+			/>
+			<line
+				x1={controlPoint[0]}
+				y1={radius}
+				x2={controlPoint[0]}
+				y2={controlPoint[1]}
+				stroke-dasharray="2 1"
+				stroke-width="0.5"
+			/>
+			<line
+				x1={radius}
+				y1={controlPoint[1]}
+				x2={controlPoint[0]}
+				y2={controlPoint[1]}
+				stroke-dasharray="2 1"
+				stroke-width="0.5"
+			/>
+		{/if}
 	</g>
 	<text x={width} y={radius} font-size="12" dominant-baseline="middle">
 		{#each stats as statLine, i}
 			<tspan x={width + 10} y="{(i + 1) * 1.5}em">{statLine}</tspan>
 		{/each}
 	</text>
+
+	<foreignObject x={width + 10} y="80" width="150" height="200">
+		<label style="font-size: 12px;">
+			<input type="checkbox" bind:checked={showGuides} /> Show Guides
+		</label>
+	</foreignObject>
 	<g />
 </SvgDiagram>
 
