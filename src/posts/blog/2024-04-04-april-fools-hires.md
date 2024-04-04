@@ -318,3 +318,5 @@ That never happened.
 It wasn't until after putting in all that work when I finally decided that it was time to gather my accomplices. While everyone was on board before I even before I explained what the plan was, we quickly came across an issue that I had not considered and it was a hurdle I could not overcome. We would need a license for these Microsoft Teams bot accounts. And we would have needed to purchase the licenses for a whole year.
 
 So the Teams bot idea unfortunately ended up being scrapped. But that was not the end of it, because I had a backup idea. I had mentioned earlier that creating a ChatGPT chatbot was "surprisingly very easy." It was so easy in fact, that I was willing to do it again, in a different language. But you'll have to tune in next week to learn more about that 😉
+
+Until then, you can check out the .NET console version of this chatbot over [on GitHub](https://github.com/quangdaon/CharacterChatbot). The work I've started to implement to connect with Teams is in [a separate branch](https://github.com/quangdaon/CharacterChatbot/tree/teams).
