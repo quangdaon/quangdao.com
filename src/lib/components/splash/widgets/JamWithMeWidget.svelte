@@ -6,18 +6,11 @@
 
 <div class="wrapper">
 	<div class="notes">
-		<div class="note-container">
-			<div class="note">🎵</div>
-		</div>
-		<div class="note-container">
-			<div class="note">🎵</div>
-		</div>
-		<div class="note-container">
-			<div class="note">🎵</div>
-		</div>
-		<div class="note-container">
-			<div class="note">🎵</div>
-		</div>
+		{#each { length: 4 } as _}
+			<div class="note-container">
+				<div class="note">🎵</div>
+			</div>
+		{/each}
 	</div>
 	<div class="details-wrapper">
 		<div class="details">
@@ -58,12 +51,14 @@
 		padding-top: 1em;
 		font-family: var(--font-primary);
 		font-size: 1rem;
+		z-index: 100;
 	}
 	.details {
 		padding: 0.5em;
 		background: var(--color-black);
 		display: inline-flex;
 		width: max-content;
+		text-align: left;
 		min-width: 100%;
 		&-thumb {
 			width: 6vw;

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import HandWidget from './widgets/HandWidget.svelte';
 	import { apiGet } from '$lib/api';
+	import { delay } from '$lib/utils/delay';
 	import JamWithMeWidget from './widgets/JamWithMeWidget.svelte';
 	import type { JamWithMeDetails } from '$lib/integrations/jam-with-me/models';
 	import { fade } from 'svelte/transition';
@@ -13,9 +14,6 @@
 	let widget: Widget | null = 'hand';
 
 	const transitionDuration = 500;
-
-	// TODO: Move
-	const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 	const refreshJamWithMe = async () => {
 		music = await apiGet('/api/jam-with-me');
