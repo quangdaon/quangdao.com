@@ -1,0 +1,57 @@
+.component {
+	padding: 0.25em;
+	border: 2px dashed var(--color-foreground);
+}
+
+.viewport {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	display: flex;
+	justify-content: stretch;
+	gap: 0.25em;
+}
+
+.sidebar {
+	flex: 0 0 20%;
+}
+
+.contact {
+	min-height: 30px;
+	margin-bottom: 0.25em;
+}
+
+.chat {
+  min-height: 300px;
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	gap: 0.25em;
+}
+
+.infobar {
+	flex: 0 0 auto;
+	min-height: 40px;
+}
+
+.messages {
+	flex: 1 1 0;
+}
+
+.message-row {
+	margin-bottom: 0.5em;
+	// display: flex;
+}
+
+.message {
+	min-height: 40px;
+	width: 60%;
+	&.self {
+		margin-left: auto;
+	}
+}
+
+.message-entry {
+	flex: 0 0 auto;
+	min-height: 80px;
+}
