@@ -3,7 +3,7 @@ title: 'Svelte × ChatGPT'
 description: How I build chatbots in Sveltekit using ChatGPT.
 tags: [april-fools, artificial-intelligence, chatgpt, tutorial]
 categories: [Technology]
-date: '2024-04-11'
+date: '2024-04-18'
 ---
 
 <script>
