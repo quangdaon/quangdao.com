@@ -64,6 +64,7 @@
 		border: none;
 		max-width: 100%;
 		color: var(--color-foreground);
+		padding: 0;
 		&:focus {
 			outline: none;
 		}
