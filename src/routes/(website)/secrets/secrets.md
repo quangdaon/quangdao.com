@@ -7,5 +7,6 @@ Congratulations, you found the hidden page! Here is a (allegedly) comprehensive 
   4. Drag the title over to the right, and you will find the key.
   5. Don't bother with memorizing it or writing it down, the key rotates daily.
 - On my homepage, you can hover over the waving hand to make it wave.
+  - If you happen to cacth me playing music on Spotify, the hand turns into animated notes, and if you hover over them, you can see what song I'm listening to.
 - My footer shows my name, along with a phonetic pronunciation guide. If you double-click on it, it transforms into the Vietnamese spelling, as well as my poor attempt at transcribing the proper Vietnamese pronunciation.
 - You might have already noticed the gears hanging around the bottom-right ([shoutout to Abel Vincze!](https://geargenerator.com/beta/)), but did you notice that each rotation of the large gear corresponds to exactly one page of scrolling?
