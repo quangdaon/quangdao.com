@@ -52,6 +52,7 @@ Response Body: {body}{/if}</pre>
 <style lang="scss">
 	.api-preview {
 		background: hsl(220, 13%, 18%);
+		margin: 1em 0;
 		&-header, &-body {
 			padding: 0.5em;
 		}

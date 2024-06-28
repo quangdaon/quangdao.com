@@ -22,8 +22,6 @@
 			return;
 		}
 
-		console.log('Now playing: ' + music.track.title);
-
 		const diff = music.track.duration - music.track.progress;
 
 		// Not using delay because we don't want to wait on this
