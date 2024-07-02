@@ -40,8 +40,8 @@ const themeConfigs: ThemeConfig[] = [
 	},
 	{
 		name: 'default',
-		message: `I'm learning to draw! Check me out on Instagram @qorndog_draws`,
-		link: 'https://www.instagram.com/qorndog_draws/',
+		message: `🖌️ Check out my new webcomic at www.theqornies.com! 🤡`,
+		link: 'https://www.theqornies.com/',
 		criteria: () => true
 	}
 ];
