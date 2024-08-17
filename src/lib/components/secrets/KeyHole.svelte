@@ -35,6 +35,7 @@
 
 <div class="keyhole-container">
 	<button
+		aria-label="Keyhole Button"
 		use:tooltip={showBuilder ? null : 'Hmm... What could this possibly be?'}
 		class="keyhole"
 		on:click={() => (showBuilder = !showBuilder)}

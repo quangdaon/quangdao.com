@@ -15,15 +15,15 @@
 <div class="banner" transition:animation>
 	{#if theme?.link}
 		<a href={theme.link}>
-			<h3>
+			<h2>
 				{theme.message}
-			</h3>
+			</h2>
 		</a>
 	{:else}
 		<span>
-			<h3>
+			<h2>
 				{theme.message}
-			</h3>
+			</h2>
 		</span>
 	{/if}
 </div>
@@ -38,7 +38,7 @@
 		a {
 			text-decoration: none;
 		}
-		h3 {
+		h2 {
 			margin: 0;
 			padding: 0;
 			font-size: 1em;

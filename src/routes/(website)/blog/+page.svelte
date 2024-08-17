@@ -44,7 +44,7 @@
 	}
 
 	.tags {
-		opacity: 0.5;
+		opacity: 0.7;
 		font-size: 0.75em;
 		span {
 			display: inline-block;
