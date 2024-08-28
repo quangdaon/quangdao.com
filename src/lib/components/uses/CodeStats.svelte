@@ -25,15 +25,15 @@
 </details>
 
 <style lang="scss">
-	@use '~/settings';
-	@use '~/breakpoints';
+	@use '@scissors/media';
+	@use '@scissors/breakpoints';
 
 	.codestats {
 		font-size: 0.75em;
 		background: var(--color-gray-200-op-5);
 		padding: 1em;
 		margin: var(--spacing) 0;
-		@include settings.dark-theme {
+		@include media.dark {
 			background: var(--color-green-base-op-5);
 		}
 	}

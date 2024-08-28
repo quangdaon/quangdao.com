@@ -1,7 +1,7 @@
-@use 'utils/variables' as *;
-@use 'utils/placeholders' as *;
-@use 'utils/settings' as *;
-@use 'utils/breakpoints';
+@use '@brand/variables' as *;
+@use '@scissors/layout';
+@use '@scissors/media';
+@use '@scissors/breakpoints';
 
 @import 'highlight/dark';
 @import 'defaults';
@@ -9,6 +9,6 @@
 
 @import 'splash/themes'; // TODO: Find out how to move to component
 
-@include media-print {
+@include media.print {
   @import 'print';
 }

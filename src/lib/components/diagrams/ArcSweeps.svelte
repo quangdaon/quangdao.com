@@ -114,7 +114,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
 	.point {
 		fill: var(--color-foreground);
@@ -156,7 +156,7 @@
 		}
 	}
 
-	@include settings.media-print {
+	@include media.print {
 		.handle {
 			text {
 				display: block;

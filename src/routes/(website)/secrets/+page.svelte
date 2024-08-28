@@ -28,7 +28,7 @@ So I'm gonna give <mark>all my secrets</mark> away</Quote>
 {/if}
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 	.keymaker {
 		width: 200px;
 		margin: 8rem auto auto;

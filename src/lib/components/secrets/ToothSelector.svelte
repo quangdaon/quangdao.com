@@ -43,7 +43,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	.picker {
 		display: flex;

@@ -38,8 +38,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/breakpoints';
-	@use '~/variables';
+	@use '@scissors/breakpoints';
 
 	.panel {
 		display: flex;

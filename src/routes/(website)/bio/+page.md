@@ -26,15 +26,15 @@ Over a decade later, my passion for technology has not diminished; it has only e
 I... don't remember. Not the full story anyway. It started off as a joke at work, where certain things I did would be met with a comment about how I'm a robot. At one point, I created [a little app](https://quangdaon.github.io/q-robometer/) where my coworkers could input records of my robotic behavior.
 
 <style lang="scss">
-	@use '~/breakpoints';
-	@use '~/settings';
+	@use '@scissors/breakpoints';
+	@use '@scissors/media';
 
 	abbr {
 		text-decoration: none;
 		&:hover {
 			background: var(--color-green-base-op-1);
 		}
-		@include settings.dark-theme {
+		@include media.dark {
 			&:hover {
 				background: var(--color-orange-500-op-1);
 			}

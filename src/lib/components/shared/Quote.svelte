@@ -10,7 +10,7 @@
 </blockquote>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 	blockquote {
 		position: relative;
 		font-family: var(--font-script);

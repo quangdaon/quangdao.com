@@ -69,7 +69,7 @@
 </noscript>
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	svg {
 		width: 50px;

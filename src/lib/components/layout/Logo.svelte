@@ -20,7 +20,7 @@
 </svg>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
 	svg {
 		width: 120px;
@@ -35,7 +35,7 @@
 		fill: var(--color-black);
 	}
 
-	@include settings.dark-theme {
+	@include media.dark {
 		.cls-3 {
 			fill: var(--color-white);
 		}
