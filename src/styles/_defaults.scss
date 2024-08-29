@@ -1,36 +1,9 @@
-@import url('https://use.typekit.net/zxo6has.css');
+@use '@scissors/breakpoints';
+@use '@scissors/media';
 
 :root {
 	font-size: 1.5em;
-
-	--font-primary: #{$font-primary};
-	--font-code: #{$font-code};
-	--font-script: #{$font-script};
-
-	--color-black: var(--color-gray-900);
-	--color-white: var(--color-gray-0);
-	--color-highlight: var(--color-green-base);
-
-	--color-foreground: var(--color-black);
-	--color-background: var(--color-white);
-	--color-input: var(--color-gray-50);
-	--color-heading: var(--color-green-base);
-	--color-subheading: var(--color-blue-base);
-	--color-link: var(--color-blue-base);
-	--color-link-hover: var(--color-green-base);
-	--color-link-decoration: var(--color-orange-base);
-	--color-code: var(--color-purple-base);
-
 	--spacing: 1rem;
-
-	@each $hue, $shades in $brand-colors {
-		@each $shade, $value in $shades {
-			--color-#{""+ $hue}-#{$shade}: #{$value};
-			--color-#{""+ $hue}-#{$shade}-op-1: #{rgba($value, 0.2)};
-			--color-#{""+ $hue}-#{$shade}-op-5: #{rgba($value, 0.5)};
-			--color-#{""+ $hue}-#{$shade}-op-8: #{rgba($value, 0.8)};
-		}
-	}
 }
 
 *,
@@ -42,97 +15,12 @@
 html,
 body {
 	margin: 0;
-	scrollbar-color: var(--color-green-base) var(--color-white);
-	scrollbar-width: thin;
-	scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-	width: 0.5rem;
-}
-
-::-webkit-scrollbar,
-::-webkit-scrollbar-track {
-	/* the "track" of the bar - great for customizing "background" colors */
-	background: var(--color-white);
-}
-
-::-webkit-scrollbar-thumb {
-	background: var(--color-green-base);
 }
 
 .app {
 	position: relative;
-	min-height: 100vh;
-	font-family: var(--font-primary);
-	font-weight: 200;
 	margin: auto;
 	padding: 0;
-	text-align: left;
-	background-color: var(--color-background);
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: var(--color-foreground);
-
-	@include media.dark {
-		--color-foreground: var(--color-white);
-		--color-background: var(--color-black);
-		--color-input: var(--color-gray-850);
-		--color-heading: var(--color-orange-base);
-		--color-subheading: var(--color-white);
-		--color-highlight: var(--color-orange-base);
-		--color-link: var(--color-white);
-		--color-link-hover: var(--color-white);
-		--color-code: var(--color-orange-base);
-	}
-}
-
-svg {
-	fill: var(--color-foreground);
-}
-
-a,
-a:active,
-a:visited {
-	color: currentColor;
-	text-decoration-color: var(--color-link-decoration);
-	transition: 500ms;
-	&:hover {
-		color: var(--color-link-hover);
-		text-decoration-thickness: 0.125em;
-	}
-}
-
-h1 {
-	color: var(--color-heading);
-}
-
-h2,
-h3 {
-	color: var(--color-subheading);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-summary {
-	margin: 0 0 var(--spacing);
-}
-
-pre,
-code {
-	font-family: var(--font-code);
-}
-
-p code {
-	color: var(--color-code);
 }
 
 article {
@@ -144,50 +32,8 @@ img {
 	max-width: 100%;
 }
 
-::-webkit-scrollbar-thumb {
-	/* the actual draggable element, the star of the show! */
-	background: var(--color-orange-base);
-}
-
 pre[class*='language-'] {
 	margin: var(--spacing) 0;
-}
-
-b,
-strong {
-	font-weight: bold;
-}
-
-mark {
-	background: transparent;
-	color: var(--color-highlight);
-}
-
-button {
-	cursor: pointer;
-}
-
-input,
-button {
-	font-family: var(--font-primary);
-}
-
-input,
-textarea {
-	color: inherit;
-	border: none;
-	outline: none;
-	background: var(--color-input);
-	font-size: 1em;
-	padding: 0.5em;
-}
-
-textarea {
-	font-family: var(--font-code);
-}
-
-abbr {
-	text-decoration: underline dotted;
 }
 
 table {
