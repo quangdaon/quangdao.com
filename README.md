@@ -17,7 +17,7 @@ npm run dev -- --open
 
 ### Branding
 
-Branding stuff is managed separately and is currently a WIP within private git repos. For local development, clone the fuckers and run `npm link ../path/to/scissors ../path/to/brandkit`.
+Branding stuff is managed separately and is currently a WIP. For local development, clone the fuckers and run `npm link ../path/to/scissors ../path/to/brandkit`.
 
 Review the branding guidelines in [the Brand Kit](https://github.com/quangdaon/brandkit/blob/main/styleguides/README.md).
 
