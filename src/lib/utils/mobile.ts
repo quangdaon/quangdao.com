@@ -5,8 +5,8 @@ const THRESHOLD_MOBILE = 1200;
 
 export const isMobile = readable(true, (set) => {
 	if (!browser) {
-    set(false);
-		return () => 0;
+		set(false);
+		return;
 	}
 
 	const listener = () => {

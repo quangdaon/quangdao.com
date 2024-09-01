@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ThemeConfig } from '$lib/config/splash/themes';
-	import { prefersReducedMotion } from '$lib/data/store';
+	import { prefersReducedMotion } from '$lib/utils/accessibility';
 	import { isMobile } from '$lib/utils/mobile';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
@@ -59,7 +59,7 @@
 			bottom: 12vh;
 			transform: translateX(-50%);
 			z-index: 1;
-			h3 {
+			h2 {
 				width: max-content;
 			}
 		}

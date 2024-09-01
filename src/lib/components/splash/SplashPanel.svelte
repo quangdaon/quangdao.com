@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { isDesktop, prefersReducedMotion } from '$lib/data/store';
+	import { prefersReducedMotion } from '$lib/utils/accessibility';
+	import { isMobile } from '$lib/utils/mobile';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
 
@@ -7,18 +8,21 @@
 	export let label: string;
 	export let href: string;
 	export let order: number;
-
+	
 	const dir = order % 2 ? -1 : 1;
-	$: animation = (node: Element) =>
+
+	const getAnimation = (isMobile: boolean) => (node: Element) =>
 		$prefersReducedMotion
 			? fade(node, { duration: 250, easing: sineInOut })
 			: fly(node, {
-					x: $isDesktop ? 0 : `${100 * dir}vw`,
-					y: $isDesktop ? `${100 * dir}vh` : 0,
+					x: !isMobile ? 0 : `${100 * dir}vw`,
+					y: !isMobile ? `${100 * dir}vh` : 0,
 					duration: 750,
 					opacity: 1,
 					easing: sineInOut
-			  });
+			  })
+
+	$: animation = getAnimation($isMobile);
 </script>
 
 <div class="panel" transition:animation>
