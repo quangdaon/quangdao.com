@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { windowHeight } from '$lib/data/store';
+	import { isMobile } from '$lib/utils/mobile';
 	let scroll: number;
 
-	$: scrollFactor = 360 / $windowHeight;
+	$: scrollFactor = !$isMobile ? 360 / $windowHeight : 0;
 	$: rotation = scroll * scrollFactor;
 </script>
 
