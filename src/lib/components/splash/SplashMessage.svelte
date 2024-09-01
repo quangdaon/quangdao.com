@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ThemeConfig } from '$lib/config/splash/themes';
 	import { prefersReducedMotion } from '$lib/data/store';
+	import { isMobile } from '$lib/utils/mobile';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
 
@@ -9,7 +10,13 @@
 	$: animation = (node: Element) =>
 		$prefersReducedMotion
 			? fade(node, { duration: 250, easing: sineInOut })
-			: fly(node, { y: '100vh', duration: 750, opacity: 1, easing: sineInOut });
+			: fly(node, {
+					x: $isMobile ? '100vw' : 0,
+					y: $isMobile ? 0 : '100vh',
+					duration: 750,
+					opacity: 1,
+					easing: sineInOut
+			  });
 </script>
 
 <div class="banner" transition:animation>
@@ -51,7 +58,7 @@
 			left: 50%;
 			bottom: 12vh;
 			transform: translateX(-50%);
-      z-index: 1;
+			z-index: 1;
 			h3 {
 				width: max-content;
 			}
