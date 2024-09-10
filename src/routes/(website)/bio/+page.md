@@ -15,7 +15,7 @@ TL;DR: <abbr title="robot">🤖</abbr>, <abbr title="day job is computer stuff">
 
 Curiosity killed the cat. Good thing it has eight more lives.
 
-When I was twelve, I launched my own website. I think I was playing an online Pokémon game when I saw an advertisement for a service called freewebs.com (now called [Webs](https://www.webs.com/)). Anyone can host their own website for free. The idea seemed incredible: I can own the next Google. So I signed up. My website, as you might expect, was pretty meaningless - just a bunch of ramblings and desperate pleas for others to check it out. Because I thought it was the greatest thing ever. It wasn't.
+When I was twelve, I launched my own website. I think I was playing an online Pokémon game when I saw an advertisement for a service called freewebs.com (now defunct). Anyone can host their own website for free. The idea seemed incredible: I can own the next Google. So I signed up. My website, as you might expect, was pretty meaningless - just a bunch of ramblings and desperate pleas for others to check it out. Because I thought it was the greatest thing ever. It wasn't.
 
 Soon after, I discovered that there was more to a website than just drag and drop. I discovered code. Not understanding what it was, I dropped a code block onto a page and started messing around with it. At first, I thought it was just another textbox, but without the bold and italics. It seemed pointless. But I looked up what "HTML" was and found out that I was not limited to just simple headers, paragraphs, and links. I could do whatever I wanted. I could even make... popup boxes. That's the story of how I discovered JavaScript. I thought it was the greatest thing ever. It was.
 
