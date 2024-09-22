@@ -77,7 +77,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	.converter {
 		text-align: center;

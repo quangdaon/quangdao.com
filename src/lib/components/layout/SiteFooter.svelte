@@ -13,16 +13,16 @@
 </footer>
 
 <style lang="scss">
-	@use '~/breakpoints';
-	@use '~/settings';
-	@use '~/placeholders';
+	@use '@scissors/breakpoints';
+	@use '@scissors/media';
+	@use '@scissors/layout';
 
 	footer {
 		position: relative;
 		z-index: 2;
 		margin-top: 2rem;
 
-		@include settings.media-print {
+		@include media.print {
 			display: none;
 		}
 	}

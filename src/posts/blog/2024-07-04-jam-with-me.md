@@ -417,7 +417,7 @@ If you read my [redesign article](/blog/2023-redesign) from last year, you may r
 <Quote by="Barbie Girl by Aqua">Imagination, life is your creation.</Quote>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
 	.widget-demo {
 		text-align: center;
@@ -426,7 +426,7 @@ If you read my [redesign article](/blog/2023-redesign) from last year, you may r
 			position: relative;
 			font-size: 3rem;
 			display:inline-block;
-			@include settings.dark-theme {
+			@include media.dark {
 				--color-black: #000;
 			}
 		}

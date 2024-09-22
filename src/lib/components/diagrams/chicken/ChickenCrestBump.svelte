@@ -190,7 +190,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
 	.chicken {
 		opacity: 0.2;
@@ -205,7 +205,7 @@
 		}
 	}
 
-	@include settings.media-print {
+	@include media.print {
 		.controls {
 			display: none;
 		}

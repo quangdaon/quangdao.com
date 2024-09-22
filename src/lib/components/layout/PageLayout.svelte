@@ -20,7 +20,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/placeholders';
+	@use '@scissors/layout';
 
 	main {
 		@extend %container;

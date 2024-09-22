@@ -29,9 +29,9 @@
 </div>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
-	@include settings.media-print {
+	@include media.print {
 		.comments {
 			display: none;
 		}

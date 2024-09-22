@@ -8,7 +8,7 @@
 <a class:active {href}><slot /></a>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
 	a,
 	a:active,
@@ -18,7 +18,7 @@
 		&.active {
 			text-decoration-color: var(--color-purple-base);
 		}
-		@include settings.dark-theme {
+		@include media.dark {
 			text-decoration-color: var(--color-orange-base);
 			&.active {
 				text-decoration-color: var(--color-green-base);

@@ -22,7 +22,7 @@
 {/each}
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	h2 {
 		a {

@@ -36,7 +36,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	.banner {
 		background-color: var(--color-background);

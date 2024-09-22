@@ -1,6 +1,6 @@
 {
-	"name": "blog-svelte",
-	"version": "0.0.1",
+	"name": "@quangdao/blog-svelte",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -22,7 +22,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"mdsvex": "^0.10.6",
+		"mdsvex": "^0.12.3",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
 		"svelte": "^3.54.0",
@@ -33,6 +33,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@quangdao/brandkit": "^0.1.1",
+		"@quangdao/scissors": "^1.0.0",
 		"plausible-tracker": "^0.3.8",
 		"rehype-katex-svelte": "^1.2.0",
 		"rehype-slug": "^5.1.0",
