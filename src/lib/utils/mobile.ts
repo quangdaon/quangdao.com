@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { readable } from 'svelte/store';
 
-const THRESHOLD_MOBILE = 1200;
+const THRESHOLD_MOBILE = 800;
 
 export const isMobile = readable(true, (set) => {
 	if (!browser) {
