@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { prefersReducedMotion } from '$lib/data/store';
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
 	import { getCurrentTheme } from '$lib/config/splash/themes';
+	import { prefersReducedMotion } from '$lib/utils/accessibility';
 	import KeyHole from '../secrets/KeyHole.svelte';
 	import SocialIcons from '../shared/SocialIcons.svelte';
 	import SplashPanel from './SplashPanel.svelte';

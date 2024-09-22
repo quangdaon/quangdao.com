@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { windowHeight } from '$lib/data/store';
+	import { isMobile } from '$lib/utils/mobile';
 	let scroll: number;
+	let windowHeight: number;
 
-	$: scrollFactor = 360 / $windowHeight;
+	$: scrollFactor = !$isMobile ? 360 / windowHeight : 0;
 	$: rotation = scroll * scrollFactor;
 </script>
 
-<svelte:window bind:scrollY={scroll} />
+<svelte:window bind:scrollY={scroll} bind:innerHeight={windowHeight} />
 
 <svg
 	version="1.2"

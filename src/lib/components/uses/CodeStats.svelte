@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { isDesktop } from '$lib/data/store';
 	import type { XpSet } from '$lib/integrations/codestats';
+	import { isMobile } from '$lib/utils/mobile';
 	import LangStat from './LangStat.svelte';
 
 	export let stats: Record<string, XpSet>;
 
 	$: statsToUse = Object.entries(stats)
 		.sort(([, a], [, b]) => b.xps - a.xps)
-		.splice(0, $isDesktop ? 12 : 4);
+		.splice(0, !$isMobile ? 12 : 4);
 </script>
 
 <details>
