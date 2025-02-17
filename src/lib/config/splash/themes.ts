@@ -1,3 +1,5 @@
+import { PUBLIC_SPLASH_MESSAGE_CONTENT, PUBLIC_SPLASH_MESSAGE_LINK } from '$env/static/public';
+
 export interface ThemeConfig {
 	name: string;
 	message?: string;
@@ -40,11 +42,10 @@ const themeConfigs: ThemeConfig[] = [
 	},
 	{
 		name: 'default',
-		message: `🖌️ Check out my new webcomic at www.theqornies.com! 🤡`,
-		link: 'https://www.theqornies.com/',
+		message: PUBLIC_SPLASH_MESSAGE_CONTENT,
+		link: PUBLIC_SPLASH_MESSAGE_LINK,
 		criteria: () => true
 	}
 ];
 
-// export const getCurrentTheme = () => themeConfigs[1];
 export const getCurrentTheme = () => themeConfigs.find((e) => e.criteria());
