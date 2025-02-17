@@ -44,14 +44,14 @@
 </div>
 
 <style lang="scss">
-	@use '~/mixins';
-	@use '~/breakpoints';
+	@use '@scissors/positioning';
+	@use '@scissors/breakpoints';
 
 	.splash {
 		position: fixed;
 		overflow: hidden;
 		z-index: 10;
-		@include mixins.fill-container;
+		@include positioning.fill-container;
 		display: flex;
 		flex-direction: column;
 		@include breakpoints.large {

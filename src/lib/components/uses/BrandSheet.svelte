@@ -34,7 +34,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	.colors {
 		display: grid;

@@ -52,7 +52,7 @@
 </div>
 
 <style lang="scss">
-	@use '~/breakpoints';
+	@use '@scissors/breakpoints';
 
 	.wrapper {
 		margin: var(--spacing) 0;

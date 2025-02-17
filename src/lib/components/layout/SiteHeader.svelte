@@ -18,9 +18,9 @@
 </header>
 
 <style lang="scss">
-	@use '~/breakpoints';
-	@use '~/settings';
-	@use '~/placeholders';
+	@use '@scissors/breakpoints';
+	@use '@scissors/media';
+	@use '@scissors/layout';
 
 	header {
 		@extend %container;
@@ -36,7 +36,7 @@
 		@include breakpoints.large {
 			position: relative;
 		}
-		@include settings.media-print {
+		@include media.print {
 			display: none;
 		}
 	}

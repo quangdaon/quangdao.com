@@ -16,7 +16,8 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			'~': './src/styles/utils',
-			'commentbox.io': './node_modules/commentbox.io/dist/commentBox.min.js'
+			'@brand': './node_modules/@quangdao/brandkit/scss',
+			'@scissors': './node_modules/@quangdao/scissors/scss'
 		}
 	},
 	extensions: ['.svelte', '.md', '.svx'],

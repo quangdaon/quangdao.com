@@ -132,11 +132,11 @@
 </div>
 
 <style lang="scss">
-	@use '~/settings';
+	@use '@scissors/media';
 
 	svg {
 		--t-color: #f00;
-		@include settings.dark-theme {
+		@include media.dark {
 			--t-color: #0f0;
 		}
 	}
@@ -182,7 +182,7 @@
 		}
 	}
 
-	@include settings.media-print {
+	@include media.print {
 		.handle {
 			text {
 				display: block;

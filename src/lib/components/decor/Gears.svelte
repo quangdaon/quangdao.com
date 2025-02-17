@@ -143,9 +143,8 @@
 </svg>
 
 <style lang="scss">
-	@use '~/breakpoints';
-	@use '~/variables';
-	@use '~/settings';
+	@use '@scissors/breakpoints';
+	@use '@scissors/media';
 
 	.svggear {
 		--rotate-intensity: -2;
@@ -166,7 +165,7 @@
 		@include breakpoints.large {
 			--gearset-size: 50vw;
 		}
-		@include settings.dark-theme {
+		@include media.dark {
 			opacity: 0.1;
 			--guides-opacity: 0.5;
 			--color-outline: var(--color-black);
@@ -228,7 +227,7 @@
 			stroke: var(--color-blue-base);
 		}
 	}
-	@include settings.media-print {
+	@include media.print {
 		.svggear {
 			display: none;
 		}
