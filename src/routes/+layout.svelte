@@ -4,10 +4,12 @@
 	import Tooltip from '$lib/components/shared/Tooltip.svelte';
 	import { tracker } from '$lib/utils/tracking';
 	import '../styles/main.scss';
+	import 'iconify-icon';
 
 	export let data;
 
 	tracker.start();
+
 </script>
 
 <svelte:head>

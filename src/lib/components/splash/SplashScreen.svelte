@@ -105,7 +105,6 @@
 	}
 
 	.social-links {
-		display: block;
 		width: 50%;
 		margin: auto;
 		display: flex;
@@ -113,7 +112,6 @@
 		:global(a) {
 			display: block;
 			flex: 1 1 auto;
-			padding: 0.5rem;
 			color: inherit;
 			&:hover {
 				--color-foreground: var(--color-purple-base);

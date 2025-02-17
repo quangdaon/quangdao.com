@@ -35,6 +35,7 @@
 	"dependencies": {
 		"@quangdao/brandkit": "^0.1.1",
 		"@quangdao/scissors": "^1.0.0",
+		"iconify-icon": "^2.1.0",
 		"plausible-tracker": "^0.3.8",
 		"rehype-katex-svelte": "^1.2.0",
 		"rehype-slug": "^5.1.0",
