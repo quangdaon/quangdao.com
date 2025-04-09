@@ -12,7 +12,7 @@
 	let { delay = true, children }: Props = $props();
 </script>
 
-<div out:fade|global={{ delay: delay ? 1000 : 0, duration: 0 }}>
+<div out:fade|global={{ delay: delay ? 1000 : 0, duration: 1 }}>
 	<!-- <GearsTop /> -->
 	<SiteHeader />
 
