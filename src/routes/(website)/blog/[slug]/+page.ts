@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ params }: PageLoadEvent) {
 	const post = await getPost('blog', params.slug);
-	if (!post) throw error(404);
+	if (!post) error(404);
 	let data: Record<string, any> = {
 		post,
 		pageTitle: `${post.title} | Quangdao's Blog`,

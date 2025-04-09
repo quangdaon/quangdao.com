@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-auto';
 import { mdsvex } from 'mdsvex';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import remarkMath from 'remark-math';
 import rehypeSlug from 'rehype-slug';
 import rehypeKatex from 'rehype-katex-svelte';
