@@ -29,6 +29,6 @@ const config = {
 			rehypePlugins: [rehypeKatex, rehypeSlug]
 		})
 	]
-};
+}; // hi
 
 export default config;
