@@ -41,15 +41,16 @@
 			API Preview: {url}
 		</div>
 		<div class="api-preview-refresh">
-			<button onclick={(e) => refresh(e)}> Refresh </button>
+			<button onclick={refresh}>Refresh</button>
 		</div>
 	</div>
 	<div class="api-preview-body">
-		<pre>
-{#if loading}
-				Loading...{:else}
-				Status Code: {status}
-Response Body: {body}{/if}</pre>
+		{#if loading}
+			<pre>Loading...</pre>
+		{:else}
+			{@const content = [`Status Code: ${status}`, `Response Body: ${body}`]}
+			<pre>{content.join('\n')}</pre>
+		{/if}
 	</div>
 </div>
 
