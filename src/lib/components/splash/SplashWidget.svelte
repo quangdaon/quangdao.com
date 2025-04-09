@@ -43,7 +43,7 @@
 
 <div class="widget">
 	{#key widget}
-		<div class="widget-container" transition:fade={{ duration: transitionDuration }}>
+		<div class="widget-container" transition:fade|global={{ duration: transitionDuration }}>
 			{#if widget === 'jam-with-me' && !!music}
 				<JamWithMeWidget {music} />
 			{:else if widget === 'hand'}

@@ -8,7 +8,7 @@
 	<div
 		class="name"
 		on:dblclick={() => (useVietnameseName = !useVietnameseName)}
-		in:fly={{ duration: 200, y: 20 }}
+		in:fly|global={{ duration: 200, y: 20 }}
 	>
 		{#if useVietnameseName}
 			<p lang="vn">Nguyễn Quang Đạo</p>

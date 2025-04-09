@@ -7,7 +7,7 @@
 	export let delay = true;
 </script>
 
-<div out:fade={{ delay: delay ? 1000 : 0, duration: 0 }}>
+<div out:fade|global={{ delay: delay ? 1000 : 0, duration: 0 }}>
 	<!-- <GearsTop /> -->
 	<SiteHeader />
 

@@ -19,7 +19,7 @@
 			  });
 </script>
 
-<div class="banner" transition:animation>
+<div class="banner" transition:animation|global>
 	{#if theme?.link}
 		<a href={theme.link}>
 			<h2>

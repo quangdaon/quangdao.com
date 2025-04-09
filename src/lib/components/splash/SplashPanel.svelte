@@ -25,7 +25,7 @@
 	$: animation = getAnimation($isMobile);
 </script>
 
-<div class="panel" transition:animation>
+<div class="panel" transition:animation|global>
 	<a class="panel-link" {href}>
 		<div class="content">
 			<h2 class="label">{label}</h2>

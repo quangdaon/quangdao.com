@@ -48,10 +48,10 @@
 
 	{#if showBuilder}
 		<form class="keymaker" on:submit|preventDefault={checkKey}>
-			<div class="sizer" in:slide|local out:fade|local>
+			<div class="sizer" in:slide out:fade>
 				<KeySizer disabled={failed} />
 			</div>
-			<button type="submit" class="key" transition:fade|local>
+			<button type="submit" class="key" transition:fade>
 				<div class="key-animation" class:failed class:passed bind:this={animationElement}>
 					<Key key={$keyValue} />
 				</div>

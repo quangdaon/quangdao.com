@@ -21,7 +21,7 @@ So I'm gonna give <mark>all my secrets</mark> away</Quote>
 			<KeyHole on:solved={() => (solved = true)} />
 		</div>
 	{:else}
-		<div in:fade={{ duration: 200, delay: 500 }}>
+		<div in:fade|global={{ duration: 200, delay: 500 }}>
 			<Secrets />
 		</div>
 	{/if}

@@ -20,7 +20,7 @@
 
 <div class="splash splash-theme-{theme?.name}">
 	<div class="intro">
-		<h1 transition:animation>
+		<h1 transition:animation|global>
 			<SplashWidget /> I'm Quangdao, and I am an
 		</h1>
 	</div>
