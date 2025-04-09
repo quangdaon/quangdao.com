@@ -25,7 +25,7 @@
 
 <div class="comments">
 	<noscript>JavaScript must be enabled to leave comments.</noscript>
-	<div id="utterances-comments" />
+	<div id="utterances-comments"></div>
 </div>
 
 <style lang="scss">

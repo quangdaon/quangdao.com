@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { getAllowedDigits } from '$lib/config/numeric-bases';
-	import { createEventDispatcher } from 'svelte';
 
-	export let base = 2;
-	export let value: string;
+	interface Props {
+		base?: number;
+		value: string;
+		onInput: () => void;
+	}
 
-	var dispatch = createEventDispatcher();
+	let { base = 2, value = $bindable(), onInput }: Props = $props();
 
 	const increment = (dir: -1 | 1 = 1) => {
 		var intValue = parseInt(value, base) + dir;
@@ -43,17 +45,19 @@
 			increment(-1);
 		}
 
-		dispatch('input');
+		onInput();
 	};
 
-	$: if (value === '') {
-		value = '0';
-		dispatch('input');
-	}
+	$effect(() => {
+		if (value === '') {
+			value = '0';
+			onInput();
+		}
+	});
 </script>
 
 <div class="viewer">
-	<input type="text" bind:value on:keydown={mapEntry} on:input />
+	<input type="text" bind:value onkeydown={mapEntry} oninput={onInput} />
 </div>
 
 <style>

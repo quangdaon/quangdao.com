@@ -6,7 +6,8 @@
 	import '../styles/main.scss';
 	import 'iconify-icon';
 
-	export let data;
+	/** @type {{data: any, children?: import('svelte').Snippet}} */
+	let { data, children } = $props();
 
 	tracker.start();
 
@@ -25,10 +26,10 @@
 
 <div class="app">
 	{#if data.path === '/'}
-		<slot />
+		{@render children?.()}
 	{:else}
 		<PageLayout>
-			<slot />
+			{@render children?.()}
 		</PageLayout>
 	{/if}
 	<Tooltip />

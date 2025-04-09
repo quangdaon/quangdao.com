@@ -64,7 +64,7 @@ Following that are the steps to run for your workflow. `steps` is a YAML array, 
 The example I showcased above will build your package and run tests, but won't actually interact with NPM in any way. To do that, you will first need to generate an access token on NPM.
 
 1. First, navigate to [npmjs.com](https://www.npmjs.com).
-1. At the top-right corner, click on your avatar, then "Access Tokens"
+1. At the top-right corner, click on your avatar, then "Access Tokens"  
    ![Access Tokens link](https://s3.quangdao.com/captures/211225154017.png)
 1. Click on the "Generate New Token" button. This is located to the right of the header.
 1. Check the "Automation" option. If you need a read-only token to access a private organization's package or a token to publish your packages manually, this is also where you can generate those. But for our purposes, we only need an Automation token.

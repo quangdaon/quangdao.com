@@ -1,26 +1,26 @@
 <script lang="ts">
 	import type { Coordinates } from '$lib/utils/geotrig';
 
-	let rx = 25;
-	let ry = 10;
-	let rotate = 0;
+	let rx = $state(25);
+	let ry = $state(10);
+	let rotate = $state(0);
 
 	enum ArcFlag {
 		LargeArc = 1,
 		Sweep = 2
 	}
 
-	let flagsChecked: ArcFlag[] = [];
+	let flagsChecked: ArcFlag[] = $state([]);
 
 	const vpWidth = 100;
 	const vpHeight = 70;
 
 	let svgRef: SVGSVGElement;
 
-	const points: Record<string, Coordinates> = {
+	const points: Record<string, Coordinates> = $state({
 		a: [vpWidth / 2 - 5, vpHeight / 2 - 5],
 		b: [vpWidth / 2 + 5, vpHeight / 2 + 10]
-	};
+	});
 
 	let start: Coordinates;
 	let startMouse: Coordinates;
@@ -45,10 +45,10 @@
 		});
 	};
 
-	$: flags = flagsChecked.reduce((a, b) => a + b, 0);
-	$: isFlagOn = (flags: number, flag: ArcFlag) => {
+	let flags = $derived(flagsChecked.reduce((a, b) => a + b, 0));
+	let isFlagOn = $derived((flags: number, flag: ArcFlag) => {
 		return (flags & flag) === flag ? 1 : 0;
-	};
+	});
 </script>
 
 <svg viewBox="0 0 {vpWidth} {vpHeight}" bind:this={svgRef}>
@@ -74,7 +74,9 @@
 			cy={points.a[1]}
 			r="1"
 			stroke="none"
-			on:mousedown={(e) => dragStart(e, 'a')}
+			onmousedown={(e) => dragStart(e, 'a')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.a[0] + 1} y={points.a[1] + 3} font-size="3">Point A</text>
 	</g>
@@ -85,7 +87,9 @@
 			cy={points.b[1]}
 			r="1"
 			stroke="none"
-			on:mousedown={(e) => dragStart(e, 'b')}
+			onmousedown={(e) => dragStart(e, 'b')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.b[0] + 1} y={points.b[1] + 3} font-size="3">Point B</text>
 	</g>

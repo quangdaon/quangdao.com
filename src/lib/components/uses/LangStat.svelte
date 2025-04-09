@@ -2,13 +2,17 @@
 	import { tooltip } from '$lib/actions/tooltip';
 import { calculateStats, type XpSet } from '$lib/integrations/codestats';
 
-	export let lang: string;
-	export let xp: XpSet;
+	interface Props {
+		lang: string;
+		xp: XpSet;
+	}
+
+	let { lang, xp }: Props = $props();
 
 	const stats = calculateStats(xp);
 	const toPercent = (dec: number) => (dec * 100).toFixed(2);
 
-	let xpDisplayValue = `${xp.xps.toLocaleString()} XP`;
+	let xpDisplayValue = $state(`${xp.xps.toLocaleString()} XP`);
 
 	if (xp.new_xps) {
 		xpDisplayValue += ` (${xp.new_xps.toLocaleString()} XP Gained Today)`;
@@ -31,12 +35,12 @@ import { calculateStats, type XpSet } from '$lib/integrations/codestats';
 			class="progress-previous"
 			style="--amount: {toPercent(stats.progressPrevious)}%"
 			use:tooltip={`${toPercent(stats.progressPrevious)}%`}
-		/>
+		></div>
 		<div
 			class="progress-new"
 			style="--amount: {toPercent(stats.progressNew)}%"
 			use:tooltip={`${toPercent(stats.progressNew)}%`}
-		/>
+		></div>
 	</div>
 </li>
 

@@ -3,7 +3,7 @@
 	import { getKey } from '$lib/secrets';
 	import Secrets from './secrets.md';
 	import { browser } from '$app/environment';
-	let solved = $keyValue === getKey(new Date());
+	let solved = $state($keyValue === getKey(new Date()));
 	import Quote from '$lib/components/shared/Quote.svelte';
 	import { fade } from 'svelte/transition';
 	import KeyHole from '$lib/components/secrets/KeyHole.svelte';
@@ -18,10 +18,10 @@ So I'm gonna give <mark>all my secrets</mark> away</Quote>
 {#if browser}
 	{#if !solved}
 		<div class="keymaker">
-			<KeyHole on:solved={() => (solved = true)} />
+			<KeyHole onSolved={() => (solved = true)} />
 		</div>
 	{:else}
-		<div in:fade={{ duration: 200, delay: 500 }}>
+		<div in:fade|global={{ duration: 200, delay: 500 }}>
 			<Secrets />
 		</div>
 	{/if}

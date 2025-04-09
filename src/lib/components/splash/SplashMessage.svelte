@@ -5,9 +5,13 @@
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
 
-	export let theme: ThemeConfig;
+	interface Props {
+		theme: ThemeConfig;
+	}
 
-	$: animation = (node: Element) =>
+	let { theme }: Props = $props();
+
+	let animation = $derived((node: Element) =>
 		$prefersReducedMotion
 			? fade(node, { duration: 250, easing: sineInOut })
 			: fly(node, {
@@ -16,10 +20,10 @@
 					duration: 750,
 					opacity: 1,
 					easing: sineInOut
-			  });
+			  }));
 </script>
 
-<div class="banner" transition:animation>
+<div class="banner" transition:animation|global>
 	{#if theme?.link}
 		<a href={theme.link}>
 			<h2>

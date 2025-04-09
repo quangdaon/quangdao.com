@@ -1,12 +1,17 @@
 @use '@scissors/media';
 
-@import '@brand/core';
-@import '@brand/highlight/dark';
+@use '@brand/core';
+@use '@brand/highlight/dark';
 
-@import 'defaults';
+@use 'defaults';
 
-@import 'splash/themes'; // TODO: Find out how to move to component
+@use 'splash/themes'; // TODO: Find out how to move to component
+
+@use 'print';
+
+@include defaults.styles;
+@include themes.styles;
 
 @include media.print {
-	@import 'print';
+	@include print.styles;
 }

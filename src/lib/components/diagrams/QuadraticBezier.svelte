@@ -3,15 +3,15 @@
 
 	const vpWidth = 100;
 	const vpHeight = 70;
-	let t = 0.5;
+	let t = $state(0.5);
 
 	let svgRef: SVGSVGElement;
 
-	const points: Record<string, Coordinates> = {
+	const points: Record<string, Coordinates> = $state({
 		a: [10, vpHeight - 10],
 		b: [vpWidth - 15, vpHeight - 20],
 		control: [50, 20]
-	};
+	});
 
 	let start: Coordinates;
 	let startMouse: Coordinates;
@@ -36,9 +36,9 @@
 		});
 	};
 
-	$: ta = points.a.map((p: number, i: number) => p + (points.control[i] - p) * t);
-	$: tb = points.control.map((p: number, i: number) => p + (points.b[i] - p) * t);
-	$: tt = ta.map((p: number, i: number) => p + (tb[i] - p) * t);
+	let ta = $derived(points.a.map((p: number, i: number) => p + (points.control[i] - p) * t));
+	let tb = $derived(points.control.map((p: number, i: number) => p + (points.b[i] - p) * t));
+	let tt = $derived(ta.map((p: number, i: number) => p + (tb[i] - p) * t));
 </script>
 
 <svg viewBox="0 0 {vpWidth} {vpHeight}" bind:this={svgRef}>
@@ -99,7 +99,9 @@
 			cy={points.a[1]}
 			r="1"
 			stroke="none"
-			on:mousedown={(e) => dragStart(e, 'a')}
+			onmousedown={(e) => dragStart(e, 'a')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.a[0] + 1} y={points.a[1] + 3} font-size="3">Point A</text>
 	</g>
@@ -110,7 +112,9 @@
 			cy={points.b[1]}
 			r="1"
 			stroke="none"
-			on:mousedown={(e) => dragStart(e, 'b')}
+			onmousedown={(e) => dragStart(e, 'b')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.b[0] + 1} y={points.b[1] + 3} font-size="3">Point B</text>
 	</g>
@@ -121,7 +125,9 @@
 			cy={points.control[1]}
 			r="1"
 			stroke="none"
-			on:mousedown={(e) => dragStart(e, 'control')}
+			onmousedown={(e) => dragStart(e, 'control')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.control[0] + 1} y={points.control[1] + 3} font-size="3">Control</text>
 	</g>

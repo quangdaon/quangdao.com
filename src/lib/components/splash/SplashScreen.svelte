@@ -12,15 +12,15 @@
 
 	const theme = getCurrentTheme();
 
-	$: animation = (node: Element) =>
+	let animation = $derived((node: Element) =>
 		$prefersReducedMotion
 			? fade(node, { duration: 250, easing: sineInOut })
-			: fly(node, { x: '-100%', duration: 750, opacity: 1, easing: sineInOut });
+			: fly(node, { x: '-100%', duration: 750, opacity: 1, easing: sineInOut }));
 </script>
 
 <div class="splash splash-theme-{theme?.name}">
 	<div class="intro">
-		<h1 transition:animation>
+		<h1 transition:animation|global>
 			<SplashWidget /> I'm Quangdao, and I am an
 		</h1>
 	</div>
@@ -30,7 +30,7 @@
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
 			<div class="unlock">
-				<KeyHole on:solved={() => goto('/secrets')} />
+				<KeyHole onSolved={() => goto('/secrets')} />
 			</div>
 		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />

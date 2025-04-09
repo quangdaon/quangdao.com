@@ -1,72 +1,76 @@
-.splash-theme-default {
-	.intro {
-		--color-background: var(--color-blue-base);
+@mixin styles {
+	.splash-theme-default {
+		.intro {
+			--color-background: var(--color-blue-base);
+		}
+
+		.panel {
+			--color-background: var(--color-green-base);
+			--color-foreground: var(--color-orange-base);
+
+			&:nth-child(even) {
+				--color-background: var(--color-orange-base);
+				--color-foreground: var(--color-green-base);
+			}
+		}
 	}
 
-  .panel {
-		--color-background: var(--color-green-base);
-		--color-foreground: var(--color-orange-base);
-
-		&:nth-child(even) {
-			--color-background: var(--color-orange-base);
-			--color-foreground: var(--color-green-base);
+	.splash-theme-pride {
+		.intro {
+			--color-background: #f7251c;
 		}
-  }
-}
 
-.splash-theme-pride {
-	.intro {
-		--color-background: #f7251c;
-	}
-	
-  .panel {
-		--color-foreground: var(--color-white);
+		.panel {
+			--color-foreground: var(--color-white);
 
-		&:nth-child(1) {
-			--color-background: #ffa500;
+			&:nth-child(1) {
+				--color-background: #ffa500;
+			}
+			&:nth-child(2) {
+				--color-background: #ffff43;
+				--color-foreground: var(--color-black);
+			}
+			&:nth-child(3) {
+				--color-background: #278e1d;
+			}
+			&:nth-child(4) {
+				--color-background: #0000ff;
+			}
 		}
-		&:nth-child(2) {
-			--color-background: #ffff43;
-			--color-foreground: var(--color-black);
-		}
-		&:nth-child(3) {
-			--color-background: #278e1d;
-		}
-		&:nth-child(4) {
-			--color-background: #0000ff;
-		}
-  }
 
-	.banner {
-		--color-background: #8a138c;
-	}
-}
-
-.splash-theme-halloween {
-	.intro, .banner {
-		--color-background: #d02823;
+		.banner {
+			--color-background: #8a138c;
+		}
 	}
 
-  .panel {
-		--color-background: #1c1c1c;
-
-		&:nth-child(even) {
-			--color-background: #f4831b;
+	.splash-theme-halloween {
+		.intro,
+		.banner {
+			--color-background: #d02823;
 		}
-  }
-}
 
-.splash-theme-american-independence {
-	.intro, .banner {
-		--color-background: var(--color-blue-base);
+		.panel {
+			--color-background: #1c1c1c;
+
+			&:nth-child(even) {
+				--color-background: #f4831b;
+			}
+		}
 	}
 
-  .panel {
-		--color-background: #d02823;
-		
-		&:nth-child(even) {
-			--color-background: var(--color-white);
-			--color-foreground: var(--color-blue-base);
+	.splash-theme-american-independence {
+		.intro,
+		.banner {
+			--color-background: var(--color-blue-base);
 		}
-  }
+
+		.panel {
+			--color-background: #d02823;
+
+			&:nth-child(even) {
+				--color-background: var(--color-white);
+				--color-foreground: var(--color-blue-base);
+			}
+		}
+	}
 }

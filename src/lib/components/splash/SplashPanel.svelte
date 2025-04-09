@@ -4,10 +4,21 @@
 	import { sineInOut } from 'svelte/easing';
 	import { fade, fly } from 'svelte/transition';
 
-	export let title: string;
-	export let label: string;
-	export let href: string;
-	export let order: number;
+	interface Props {
+		title: string;
+		label: string;
+		href: string;
+		order: number;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		title,
+		label,
+		href,
+		order,
+		children
+	}: Props = $props();
 	
 	const dir = order % 2 ? -1 : 1;
 
@@ -22,10 +33,10 @@
 					easing: sineInOut
 			  })
 
-	$: animation = getAnimation($isMobile);
+	let animation = $derived(getAnimation($isMobile));
 </script>
 
-<div class="panel" transition:animation>
+<div class="panel" transition:animation|global>
 	<a class="panel-link" {href}>
 		<div class="content">
 			<h2 class="label">{label}</h2>
@@ -34,9 +45,9 @@
 			</div>
 		</div>
 	</a>
-	{#if $$slots.default}
+	{#if children}
 		<div class="footer">
-			<slot />
+			{@render children?.()}
 		</div>
 	{/if}
 </div>

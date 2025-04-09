@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { JamWithMeDetails } from '$lib/integrations/jam-with-me/models';
 
-	export let music: JamWithMeDetails;
+	interface Props {
+		music: JamWithMeDetails;
+	}
+
+	let { music }: Props = $props();
 </script>
 
 <div class="wrapper">

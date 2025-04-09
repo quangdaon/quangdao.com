@@ -1,9 +1,14 @@
 <script lang="ts">
-	export let by: string;
+	interface Props {
+		by: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let { by, children }: Props = $props();
 </script>
 
 <blockquote>
-	<p class="quote"><slot /></p>
+	<p class="quote">{@render children?.()}</p>
 	{#if by}
 		<p class="author">&mdash; {by}</p>
 	{/if}

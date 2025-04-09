@@ -1,9 +1,10 @@
 <script>
 	import Comic from '$lib/components/comics/Comic.svelte';
 
-	export let data;
+	/** @type {{data: any}} */
+	let { data } = $props();
 
-	$: post = data.post;
+	let post = $derived(data.post);
 </script>
 
 <h1>{post.title}</h1>
@@ -12,4 +13,4 @@
 
 <h3 id="transcript">Transcript:</h3>
 
-<svelte:component this={post.component} />
+<post.component />

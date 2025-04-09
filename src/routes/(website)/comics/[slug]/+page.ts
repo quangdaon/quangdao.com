@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ params }: PageLoadEvent) {
 	const post = await getPost('comics', params.slug);
-	if (!post) throw error(404);
+	if (!post) error(404);
 	return {
 		post,
 		pageTitle: `${post.title} | Quangdao's Comics`,

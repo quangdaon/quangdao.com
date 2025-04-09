@@ -2,20 +2,19 @@
 	import { rotateAngleAroundOrigin, type Coordinates } from '$lib/utils/geotrig';
 
 	const edgeCoordinates: Coordinates = [60, 20];
-	let offset = 0;
-	let referenceCoordinates: Coordinates;
+	let offset = $state(0);
+	let referenceCoordinates: Coordinates = $derived([60, 20 - offset]);
 
-	$: referenceCoordinates = [60, 20 - offset];
-	$: controlPoint = rotateAngleAroundOrigin(
+	let controlPoint = $derived(rotateAngleAroundOrigin(
 		referenceCoordinates,
 		[60, 42],
 		-(Math.PI * 3 / 16)
-	);
-	$: referenceEdge = rotateAngleAroundOrigin(
+	));
+	let referenceEdge = $derived(rotateAngleAroundOrigin(
 		edgeCoordinates,
 		[60, 42],
 		-(Math.PI * 3 / 16)
-	);
+	));
 </script>
 
 <svg viewBox="40 18 25 25">

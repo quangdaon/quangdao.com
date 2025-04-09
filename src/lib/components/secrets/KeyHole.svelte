@@ -1,32 +1,36 @@
 <script lang="ts">
 	import { keyValue } from '$lib/data/store';
 	import { getKey } from '$lib/secrets';
-	import { createEventDispatcher } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
 	import Key from './Key.svelte';
 	import KeySizer from './KeySizer.svelte';
 	import { tooltip } from '$lib/actions/tooltip';
 	import { tracker } from '$lib/utils/tracking';
-	let showBuilder = false;
+	let showBuilder = $state(false);
 
-	let animationElement: Element;
+	let animationElement: Element | undefined = $state();
 
-	const dispatch = createEventDispatcher();
+	interface Props {
+		onSolved: () => void;
+	}
 
-	let failed = false;
-	let passed = false;
+	let { onSolved }: Props = $props();
 
-	const checkKey = () => {
+	let failed = $state(false);
+	let passed = $state(false);
+
+	const checkKey = (e: Event) => {
+		e.preventDefault();
 		const match = $keyValue === getKey(new Date());
 		tracker.track('Key Attempt', { props: { success: match, key: $keyValue } });
 		if (match) {
 			passed = true;
-			animationElement.addEventListener('animationend', () => {
-				dispatch('solved');
+			animationElement?.addEventListener('animationend', () => {
+				onSolved();
 			});
 		} else {
 			failed = true;
-			animationElement.addEventListener('animationend', () => {
+			animationElement?.addEventListener('animationend', () => {
 				failed = false;
 			});
 		}
@@ -38,7 +42,7 @@
 		aria-label="Keyhole Button"
 		use:tooltip={showBuilder ? null : 'Hmm... What could this possibly be?'}
 		class="keyhole"
-		on:click={() => (showBuilder = !showBuilder)}
+		onclick={() => (showBuilder = !showBuilder)}
 	>
 		<svg viewBox="0 0 100 150">
 			<circle cx="50" cy="50" r="50" class="keyhole-shape" />
@@ -47,11 +51,11 @@
 	</button>
 
 	{#if showBuilder}
-		<form class="keymaker" on:submit|preventDefault={checkKey}>
-			<div class="sizer" in:slide|local out:fade|local>
+		<form class="keymaker" onsubmit={checkKey}>
+			<div class="sizer" in:slide out:fade>
 				<KeySizer disabled={failed} />
 			</div>
-			<button type="submit" class="key" transition:fade|local>
+			<button type="submit" class="key" transition:fade>
 				<div class="key-animation" class:failed class:passed bind:this={animationElement}>
 					<Key key={$keyValue} />
 				</div>

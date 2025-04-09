@@ -9,9 +9,9 @@
 
 	type Widget = 'hand' | 'jam-with-me';
 
-	let music: JamWithMeDetails | null;
+	let music: JamWithMeDetails | null = $state();
 
-	let widget: Widget | null = 'hand';
+	let widget: Widget | null = $state('hand');
 
 	const transitionDuration = 500;
 
@@ -43,7 +43,7 @@
 
 <div class="widget">
 	{#key widget}
-		<div class="widget-container" transition:fade={{ duration: transitionDuration }}>
+		<div class="widget-container" transition:fade|global={{ duration: transitionDuration }}>
 			{#if widget === 'jam-with-me' && !!music}
 				<JamWithMeWidget {music} />
 			{:else if widget === 'hand'}

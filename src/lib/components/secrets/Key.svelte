@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let key: String;
+	interface Props {
+		key: String;
+	}
+
+	let { key }: Props = $props();
 	const toothWidth = 20;
 
 	const convertPoints = (arr: number[][]) => {
@@ -26,7 +30,7 @@
 		return points;
 	};
 
-	$: teeth = key.split('');
+	let teeth = $derived(key.split(''));
 </script>
 
 <svg viewBox="0 0 300 100">

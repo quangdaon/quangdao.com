@@ -1,14 +1,14 @@
 <script>
 	import { tooltip } from '$lib/actions/tooltip';
 	import { fly } from 'svelte/transition';
-	let useVietnameseName = false;
+	let useVietnameseName = $state(false);
 </script>
 
 {#key useVietnameseName}
-	<div
+	<figure
 		class="name"
-		on:dblclick={() => (useVietnameseName = !useVietnameseName)}
-		in:fly={{ duration: 200, y: 20 }}
+		ondblclick={() => (useVietnameseName = !useVietnameseName)}
+		in:fly|global={{ duration: 200, y: 20 }}
 	>
 		{#if useVietnameseName}
 			<p lang="vn">Nguyễn Quang Đạo</p>
@@ -34,7 +34,7 @@
 				<abbr use:tooltip={'Like "win" but with another N in front'}>nwin</abbr>)
 			</p>
 		{/if}
-	</div>
+	</figure>
 {/key}
 
 <style lang="scss">

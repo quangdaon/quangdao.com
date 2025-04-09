@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { isMobile } from '$lib/utils/mobile';
-	let scroll: number;
-	let windowHeight: number;
+	let scroll: number = $derived(0);
+	let windowHeight: number = $state(0);
 
-	$: scrollFactor = !$isMobile ? 360 / windowHeight : 0;
-	$: rotation = scroll * scrollFactor;
+	let scrollFactor = $derived(!$isMobile ? 360 / windowHeight : 0);
+	let rotation = $derived(scroll * scrollFactor);
 </script>
 
 <svelte:window bind:scrollY={scroll} bind:innerHeight={windowHeight} />

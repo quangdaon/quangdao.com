@@ -1,65 +1,69 @@
 @use '@scissors/breakpoints';
 @use '@scissors/media';
 
-:root {
-	font-size: 1.5em;
-	--spacing: 1rem;
-}
+@mixin styles {
 
-*,
-*:before,
-*:after {
-	box-sizing: border-box;
-}
 
-html,
-body {
-	margin: 0;
-}
-
-.app {
-	position: relative;
-	margin: auto;
-	padding: 0;
-}
-
-article {
-	margin: 2em 0;
-	--spacing: 0.25rem;
-}
-
-img {
-	max-width: 100%;
-}
-
-pre[class*='language-'] {
-	margin: var(--spacing) 0;
-}
-
-table {
-	margin: var(--spacing) auto;
-	border-collapse: collapse;
-	overflow: scroll;
-	display: block;
-	th,
-	td {
-		padding: 0.25em 0.25em;
-		border: 1px solid var(--color-foreground);
-		line-height: 1.2;
+	:root {
+		font-size: 1.5em;
+		--spacing: 1rem;
 	}
-	@include breakpoints.large {
-		display: table;
-		th,
-		td {
-			padding: 0.25em 0.5em;
-		}
+	
+	*,
+	*:before,
+	*:after {
+		box-sizing: border-box;
 	}
-}
-
-.katex {
-	font-size: 1em;
-	font-family: var(--font-code);
-	.katex-html svg {
+	
+	html,
+	body {
 		margin: 0;
 	}
+	
+	.app {
+		position: relative;
+		margin: auto;
+		padding: 0;
+	}
+	
+	article {
+		margin: 2em 0;
+		--spacing: 0.25rem;
+	}
+	
+	img {
+		max-width: 100%;
+	}
+	
+	pre[class*='language-'] {
+		margin: var(--spacing) 0;
+	}
+	
+	table {
+		margin: var(--spacing) auto;
+		border-collapse: collapse;
+		overflow: scroll;
+		display: block;
+		th,
+		td {
+			padding: 0.25em 0.25em;
+			border: 1px solid var(--color-foreground);
+			line-height: 1.2;
+		}
+		@include breakpoints.large {
+			display: table;
+			th,
+			td {
+				padding: 0.25em 0.5em;
+			}
+		}
+	}
+	
+	.katex {
+		font-size: 1em;
+		font-family: var(--font-code);
+		.katex-html svg {
+			margin: 0;
+		}
+	}	
 }
