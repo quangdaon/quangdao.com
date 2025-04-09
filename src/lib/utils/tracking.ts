@@ -5,9 +5,6 @@ import Plausible from 'plausible-tracker';
 class TrackingService {
   plausible?: ReturnType<typeof Plausible>;
 
-  constructor() {
-  }
-
   start() {
     if (!browser || !PUBLIC_TRACKING_DOMAIN) return;
 
