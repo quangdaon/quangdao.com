@@ -5,7 +5,7 @@
 </script>
 
 {#key useVietnameseName}
-	<div
+	<figure
 		class="name"
 		ondblclick={() => (useVietnameseName = !useVietnameseName)}
 		in:fly|global={{ duration: 200, y: 20 }}
@@ -34,7 +34,7 @@
 				<abbr use:tooltip={'Like "win" but with another N in front'}>nwin</abbr>)
 			</p>
 		{/if}
-	</div>
+	</figure>
 {/key}
 
 <style lang="scss">

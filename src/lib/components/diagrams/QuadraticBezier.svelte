@@ -5,7 +5,7 @@
 	const vpHeight = 70;
 	let t = $state(0.5);
 
-	let svgRef: SVGSVGElement = $state();
+	let svgRef: SVGSVGElement;
 
 	const points: Record<string, Coordinates> = $state({
 		a: [10, vpHeight - 10],
@@ -100,6 +100,8 @@
 			r="1"
 			stroke="none"
 			onmousedown={(e) => dragStart(e, 'a')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.a[0] + 1} y={points.a[1] + 3} font-size="3">Point A</text>
 	</g>
@@ -111,6 +113,8 @@
 			r="1"
 			stroke="none"
 			onmousedown={(e) => dragStart(e, 'b')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.b[0] + 1} y={points.b[1] + 3} font-size="3">Point B</text>
 	</g>
@@ -122,6 +126,8 @@
 			r="1"
 			stroke="none"
 			onmousedown={(e) => dragStart(e, 'control')}
+			role="button"
+			tabindex="0"
 		/>
 		<text x={points.control[0] + 1} y={points.control[1] + 3} font-size="3">Control</text>
 	</g>

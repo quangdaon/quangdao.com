@@ -18,7 +18,7 @@ So I'm gonna give <mark>all my secrets</mark> away</Quote>
 {#if browser}
 	{#if !solved}
 		<div class="keymaker">
-			<KeyHole on:solved={() => (solved = true)} />
+			<KeyHole onSolved={() => (solved = true)} />
 		</div>
 	{:else}
 		<div in:fade|global={{ duration: 200, delay: 500 }}>

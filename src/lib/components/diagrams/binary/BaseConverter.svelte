@@ -38,12 +38,12 @@
 	<div class="converter">
 		<div>
 			<h3>{getBaseName(baseIn)}</h3>
-			<BaseNumberInput base={baseIn} bind:value={valueIn} on:input={handleInputChange} />
+			<BaseNumberInput base={baseIn} bind:value={valueIn} onInput={handleInputChange} />
 		</div>
 
 		<div>
 			<h3>{getBaseName(baseOut)}</h3>
-			<BaseNumberInput base={baseOut} bind:value={valueOut} on:input={handleOutputChange} />
+			<BaseNumberInput base={baseOut} bind:value={valueOut} onInput={handleOutputChange} />
 		</div>
 	</div>
 

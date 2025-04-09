@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { isMobile } from '$lib/utils/mobile';
-	let scroll: number = $state(0);
+	let scroll: number = $derived(0);
 	let windowHeight: number = $state(0);
 
 	let scrollFactor = $derived(!$isMobile ? 360 / windowHeight : 0);

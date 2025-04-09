@@ -1,31 +1,33 @@
-:root {
-	font-size: 1rem;
-}
-
-a[href] {
-	text-decoration: none;
-	&::after {
-		color: var(--color-gray-900);
-		font-weight: bolder;
-		font-size: 0.75em;
-		font-family: var(--font-primary);
+@mixin styles {
+	:root {
+		font-size: 1rem;
 	}
-}
 
-a[href^='http://'], 
+	a[href] {
+		text-decoration: none;
+		&::after {
+			color: var(--color-gray-900);
+			font-weight: bolder;
+			font-size: 0.75em;
+			font-family: var(--font-primary);
+		}
+	}
+
+	a[href^='http://'], 
 a[href^='https://']
-{
-	&::after {
-		content: ' (link: ' attr(href) ')';
+	{
+		&::after {
+			content: ' (link: ' attr(href) ')';
+		}
 	}
-}
 
-a[href^='/'] {
-	&::after {
-		content: ' (link: https://www.quangdao.com' attr(href) ')';
+	a[href^='/'] {
+		&::after {
+			content: ' (link: https://www.quangdao.com' attr(href) ')';
+		}
 	}
-}
 
-.controls {
-	display: none;
+	.controls {
+		display: none;
+	}
 }

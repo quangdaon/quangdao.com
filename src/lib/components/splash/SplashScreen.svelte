@@ -30,7 +30,7 @@
 	<div class="panels">
 		<SplashPanel href="/blog" label="endlessly-curious," title="Blog" order={1}>
 			<div class="unlock">
-				<KeyHole on:solved={() => goto('/secrets')} />
+				<KeyHole onSolved={() => goto('/secrets')} />
 			</div>
 		</SplashPanel>
 		<SplashPanel href="/uses" label="multi-talented," title="Uses" order={2} />

@@ -3,7 +3,7 @@
 	import SvgDiagram from '../SvgDiagram.svelte';
 
 	let controlPoint: Coordinates = $state([150, 59]);
-	let graphRef: SVGGElement = $state();
+	let graphRef: SVGGElement;
 
 	const radius = 120;
 	const width = radius * 2;
@@ -44,7 +44,7 @@
 	]);
 </script>
 
-<SvgDiagram viewBox="-4 -4 400 250">
+<SvgDiagram viewBox="-4 -4 400 250" role="application">
 	<g class="graph" bind:this={graphRef}>
 		<rect x="0" y="0" {width} height={width} class="stroke" />
 		{#if showGuides}
@@ -58,6 +58,8 @@
 			r="4"
 			class="control"
 			onmousedown={(e) => dragStart(e)}
+			role="button"
+			tabindex="0"
 		/>
 		{#if showGuides}
 		<circle cx={radius} cy={radius} r="2" />

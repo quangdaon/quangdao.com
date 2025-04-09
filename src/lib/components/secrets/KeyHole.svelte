@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { preventDefault } from 'svelte/legacy';
-
 	import { keyValue } from '$lib/data/store';
 	import { getKey } from '$lib/secrets';
-	import { createEventDispatcher } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
 	import Key from './Key.svelte';
 	import KeySizer from './KeySizer.svelte';
@@ -11,24 +8,29 @@
 	import { tracker } from '$lib/utils/tracking';
 	let showBuilder = $state(false);
 
-	let animationElement: Element = $state();
+	let animationElement: Element | undefined = $state();
 
-	const dispatch = createEventDispatcher();
+	interface Props {
+		onSolved: () => void;
+	}
+
+	let { onSolved }: Props = $props();
 
 	let failed = $state(false);
 	let passed = $state(false);
 
-	const checkKey = () => {
+	const checkKey = (e: Event) => {
+		e.preventDefault();
 		const match = $keyValue === getKey(new Date());
 		tracker.track('Key Attempt', { props: { success: match, key: $keyValue } });
 		if (match) {
 			passed = true;
-			animationElement.addEventListener('animationend', () => {
-				dispatch('solved');
+			animationElement?.addEventListener('animationend', () => {
+				onSolved();
 			});
 		} else {
 			failed = true;
-			animationElement.addEventListener('animationend', () => {
+			animationElement?.addEventListener('animationend', () => {
 				failed = false;
 			});
 		}
@@ -49,7 +51,7 @@
 	</button>
 
 	{#if showBuilder}
-		<form class="keymaker" onsubmit={preventDefault(checkKey)}>
+		<form class="keymaker" onsubmit={checkKey}>
 			<div class="sizer" in:slide out:fade>
 				<KeySizer disabled={failed} />
 			</div>

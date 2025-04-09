@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { getKey } from '$lib/secrets';
-	import { tweened } from 'svelte/motion';
+	import { Tween } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 	import Key from '$lib/components/secrets/Key.svelte';
 	import { tooltip } from '$lib/actions/tooltip';
@@ -12,10 +10,11 @@
 	let xStart = $state(0);
 	let xNow = $state(0);
 	let lastOffset = $state(0);
-	let offset = tweened(lastOffset, { easing: cubicOut });
+	let target = $derived(Math.max(0, Math.min(110, lastOffset + (xNow - xStart))));
+	let offset = $derived(new Tween(target, { easing: cubicOut }));
 
 	const dragOn = (e: MouseEvent) => {
-		lastOffset = $offset;
+		lastOffset = offset.current;
 		xStart = e.clientX;
 		xNow = e.clientX;
 		document.addEventListener('mouseup', dragOff);
@@ -23,7 +22,7 @@
 	};
 
 	const dragOff = () => {
-		const target = $offset > lastOffset ? 110 : 0;
+		const target = offset.current > lastOffset ? 110 : 0;
 
 		offset.set(target);
 
@@ -34,21 +33,17 @@
 	const handleDrag = (e: MouseEvent) => {
 		xNow = e.clientX;
 	};
-
-	run(() => {
-		offset.set(Math.max(0, Math.min(110, lastOffset + (xNow - xStart))), { duration: 0 });
-	});
 </script>
 
-{#if $page.status === 404}
+{#if page.status === 404}
 	<h1>
 		<span aria-hidden="true" class="key" use:tooltip={key}><Key {key} /></span>
-		<span class="title" style="--offset: {$offset}" onmousedown={dragOn}>
+		<span class="title" style="--offset: {offset.current}" onmousedown={dragOn} role="none">
 			Nothing to See Here!
 		</span>
 	</h1>
 	<p>The page you attempted to reach does not exist.</p>
-{:else if $page.error}
+{:else if page.error}
 	<h1>Uh-Oh!</h1>
 	<p>Something went terribly wrong.</p>
 {/if}

@@ -1,15 +1,10 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { rotateAngleAroundOrigin, type Coordinates } from '$lib/utils/geotrig';
 
 	const edgeCoordinates: Coordinates = [60, 20];
 	let offset = $state(0);
-	let referenceCoordinates: Coordinates = $state();
+	let referenceCoordinates: Coordinates = $derived([60, 20 - offset]);
 
-	run(() => {
-		referenceCoordinates = [60, 20 - offset];
-	});
 	let controlPoint = $derived(rotateAngleAroundOrigin(
 		referenceCoordinates,
 		[60, 42],
