@@ -11,12 +11,10 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@fontsource/fira-mono": "^4.5.10",
-		"@neoconfetti/svelte": "^1.0.0",
 		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.20.5",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"@types/cookie": "^0.5.1",
+		"@types/cookie": "^1.0.0",
 		"@types/node": "^18.15.11",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
@@ -26,7 +24,7 @@
 		"mdsvex": "^0.12.3",
 		"prettier": "^3.1.0",
 		"prettier-plugin-svelte": "^3.2.6",
-		"svelte": "^5.0.0",
+		"svelte": "^5.25.10",
 		"svelte-check": "^4.0.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.5.0",
