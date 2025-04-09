@@ -1,9 +1,16 @@
 <script lang="ts">
+	import { run, createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import { getAllowedDigits } from '$lib/config/numeric-bases';
 	import { createEventDispatcher } from 'svelte';
 
-	export let base = 2;
-	export let value: string;
+	interface Props {
+		base?: number;
+		value: string;
+	}
+
+	let { base = 2, value = $bindable() }: Props = $props();
 
 	var dispatch = createEventDispatcher();
 
@@ -46,14 +53,16 @@
 		dispatch('input');
 	};
 
-	$: if (value === '') {
-		value = '0';
-		dispatch('input');
-	}
+	run(() => {
+		if (value === '') {
+			value = '0';
+			dispatch('input');
+		}
+	});
 </script>
 
 <div class="viewer">
-	<input type="text" bind:value on:keydown={mapEntry} on:input />
+	<input type="text" bind:value onkeydown={mapEntry} oninput={bubble('input')} />
 </div>
 
 <style>

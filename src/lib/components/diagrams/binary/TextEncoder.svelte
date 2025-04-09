@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { getAllowedDigits, getBaseName } from '$lib/config/numeric-bases';
 
-	export let base: number;
+	interface Props {
+		base: number;
+	}
+
+	let { base }: Props = $props();
 
 	let bitSize = Math.log(256) / Math.log(base);
 	if (bitSize !== Math.floor(bitSize)) bitSize = 0;
@@ -50,8 +54,8 @@
 		);
 	};
 
-	let valuePlain = 'Hello, world!';
-	let valueEncoded = '0';
+	let valuePlain = $state('Hello, world!');
+	let valueEncoded = $state('0');
 
 	handlePlaintextChange();
 </script>
@@ -61,18 +65,18 @@
 		<h3>{getBaseName(base)}</h3>
 		<textarea
 			bind:value={valueEncoded}
-			on:input={handleEncodingChange}
-			on:blur={() => (valueEncoded = formatEncoding(valueEncoded))}
-		/>
+			oninput={handleEncodingChange}
+			onblur={() => (valueEncoded = formatEncoding(valueEncoded))}
+		></textarea>
 	</div>
 
 	<div>
 		<h3>Plain Text</h3>
 		<textarea
 			bind:value={valuePlain}
-			on:input={handlePlaintextChange}
-			on:blur={() => (valuePlain = formatPlaintext(valuePlain))}
-		/>
+			oninput={handlePlaintextChange}
+			onblur={() => (valuePlain = formatPlaintext(valuePlain))}
+		></textarea>
 	</div>
 </div>
 

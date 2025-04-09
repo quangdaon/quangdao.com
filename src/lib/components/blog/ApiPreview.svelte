@@ -2,13 +2,19 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
-	export let slug: string;
-	let loading = true;
-	let status: number;
-	let body: string | null;
+	interface Props {
+		slug: string;
+	}
 
-	const refresh = async () => {
+	let { slug }: Props = $props();
+	let loading = $state(true);
+	let status: number = $state(0);
+	let body: string | null = $state('');
+
+	const refresh = async (e?: Event) => {
 		if (!url) return;
+
+		if (e) e.preventDefault();
 
 		loading = true;
 
@@ -26,7 +32,7 @@
 
 	onMount(() => refresh());
 
-	$: url = browser ? `${window.location.origin}/api/${slug}` : '';
+	let url = $derived(browser ? `${window.location.origin}/api/${slug}` : '');
 </script>
 
 <div class="api-preview">
@@ -35,9 +41,7 @@
 			API Preview: {url}
 		</div>
 		<div class="api-preview-refresh">
-			<button on:click|preventDefault={() => refresh()}>
-				Refresh
-			</button>
+			<button onclick={(e) => refresh(e)}> Refresh </button>
 		</div>
 	</div>
 	<div class="api-preview-body">
@@ -53,7 +57,8 @@ Response Body: {body}{/if}</pre>
 	.api-preview {
 		background: hsl(220, 13%, 18%);
 		margin: 1em 0;
-		&-header, &-body {
+		&-header,
+		&-body {
 			padding: 0.5em;
 		}
 		&-header {

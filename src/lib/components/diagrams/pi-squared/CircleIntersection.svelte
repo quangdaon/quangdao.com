@@ -2,15 +2,15 @@
 	import type { Coordinates } from '$lib/utils/geotrig';
 	import SvgDiagram from '../SvgDiagram.svelte';
 
-	let controlPoint: Coordinates = [150, 59];
-	let graphRef: SVGGElement;
+	let controlPoint: Coordinates = $state([150, 59]);
+	let graphRef: SVGGElement = $state();
 
 	const radius = 120;
 	const width = radius * 2;
 
 	let start: Coordinates;
 	let startMouse: Coordinates;
-	let showGuides = true;
+	let showGuides = $state(true);
 
 	const getMouseMoveHandler = () => (evt: MouseEvent) => {
 		const ratio = width / graphRef.getBoundingClientRect().width;
@@ -32,16 +32,16 @@
 		});
 	};
 
-	$: adjustedX = Math.abs(controlPoint[0] - radius);
-	$: adjustedY = Math.abs(controlPoint[1] - radius);
-	$: dist = Math.sqrt(adjustedX ** 2 + adjustedY ** 2);
-	$: inCircle = dist <= radius;
-	$: stats = [
+	let adjustedX = $derived(Math.abs(controlPoint[0] - radius));
+	let adjustedY = $derived(Math.abs(controlPoint[1] - radius));
+	let dist = $derived(Math.sqrt(adjustedX ** 2 + adjustedY ** 2));
+	let inCircle = $derived(dist <= radius);
+	let stats = $derived([
 		`Coordinates: (${controlPoint[0] - radius}, ${(controlPoint[1] - radius) * -1})`,
 		`Distance: ${dist.toFixed(2)}`,
 		`Radius: ${radius}`,
 		`In Circle: ${inCircle ? 'Yes' : 'No'}`
-	];
+	]);
 </script>
 
 <SvgDiagram viewBox="-4 -4 400 250">
@@ -57,7 +57,7 @@
 			cy={controlPoint[1]}
 			r="4"
 			class="control"
-			on:mousedown={(e) => dragStart(e)}
+			onmousedown={(e) => dragStart(e)}
 		/>
 		{#if showGuides}
 		<circle cx={radius} cy={radius} r="2" />

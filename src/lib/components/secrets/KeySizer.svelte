@@ -1,16 +1,24 @@
 <script lang="ts">
-	export let disabled: boolean = false;
+	import { run } from 'svelte/legacy';
+
 	import { keyValue } from '$lib/data/store';
 	import KeyAnimated from './KeyAnimated.svelte';
 	import ToothSelector from './ToothSelector.svelte';
-	const teeth = $keyValue.split('').map((e) => +e);
+	interface Props {
+		disabled?: boolean;
+	}
 
-	$: $keyValue = teeth.join('');
+	let { disabled = false }: Props = $props();
+	const teeth = $state($keyValue.split('').map((e) => +e));
+
+	run(() => {
+		$keyValue = teeth.join('');
+	});
 </script>
 
 <div class="keysizer">
-	{#each teeth as tooth}
-		<ToothSelector bind:value={tooth} {disabled} />
+	{#each teeth as tooth, i}
+		<ToothSelector bind:value={teeth[i]} {disabled} />
 	{/each}
 </div>
 

@@ -1,17 +1,25 @@
 <script lang="ts">
-	export let viewBox: string;
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		viewBox: string;
+		children?: Snippet;
+		[key: string]: any;
+	}
+
+	let { ...props }: Props = $props();
 </script>
 
 <div class="diagram">
-	<svg {viewBox} {...$$props}>
-		<slot />
+	<svg {...props}>
+		{@render props.children?.()}
 	</svg>
 </div>
 
-
 <style>
-  svg :global(.stroke), svg :global(line) {
-    fill: transparent;
-    stroke: var(--color-foreground);
-  }
+	svg :global(.stroke),
+	svg :global(line) {
+		fill: transparent;
+		stroke: var(--color-foreground);
+	}
 </style>

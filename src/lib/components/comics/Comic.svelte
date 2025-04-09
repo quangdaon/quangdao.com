@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { tooltip } from '$lib/actions/tooltip';
 
-	export let slug: string;
-	export let alt: string;
+	interface Props {
+		slug: string;
+		alt: string;
+	}
+
+	let { slug, alt }: Props = $props();
 </script>
 
 <a href={`/images/comics/large/${slug}.png`} use:tooltip={'View Large Image'} target="_blank">

@@ -22,7 +22,7 @@ const config = {
 	},
 	extensions: ['.svelte', '.md', '.svx'],
 	preprocess: [
-		vitePreprocess(),
+		vitePreprocess({script: true}),
 		mdsvex({
 			extensions: ['.md', '.svx'],
 			remarkPlugins: [remarkMath],

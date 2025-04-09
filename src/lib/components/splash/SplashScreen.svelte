@@ -12,10 +12,10 @@
 
 	const theme = getCurrentTheme();
 
-	$: animation = (node: Element) =>
+	let animation = $derived((node: Element) =>
 		$prefersReducedMotion
 			? fade(node, { duration: 250, easing: sineInOut })
-			: fly(node, { x: '-100%', duration: 750, opacity: 1, easing: sineInOut });
+			: fly(node, { x: '-100%', duration: 750, opacity: 1, easing: sineInOut }));
 </script>
 
 <div class="splash splash-theme-{theme?.name}">

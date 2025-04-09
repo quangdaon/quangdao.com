@@ -1,9 +1,13 @@
 <script lang="ts">
 	import Comments from '$lib/components/blog/Comments.svelte';
 	import { toFormattedDate } from '$lib/utils/datetime';
-	export let data;
+	interface Props {
+		data: any;
+	}
 
-	$: post = data.post;
+	let { data }: Props = $props();
+
+	let post = $derived(data.post);
 </script>
 
 <section class="post">
@@ -13,7 +17,7 @@
 	</header>
 
 	<div class="post">
-		<svelte:component this={post.component} />
+		<post.component />
 	</div>
 </section>
 

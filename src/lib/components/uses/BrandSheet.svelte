@@ -7,7 +7,7 @@
 <ul class="colors">
 	{#each colors as color}
 		<li class="color">
-			<div class="color-display" style="--color: {color}" />
+			<div class="color-display" style="--color: {color}"></div>
 			<div class="color-label">{color}</div>
 		</li>
 	{/each}

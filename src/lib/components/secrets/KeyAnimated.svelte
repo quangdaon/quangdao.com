@@ -3,7 +3,7 @@
 	import Key from './Key.svelte';
 	import { keyLength, keyMax } from '$lib/secrets';
 	const cycleValue = (keyMax + 1) ** keyLength;
-	let num = 0;
+	let num = $state(0);
 	let lastUpdateMs = 0;
 
 	function drawLoop(ms: number) {
@@ -19,7 +19,7 @@
 		requestAnimationFrame(drawLoop);
 	});
 
-	$: key = (num % cycleValue).toString(keyMax + 1).padStart(keyLength, '0');
+	let key = $derived((num % cycleValue).toString(keyMax + 1).padStart(keyLength, '0'));
 </script>
 
 <div class="block">

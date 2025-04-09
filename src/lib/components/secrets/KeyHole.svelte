@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import { keyValue } from '$lib/data/store';
 	import { getKey } from '$lib/secrets';
 	import { createEventDispatcher } from 'svelte';
@@ -7,14 +9,14 @@
 	import KeySizer from './KeySizer.svelte';
 	import { tooltip } from '$lib/actions/tooltip';
 	import { tracker } from '$lib/utils/tracking';
-	let showBuilder = false;
+	let showBuilder = $state(false);
 
-	let animationElement: Element;
+	let animationElement: Element = $state();
 
 	const dispatch = createEventDispatcher();
 
-	let failed = false;
-	let passed = false;
+	let failed = $state(false);
+	let passed = $state(false);
 
 	const checkKey = () => {
 		const match = $keyValue === getKey(new Date());
@@ -38,7 +40,7 @@
 		aria-label="Keyhole Button"
 		use:tooltip={showBuilder ? null : 'Hmm... What could this possibly be?'}
 		class="keyhole"
-		on:click={() => (showBuilder = !showBuilder)}
+		onclick={() => (showBuilder = !showBuilder)}
 	>
 		<svg viewBox="0 0 100 150">
 			<circle cx="50" cy="50" r="50" class="keyhole-shape" />
@@ -47,7 +49,7 @@
 	</button>
 
 	{#if showBuilder}
-		<form class="keymaker" on:submit|preventDefault={checkKey}>
+		<form class="keymaker" onsubmit={preventDefault(checkKey)}>
 			<div class="sizer" in:slide out:fade>
 				<KeySizer disabled={failed} />
 			</div>

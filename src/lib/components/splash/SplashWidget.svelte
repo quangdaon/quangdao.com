@@ -9,9 +9,9 @@
 
 	type Widget = 'hand' | 'jam-with-me';
 
-	let music: JamWithMeDetails | null;
+	let music: JamWithMeDetails | null = $state();
 
-	let widget: Widget | null = 'hand';
+	let widget: Widget | null = $state('hand');
 
 	const transitionDuration = 500;
 

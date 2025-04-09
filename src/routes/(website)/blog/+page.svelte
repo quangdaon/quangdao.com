@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { toFormattedDate } from '$lib/utils/datetime';
 
-	export let data;
+	interface Props {
+		data: any;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <h1>Quangdao's Blog</h1>

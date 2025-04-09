@@ -1,12 +1,16 @@
 <script lang="ts">
-	export let baseIn: number;
-	export let baseOut: number;
-	export let value: string;
+	interface Props {
+		baseIn: number;
+		baseOut: number;
+		value: string;
+	}
+
+	let { baseIn, baseOut, value }: Props = $props();
 
 	const resultsInDecimal = false;
 	const targetBase = resultsInDecimal ? 10 : baseOut;
 
-	$: digits = value.split('');
+	let digits = $derived(value.split(''));
 </script>
 
 <div class="breakdown">

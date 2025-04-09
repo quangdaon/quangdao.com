@@ -3,8 +3,12 @@
 	import type { ComicPost } from '$lib/content/types';
 	import { onMount } from 'svelte';
 	import Comic from './Comic.svelte';
-	export let slug: string;
-	let comic: ComicPost | undefined;
+	interface Props {
+		slug: string;
+	}
+
+	let { slug }: Props = $props();
+	let comic: ComicPost | undefined = $state();
 
 	onMount(async () => {
 		comic = await getPost('comics', slug);

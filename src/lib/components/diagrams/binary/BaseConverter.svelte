@@ -3,12 +3,16 @@
 	import BaseNumberInput from './BaseNumberInput.svelte';
 	import BaseConverterBreakdown from './BaseConverterBreakdown.svelte';
 
-	export let baseIn: number;
-	export let baseOut: number;
-	let breakdownOpen = false;
+	interface Props {
+		baseIn: number;
+		baseOut: number;
+	}
 
-	let valueIn = '0';
-	let valueOut = '0';
+	let { baseIn, baseOut }: Props = $props();
+	let breakdownOpen = $state(false);
+
+	let valueIn = $state('0');
+	let valueOut = $state('0');
 
 	const convertBase = (str: string, from: number, to: number) => {
 		if (!str) return '0';

@@ -1,21 +1,25 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { rotateAngleAroundOrigin, type Coordinates } from '$lib/utils/geotrig';
 
 	const edgeCoordinates: Coordinates = [60, 20];
-	let offset = 0;
-	let referenceCoordinates: Coordinates;
+	let offset = $state(0);
+	let referenceCoordinates: Coordinates = $state();
 
-	$: referenceCoordinates = [60, 20 - offset];
-	$: controlPoint = rotateAngleAroundOrigin(
+	run(() => {
+		referenceCoordinates = [60, 20 - offset];
+	});
+	let controlPoint = $derived(rotateAngleAroundOrigin(
 		referenceCoordinates,
 		[60, 42],
 		-(Math.PI * 3 / 16)
-	);
-	$: referenceEdge = rotateAngleAroundOrigin(
+	));
+	let referenceEdge = $derived(rotateAngleAroundOrigin(
 		edgeCoordinates,
 		[60, 42],
 		-(Math.PI * 3 / 16)
-	);
+	));
 </script>
 
 <svg viewBox="40 18 25 25">

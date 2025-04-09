@@ -3,7 +3,7 @@
 	import { getKey } from '$lib/secrets';
 	import Secrets from './secrets.md';
 	import { browser } from '$app/environment';
-	let solved = $keyValue === getKey(new Date());
+	let solved = $state($keyValue === getKey(new Date()));
 	import Quote from '$lib/components/shared/Quote.svelte';
 	import { fade } from 'svelte/transition';
 	import KeyHole from '$lib/components/secrets/KeyHole.svelte';

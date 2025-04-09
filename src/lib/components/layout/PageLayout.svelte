@@ -4,7 +4,12 @@
 	import SiteHeader from '$lib/components/layout/SiteHeader.svelte';
 	import { fade } from 'svelte/transition';
 
-	export let delay = true;
+	interface Props {
+		delay?: boolean;
+		children?: import('svelte').Snippet;
+	}
+
+	let { delay = true, children }: Props = $props();
 </script>
 
 <div out:fade|global={{ delay: delay ? 1000 : 0, duration: 0 }}>
@@ -12,7 +17,7 @@
 	<SiteHeader />
 
 	<main>
-		<slot />
+		{@render children?.()}
 	</main>
 
 	<SiteFooter />

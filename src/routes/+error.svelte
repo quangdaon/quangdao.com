@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { page } from '$app/stores';
 	import { getKey } from '$lib/secrets';
 	import { tweened } from 'svelte/motion';
@@ -7,9 +9,9 @@
 	import { tooltip } from '$lib/actions/tooltip';
 	const key = getKey(new Date());
 
-	let xStart = 0;
-	let xNow = 0;
-	let lastOffset = 0;
+	let xStart = $state(0);
+	let xNow = $state(0);
+	let lastOffset = $state(0);
 	let offset = tweened(lastOffset, { easing: cubicOut });
 
 	const dragOn = (e: MouseEvent) => {
@@ -33,15 +35,15 @@
 		xNow = e.clientX;
 	};
 
-	$: {
+	run(() => {
 		offset.set(Math.max(0, Math.min(110, lastOffset + (xNow - xStart))), { duration: 0 });
-	}
+	});
 </script>
 
 {#if $page.status === 404}
 	<h1>
 		<span aria-hidden="true" class="key" use:tooltip={key}><Key {key} /></span>
-		<span class="title" style="--offset: {$offset}" on:mousedown={dragOn}>
+		<span class="title" style="--offset: {$offset}" onmousedown={dragOn}>
 			Nothing to See Here!
 		</span>
 	</h1>
