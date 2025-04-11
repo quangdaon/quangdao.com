@@ -1,6 +1,6 @@
 import { getPost } from '$lib/content';
 import { error } from '@sveltejs/kit';
-import { loadThumbnail } from '$lib/utils/thumbnails';
+import { generateThumbnail } from '$lib/utils/thumbnails';
 
 export async function GET({ params }) {
 	const { slug } = params;
@@ -8,12 +8,11 @@ export async function GET({ params }) {
 
 	if (!post) throw error(404, 'Post not found');
 
-	const [cached, buffer] = await loadThumbnail(slug, post.title);
+	const canvas = await generateThumbnail(post.title);
 
-	return new Response(buffer, {
+	return new Response(canvas.toBuffer('image/png'), {
 		headers: {
-			'Content-Type': 'image/png',
-			'X-Cache': cached ? 'HIT' : 'MISS'
+			'Content-Type': 'image/png'
 		}
 	});
 }
