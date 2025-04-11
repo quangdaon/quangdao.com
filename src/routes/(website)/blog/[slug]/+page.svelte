@@ -10,6 +10,10 @@
 	let post = $derived(data.post);
 </script>
 
+<svelte:head>
+	<meta name="author" content="Quangdao Nguyen" />
+</svelte:head>
+
 <section class="post">
 	<header>
 		<h1>{post.title}</h1>
