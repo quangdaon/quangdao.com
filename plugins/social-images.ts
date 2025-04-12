@@ -1,12 +1,16 @@
-import { CanvasRenderingContext2D, createCanvas, loadImage, registerFont } from 'canvas';
-import { existsSync } from 'node:fs';
+import type { Plugin } from 'vite';
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import fm from 'front-matter';
+import type { Dirent } from 'fs';
+import type { BlogPost } from '$lib/content/types';
+import { existsSync } from 'node:fs';
+import { CanvasRenderingContext2D, createCanvas, loadImage, registerFont } from 'canvas';
 
 const assetsBasePath = './assets';
 const socialBaseImagePath = `${assetsBasePath}/images/social-clean.png`;
 const ubuntuMonoFontPath = `${assetsBasePath}/fonts/UbuntuMono-R.ttf`;
-const generatedImagesCachePath = `${assetsBasePath}/generated`;
+const generatedImagesCachePath = `static/images/thumbnails`;
 
 function wrapText(
 	ctx: CanvasRenderingContext2D,
@@ -79,22 +83,41 @@ export async function generateThumbnail(text: string) {
 	return canvas;
 }
 
-export async function loadThumbnail(
-	slug: string,
-	text: string
-): Promise<[boolean, Buffer<ArrayBufferLike>]> {
-	const outputPath = path.resolve(`${generatedImagesCachePath}/${slug}.png`);
+async function saveThumbnail(file: Dirent) {
+	const content = await fs.readFile(path.join(file.parentPath, file.name), 'utf-8');
+	const data = fm<BlogPost>(content); // expects frontmatter with title
+
+	if (data.attributes.socialImage) return;
+
+	const slug = file.name.replace(/^\d{4}-\d{2}-\d{2}-(.*?).md/, '$1').replace(/\\/g, '/');
+	const outputPath = `${generatedImagesCachePath}/${slug}.g.png`;
 
 	if (existsSync(outputPath)) {
-		const cachedBuffer = await fs.readFile(outputPath);
-		return [true, cachedBuffer];
+		return;
 	}
 
-	const canvas = await generateThumbnail(text);
+	const canvas = await generateThumbnail(data.attributes.title);
 	const buffer = canvas.toBuffer('image/png');
 
 	await fs.mkdir(path.dirname(outputPath), { recursive: true });
 	await fs.writeFile(outputPath, buffer);
 
-	return [false, buffer];
+	console.log(`Generated ${outputPath}`);
+}
+
+async function generateImages() {
+	const baseDir = path.resolve('src/posts/blog');
+	const files = await fs.readdir(baseDir, { withFileTypes: true });
+
+	const promises = files.map(saveThumbnail);
+
+	await Promise.all(promises);
+}
+
+export function generateSocialImages(): Plugin {
+	return {
+		name: 'generate-social-images',
+		buildStart: generateImages,
+		configureServer: generateImages
+	};
 }

@@ -11,7 +11,7 @@ export async function load({ params }: PageLoadEvent) {
 		pageDescription: post.description
 	};
 
-	data.pageSocialImage = post.socialImage ?? `/api/thumbnails/${post.slug}.png`;
-	
+	data.pageSocialImage = post.socialImage ?? `/images/thumbnails/${post.slug}.g.png`;
+
 	return data;
 }
