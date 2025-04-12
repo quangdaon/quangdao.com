@@ -25,6 +25,10 @@ const textBox = {
 	height: 180 - 20
 };
 
+// Console formatting helpers
+const dim = (text: string) => `\x1b[2m${text}\x1b[0m`;
+const cyan = (text: string) => `\x1b[36m${text}\x1b[0m`;
+
 // Utility: Wrap text to fit inside a max width
 function wrapText(
 	ctx: CanvasRenderingContext2D,
@@ -100,7 +104,7 @@ function getOutputPath(slug: string) {
 }
 
 // Generate + save a thumbnail image if not already cached
-async function saveThumbnail(file: Dirent) {
+async function saveThumbnail(file: Dirent, maxLength: number) {
 	const fullPath = path.join(blogPostsDir, file.name);
 	const content = await fs.readFile(fullPath, 'utf-8');
 	const data = fm<BlogPost>(content);
@@ -118,14 +122,25 @@ async function saveThumbnail(file: Dirent) {
 	await fs.mkdir(path.dirname(outputPath), { recursive: true });
 	await fs.writeFile(outputPath, buffer);
 
-	console.log(`Generated ${outputPath}`);
+  const sizeKB = (buffer.length / 1024).toFixed(2);
+  
+	const filepathLog = outputPath
+		.replace(/\\/g, '/')
+		.padEnd(maxLength, ' ')
+		.replace(new RegExp(`^(${generatedImagesCachePath}/)(.*?)(.g.png)`), (_, path, slug, ext) => {
+			return `${dim(path)}${cyan(slug)}${dim(ext)}`;
+		});
+	console.log(`Generated thumbnail: ${filepathLog.padEnd(maxLength, ' ')} (${sizeKB} KB)`);
 }
 
 // Process all blog files
 async function generateImages() {
 	const files = await fs.readdir(blogPostsDir, { withFileTypes: true });
-	const postFiles = files.filter(f => f.isFile() && f.name.endsWith('.md'));
-	await Promise.all(postFiles.map(saveThumbnail));
+	const maxLength = Math.max(
+		...files.map((e) => path.join(generatedImagesCachePath, e.name).length - 6)
+	);
+	const postFiles = files.filter((f) => f.isFile() && f.name.endsWith('.md'));
+	await Promise.all(postFiles.map((f) => saveThumbnail(f, maxLength)));
 }
 
 // Vite plugin definition
