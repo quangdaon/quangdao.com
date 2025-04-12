@@ -1,17 +1,31 @@
 import type { Plugin } from 'vite';
 import path from 'node:path';
 import fs from 'node:fs/promises';
-import fm from 'front-matter';
-import type { Dirent } from 'fs';
-import type { BlogPost } from '$lib/content/types';
 import { existsSync } from 'node:fs';
+import type { Dirent } from 'fs';
+
+import fm from 'front-matter';
+import type { BlogPost } from '$lib/content/types';
+
 import { CanvasRenderingContext2D, createCanvas, loadImage, registerFont } from 'canvas';
 
+// Constants
 const assetsBasePath = './assets';
-const socialBaseImagePath = `${assetsBasePath}/images/social-clean.png`;
-const ubuntuMonoFontPath = `${assetsBasePath}/fonts/UbuntuMono-R.ttf`;
-const generatedImagesCachePath = `static/images/thumbnails`;
+const socialBaseImagePath = path.join(assetsBasePath, 'images/social-clean.png');
+const ubuntuMonoFontPath = path.join(assetsBasePath, 'fonts/UbuntuMono-R.ttf');
+const generatedImagesCachePath = 'static/images/thumbnails';
+const blogPostsDir = path.resolve('src/posts/blog');
 
+const canvasWidth = 1200;
+const canvasHeight = 630;
+const textBox = {
+	x: 60 + 10,
+	y: 310 + 10,
+	width: 1080 - 20,
+	height: 180 - 20
+};
+
+// Utility: Wrap text to fit inside a max width
 function wrapText(
 	ctx: CanvasRenderingContext2D,
 	text: string,
@@ -20,47 +34,41 @@ function wrapText(
 ): string[] {
 	ctx.font = `normal ${fontSize}px UbuntuMono`;
 	const words = text.split(' ');
-	const lines = [];
+	const lines: string[] = [];
+
 	let line = '';
 
-	for (let i = 0; i < words.length; i++) {
-		const testLine = line + words[i] + ' ';
-		const metrics = ctx.measureText(testLine);
-		if (metrics.width > maxWidth && i > 0) {
+	for (const word of words) {
+		const testLine = `${line}${word} `;
+		if (ctx.measureText(testLine).width > maxWidth && line) {
 			lines.push(line.trim());
-			line = words[i] + ' ';
+			line = `${word} `;
 		} else {
 			line = testLine;
 		}
 	}
+
 	lines.push(line.trim());
 	return lines;
 }
 
-export async function generateThumbnail(text: string) {
+// Main: Generate a canvas with wrapped title text
+async function generateThumbnail(text: string) {
 	const image = await loadImage(path.resolve(socialBaseImagePath));
 	registerFont(path.resolve(ubuntuMonoFontPath), { family: 'UbuntuMono' });
 
-	const width = 1200;
-	const height = 630;
-	const canvas = createCanvas(width, height);
+	const canvas = createCanvas(canvasWidth, canvasHeight);
 	const ctx = canvas.getContext('2d');
 
-	ctx.drawImage(image, 0, 0, width, height);
-
-	const boxPadding = 10;
-	const boxX = 60 + boxPadding;
-	const boxY = 310 + boxPadding;
-	const boxWidth = 1080 - boxPadding * 2;
-	const boxHeight = 180 - boxPadding * 2;
+	ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
 
 	let fontSize = 100;
 	let lines: string[] = [];
+
 	while (fontSize > 10) {
-		lines = wrapText(ctx, text, boxWidth, fontSize);
-		const lineHeight = fontSize * 1.2;
-		const totalHeight = lines.length * lineHeight;
-		if (totalHeight <= boxHeight) break;
+		lines = wrapText(ctx, text, textBox.width, fontSize);
+		const totalHeight = lines.length * fontSize * 1.2;
+		if (totalHeight <= textBox.height) break;
 		fontSize -= 2;
 	}
 
@@ -70,31 +78,39 @@ export async function generateThumbnail(text: string) {
 
 	const lineHeight = fontSize * 1.2;
 	const totalTextHeight = lines.length * lineHeight;
-	const startY = boxY + (boxHeight - totalTextHeight) / 2;
+	const startY = textBox.y + (textBox.height - totalTextHeight) / 2;
 
-	for (let i = 0; i < lines.length; i++) {
-		const line = lines[i];
+	lines.forEach((line, i) => {
 		const lineWidth = ctx.measureText(line).width;
-		const x = boxX + (boxWidth - lineWidth) / 2;
+		const x = textBox.x + (textBox.width - lineWidth) / 2;
 		const y = startY + i * lineHeight;
 		ctx.fillText(line, x, y);
-	}
+	});
 
 	return canvas;
 }
 
+// Helpers
+function getSlug(fileName: string) {
+	return fileName.replace(/^\d{4}-\d{2}-\d{2}-(.*?).md$/, '$1').replace(/\\/g, '/');
+}
+
+function getOutputPath(slug: string) {
+	return path.join(generatedImagesCachePath, `${slug}.g.png`);
+}
+
+// Generate + save a thumbnail image if not already cached
 async function saveThumbnail(file: Dirent) {
-	const content = await fs.readFile(path.join(file.parentPath, file.name), 'utf-8');
-	const data = fm<BlogPost>(content); // expects frontmatter with title
+	const fullPath = path.join(blogPostsDir, file.name);
+	const content = await fs.readFile(fullPath, 'utf-8');
+	const data = fm<BlogPost>(content);
 
 	if (data.attributes.socialImage) return;
 
-	const slug = file.name.replace(/^\d{4}-\d{2}-\d{2}-(.*?).md/, '$1').replace(/\\/g, '/');
-	const outputPath = `${generatedImagesCachePath}/${slug}.g.png`;
+	const slug = getSlug(file.name);
+	const outputPath = getOutputPath(slug);
 
-	if (existsSync(outputPath)) {
-		return;
-	}
+	if (existsSync(outputPath)) return;
 
 	const canvas = await generateThumbnail(data.attributes.title);
 	const buffer = canvas.toBuffer('image/png');
@@ -105,15 +121,14 @@ async function saveThumbnail(file: Dirent) {
 	console.log(`Generated ${outputPath}`);
 }
 
+// Process all blog files
 async function generateImages() {
-	const baseDir = path.resolve('src/posts/blog');
-	const files = await fs.readdir(baseDir, { withFileTypes: true });
-
-	const promises = files.map(saveThumbnail);
-
-	await Promise.all(promises);
+	const files = await fs.readdir(blogPostsDir, { withFileTypes: true });
+	const postFiles = files.filter(f => f.isFile() && f.name.endsWith('.md'));
+	await Promise.all(postFiles.map(saveThumbnail));
 }
 
+// Vite plugin definition
 export function generateSocialImages(): Plugin {
 	return {
 		name: 'generate-social-images',
