@@ -3,11 +3,22 @@ import type { RequestHandler } from '@sveltejs/kit';
 export const GET: RequestHandler = async ({ url, request }) => {
 	const origin = request.headers.get('origin') ?? '';
 
+	if (!origin) {
+		return new Response(JSON.stringify({ error: 'Bad request' }), {
+			status: 400,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});		
+	}
+
 	const domain = url.searchParams.get('domain');
 	const headers = {
 		'Content-Type': 'application/json',
 		'Access-Control-Allow-Origin': origin.includes('quangdao.com') ? origin : 'not_allowed'
 	};
+
+	console.log(origin);
 
 	if (!domain) {
 		return new Response(JSON.stringify({ error: 'Missing domain parameter' }), {
