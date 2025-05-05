@@ -1,7 +1,11 @@
 import type { PageData } from './$types';
 
-export const load = ({ url }: { url: URL }): PageData => {
+export const load = ({ url, setHeaders }): PageData => {
 	const path: string = url.pathname;
+
+	setHeaders({
+		'X-Frame-Options': 'SAMEORIGIN'
+	});
 
 	return {
 		path,
