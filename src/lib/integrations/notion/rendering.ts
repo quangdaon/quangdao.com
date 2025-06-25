@@ -5,7 +5,8 @@ import type {
 } from '@notionhq/client';
 import type {
 	BulletedListItemBlockObjectResponse,
-	NumberedListItemBlockObjectResponse
+	NumberedListItemBlockObjectResponse,
+	TextRichTextItemResponse
 } from '@notionhq/client/build/src/api-endpoints';
 
 type BlockGroup =
@@ -18,11 +19,29 @@ type BlockGroup =
 			blocks: BulletedListItemBlockObjectResponse[];
 	  };
 
+type Annotation = keyof TextRichTextItemResponse['annotations'];
+const annotationsMapping: Partial<Record<Annotation, string>> = {
+	italic: 'i',
+	bold: 'b',
+	strikethrough: 's',
+	code: 'code',
+	underline: 'u'
+};
+
 function renderComponents(components: RichTextItemResponse[], tag: string) {
 	let innerContent = '';
 
 	for (const comp of components) {
 		let node = comp.plain_text;
+
+		for (const a in comp.annotations) {
+			const annotation = a as keyof typeof comp.annotations;
+
+			if (comp.annotations[annotation] && annotation in annotationsMapping) {
+				const tag = annotationsMapping[annotation];
+				node = `<${tag}>${node}</${tag}>`;
+			}
+		}
 
 		if (comp.type === 'text' && comp.href) {
 			node = `<a href="${comp.href}">${node}</a>`;
@@ -46,6 +65,7 @@ function renderGroup(group: BlockGroup) {
 
 	return `<${tag}>${items.join('')}</${tag}>`;
 }
+
 export const renderContent = (page: ListBlockChildrenResponse): string => {
 	let result = '';
 	const blocks = [...page.results];
@@ -83,6 +103,12 @@ const handleBlock = (
 	switch (block.type) {
 		case 'paragraph':
 			return renderComponents(block.paragraph.rich_text, 'p');
+		case 'heading_1':
+			return renderComponents(block.heading_1.rich_text, 'h1');
+		case 'heading_2':
+			return renderComponents(block.heading_2.rich_text, 'h2');
+		case 'heading_3':
+			return renderComponents(block.heading_3.rich_text, 'h3');
 		case 'numbered_list_item':
 			startGroup({
 				type: 'numbered_list_item',

@@ -18,10 +18,10 @@
 	<a href="https://sive.rs/now">Derek Sivers</a>. If you don't have one, you should!
 </p>
 
-<p><i>Last Updated: {convertedLastUpdated.toLocaleDateString()}</i></p>
-
 {#each activities as activity}
 	<h2 data-hobby-id={activity.notionId}>{activity.title}</h2>
 
 	{@html activity.content}
 {/each}
+
+<p><i>Last Updated: {convertedLastUpdated.toLocaleDateString()}</i></p>
