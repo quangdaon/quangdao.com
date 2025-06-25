@@ -51,7 +51,7 @@ export const refreshActivities = async () => {
 	);
 
 	const activities = (await Promise.all(promises)).filter((e) => e !== null);
-	const lastUpdated = [...editTs].toSorted((a, b) => +a - +b)[0];
+	const lastUpdated = [...editTs].toSorted((a, b) => +b - +a)[0];
 
 	const result = {
 		lastUpdated,
