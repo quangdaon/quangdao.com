@@ -28,7 +28,7 @@ const processHobby = async (entry: PageObjectResponse): Promise<Activity | null>
 const isCacheStale = (date: Date) => {
 	const threshold = new Date();
 	threshold.setDate(threshold.getDate() - +NOTION_ACTIVE_HOBBIES_THRESHOLD_DAYS);
-	
+
 	return date < threshold;
 };
 
@@ -43,6 +43,8 @@ export const getActivities = async (): Promise<ActivitiesResponse> => {
 };
 
 export const refreshActivities = async () => {
+	console.log('Refreshing now page content from Notion...');
+
 	const hobbies = await getNotionHobbies();
 	const editTs = hobbies.results.map((h) => new Date((h as PageObjectResponse).last_edited_time));
 
@@ -60,5 +62,8 @@ export const refreshActivities = async () => {
 
 	cache.data = result;
 	cache.lastChecked = new Date();
+	console.log('Notion refresh completed!');
+
+	console.log(result);
 	return result;
 };

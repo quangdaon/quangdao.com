@@ -1,2 +1,7 @@
-export { getNotionActivities, getNotionHobbies, getNotionHobby } from './functions';
+export {
+	getNotionActivities,
+	getNotionHobbies,
+	getNotionHobby,
+	validateNotionWebhook as verifyNotionWebhook
+} from './functions';
 export { renderContent } from './rendering';
