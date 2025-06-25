@@ -9,8 +9,8 @@ export const definitions = {
 			date: (str) => new Date(str)
 		},
 		filter({ date }) {
-			return dev || date < new Date()
-		} 
+			return dev || date < new Date();
+		}
 	}),
 	comics: definePostType<ComicPost>({
 		transformations: {

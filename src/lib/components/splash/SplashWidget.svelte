@@ -16,7 +16,7 @@
 	const transitionDuration = 500;
 
 	const refreshJamWithMe = async () => {
-		music = await apiGet('/api/jam-with-me');
+		music = await apiGet(fetch, '/api/jam-with-me');
 		if (!music) {
 			setWidget('hand');
 			return;
