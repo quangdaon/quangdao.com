@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import type { ActivitiesResponse } from '$lib/integrations/activities/models';
 
 	interface Props {
@@ -19,9 +20,14 @@
 </p>
 
 {#each activities as activity}
-	<h2 data-hobby-id={activity.notionId}>{activity.title}</h2>
+	<h2 data-hobby-id={dev ? activity.notionId : null}>{activity.title}</h2>
 
 	{@html activity.content}
 {/each}
 
 <p><i>Last Updated: {convertedLastUpdated.toLocaleDateString()}</i></p>
+
+<p>
+	This /now page is largely powered by <a href="https://www.notion.com/">Notion</a>. For more
+	details, check out <a href="/blog/now-by-notion">my blog post on the setup</a>.
+</p>

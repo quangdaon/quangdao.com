@@ -1,5 +1,5 @@
 import { json, error } from '@sveltejs/kit';
-import { verifyNotionWebhook } from '$lib/integrations/notion';
+import { validateNotionWebhook } from '$lib/integrations/notion';
 import { getActivities, refreshActivities } from '$lib/integrations/activities';
 
 export async function GET() {
@@ -16,7 +16,7 @@ export async function POST({ request }) {
 
 	const signature = request.headers.get('X-Notion-Signature') ?? '';
 
-	const isValid = verifyNotionWebhook(token, rawBody, signature);
+	const isValid = validateNotionWebhook(token, rawBody, signature);
 
 	if (!isValid) {
 		return error(403, { message: 'Forbidden' });

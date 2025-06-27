@@ -28,7 +28,7 @@ export const getNotionActivities = async () => {
 	return results;
 };
 
-export const getNotionHobbies = async () => {
+export const getNotionPassions = async () => {
 	const client = new Client({ auth: NOTION_TOKEN });
 	const today = new Date();
 	const threshold = +NOTION_ACTIVE_HOBBIES_THRESHOLD_DAYS;
@@ -70,7 +70,7 @@ export const getNotionHobbies = async () => {
 	return results;
 };
 
-export const getNotionHobby = async (pageId: string) => {
+export const getNotionPassion = async (pageId: string) => {
 	const client = new Client({ auth: NOTION_TOKEN });
 
 	const results = await client.blocks.children.list({

@@ -28,7 +28,20 @@ const annotationsMapping: Partial<Record<Annotation, string>> = {
 	underline: 'u'
 };
 
-function renderComponents(components: RichTextItemResponse[], tag: string) {
+const wrap = (content: string, tag: string, attrs?: Record<string, string>) => {
+	let openingTag = tag;
+
+	if (attrs) {
+		openingTag +=
+			' ' +
+			Object.entries(attrs)
+				.map(([key, val]) => `${key}="${val}"`)
+				.join(' ');
+	}
+	return `<${openingTag}>${content}</${tag}>`;
+};
+
+const renderComponents = (components: RichTextItemResponse[], tag: string) => {
 	let innerContent = '';
 
 	for (const comp of components) {
@@ -39,20 +52,20 @@ function renderComponents(components: RichTextItemResponse[], tag: string) {
 
 			if (comp.annotations[annotation] && annotation in annotationsMapping) {
 				const tag = annotationsMapping[annotation];
-				node = `<${tag}>${node}</${tag}>`;
+				node = wrap(node, tag ?? 'span');
 			}
 		}
 
 		if (comp.type === 'text' && comp.href) {
-			node = `<a href="${comp.href}">${node}</a>`;
+			node = wrap(node, 'a', { href: comp.href });
 		}
 
 		innerContent += node;
 	}
-	return `<${tag}>${innerContent}</${tag}>`;
-}
+	return wrap(innerContent, tag);
+};
 
-function renderGroup(group: BlockGroup) {
+const renderGroup = (group: BlockGroup) => {
 	const tag = group.type === 'bulleted_list_item' ? 'ul' : 'ol';
 	const items: string[] = [];
 
@@ -63,8 +76,8 @@ function renderGroup(group: BlockGroup) {
 		items.push(renderComponents(text, 'li'));
 	}
 
-	return `<${tag}>${items.join('')}</${tag}>`;
-}
+	return wrap(items.join(''), tag);
+};
 
 export const renderContent = (page: ListBlockChildrenResponse): string => {
 	let result = '';
@@ -74,12 +87,10 @@ export const renderContent = (page: ListBlockChildrenResponse): string => {
 	for (const block of blocks) {
 		if (!('type' in block)) continue;
 
-		// Handle grouping logic
 		if (currentGroup && addToGroupIfSameType(currentGroup, block)) {
 			continue;
 		}
 
-		// Flush existing group if block breaks continuity
 		if (currentGroup) {
 			result += renderGroup(currentGroup);
 			currentGroup = null;
@@ -88,7 +99,6 @@ export const renderContent = (page: ListBlockChildrenResponse): string => {
 		result += handleBlock(block, (newGroup) => (currentGroup = newGroup));
 	}
 
-	// Flush final group
 	if (currentGroup) {
 		result += renderGroup(currentGroup);
 	}

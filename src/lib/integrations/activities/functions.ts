@@ -1,5 +1,5 @@
 import type { ActivitiesResponse, Activity } from './models';
-import { getNotionHobbies, getNotionHobby, renderContent } from '../notion';
+import { getNotionPassions, getNotionPassion, renderContent } from '../notion';
 import type { PageObjectResponse } from '@notionhq/client';
 import { NOTION_ACTIVE_HOBBIES_THRESHOLD_DAYS } from '$env/static/private';
 
@@ -11,12 +11,12 @@ let cache: {
 	lastChecked: null
 };
 
-const processHobby = async (entry: PageObjectResponse): Promise<Activity | null> => {
+const processActivity = async (entry: PageObjectResponse): Promise<Activity | null> => {
 	const name = entry.properties['Name'];
 
 	if (name.type !== 'title') return null;
 
-	const page = await getNotionHobby(entry.id);
+	const page = await getNotionPassion(entry.id);
 
 	return {
 		notionId: entry.id,
@@ -43,13 +43,11 @@ export const getActivities = async (): Promise<ActivitiesResponse> => {
 };
 
 export const refreshActivities = async () => {
-	console.log('Refreshing now page content from Notion...');
+	const passions = await getNotionPassions();
+	const editTs = passions.results.map((h) => new Date((h as PageObjectResponse).last_edited_time));
 
-	const hobbies = await getNotionHobbies();
-	const editTs = hobbies.results.map((h) => new Date((h as PageObjectResponse).last_edited_time));
-
-	const promises: Promise<Activity | null>[] = hobbies.results.map((h) =>
-		processHobby(h as PageObjectResponse)
+	const promises: Promise<Activity | null>[] = passions.results.map((h) =>
+		processActivity(h as PageObjectResponse)
 	);
 
 	const activities = (await Promise.all(promises)).filter((e) => e !== null);
@@ -62,8 +60,6 @@ export const refreshActivities = async () => {
 
 	cache.data = result;
 	cache.lastChecked = new Date();
-	console.log('Notion refresh completed!');
 
-	console.log(result);
 	return result;
 };
