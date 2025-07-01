@@ -1,8 +1,8 @@
 ---
 title: Jam With Me! SvelteKit x Spotify API
 description: A tutorial on integrating with a third-party API using SvelteKit's server-side functionality.
-tags: [ api, tutorial, sveltekit ]
-categories: [ Technology ]
+tags: [api, tutorial, sveltekit, website-updates]
+categories: [Technology]
 date: '2024-07-04'
 ---
 
@@ -198,7 +198,7 @@ The final piece to this puzzle is to actually render the currently playing song 
 	const setWidget = async (w: Widget) => {
 		if (widget === w) return;
 
-		 // This, in tandum with the `transition` attribute on the widget-container below, creates a nice fade out/in effect.
+		// This, in tandum with the `transition` attribute on the widget-container below, creates a nice fade out/in effect.
 		widget = null;
 		await delay(transitionDuration);
 		widget = w;
@@ -243,24 +243,24 @@ Of course, the first step in refreshing the jams is to load the data from the en
 
 ```ts
 export const apiGet = async <T>(url: string): Promise<T | null> => {
-  const response = await fetch(url);
+	const response = await fetch(url);
 
-  if (response.status === 204) return null;
+	if (response.status === 204) return null;
 
-  return response.json();
-}
+	return response.json();
+};
 ```
 
- If no data is returned, we just stop here and stay on the hand indefinitely. There is no retry here - the chances of someone landing on the homepage while I'm not playing music on Spotify and sticking around long enough until I am is negligible. Similarly, I'm not concerned with someone sticking around until I stop playing music and then staying until the music starts back up. Well, I'd be concerned about their mental state, but either way, once the music stops, it stops for good (or until you revisit the homepage).
+If no data is returned, we just stop here and stay on the hand indefinitely. There is no retry here - the chances of someone landing on the homepage while I'm not playing music on Spotify and sticking around long enough until I am is negligible. Similarly, I'm not concerned with someone sticking around until I stop playing music and then staying until the music starts back up. Well, I'd be concerned about their mental state, but either way, once the music stops, it stops for good (or until you revisit the homepage).
 
- In Svelte, the `music` variable is already bindable and we can use it in our view. So the only thing left to do is refresh the track when the last one ends. We do this by calculating the difference between the track's total duration and current progress and then set a time out to refresh it after that time. This will automatically change the song after the current one ends. Of course, this isn't truly realtime and does not reflect changes due to skips, but it's close enough for what we're trying to achieve.
+In Svelte, the `music` variable is already bindable and we can use it in our view. So the only thing left to do is refresh the track when the last one ends. We do this by calculating the difference between the track's total duration and current progress and then set a time out to refresh it after that time. This will automatically change the song after the current one ends. Of course, this isn't truly realtime and does not reflect changes due to skips, but it's close enough for what we're trying to achieve.
 
- Finally, all there's left to do is kick this off. By passing a callback to Svelte's built-in `onMount` hook, we can start it after we can confirm that the component's been mounted. In my case, I added a slight 3 seconds delay before actually starting the Jam With Me widget. This is entirely a personal choice and I feel that it makes for a clean transition after the hand, especially when the user reopens the homepage splash screen while already on the site.
+Finally, all there's left to do is kick this off. By passing a callback to Svelte's built-in `onMount` hook, we can start it after we can confirm that the component's been mounted. In my case, I added a slight 3 seconds delay before actually starting the Jam With Me widget. This is entirely a personal choice and I feel that it makes for a clean transition after the hand, especially when the user reopens the homepage splash screen while already on the site.
 
- Even with all of this set up, there is one glaring issue if you tried this out yourself as is. The actual `JamWithMeWidget` component doesn't exist! So let's fix that.
+Even with all of this set up, there is one glaring issue if you tried this out yourself as is. The actual `JamWithMeWidget` component doesn't exist! So let's fix that.
 
- ```svelte
- <script lang="ts">
+```svelte
+<script lang="ts">
 	export let music: JamWithMeDetails;
 </script>
 

@@ -1,11 +1,8 @@
+import { dev } from '$app/environment';
 import type { PageData } from './$types';
 
-export const load = ({ url, setHeaders }): PageData => {
+export const load = ({ url }): PageData => {
 	const path: string = url.pathname;
-
-	setHeaders({
-		'X-Frame-Options': 'SAMEORIGIN'
-	});
 
 	return {
 		path,

@@ -5,9 +5,7 @@
 
 # Hi, I'm Quangdao (aka Q)
 
-I am an endlessly-curious, multi-talented, highly-functional robot. As a programmer, I specialize in the .NET environment, but I also have experience in PHP and Node.JS. By day, I am currently employed as a Technical Lead at nvisia, where I build applications for a variety of clients ranging from private software solution providers to government utility companies. By night, I’m usually charging my battery, but when I’ve still got some juice left over, you can find me in a pile of trading cards or plucking away (poorly) at my guitar.
-
-TL;DR: <abbr title="robot">🤖</abbr>, <abbr title="day job is computer stuff">☀️:🧑‍💻</abbr>, <abbr title="outside of work, I like cards and guitars">🌙:🃏🎸</abbr>
+I am an endlessly-curious, multi-talented, highly-functional robot. As a programmer, I specialize in the .NET environment, but I also have experience in Java and Node.JS. I am currently employed as a Technical Architect at nvisia, where I build applications for a variety of clients ranging from private software solution providers to government utility companies. If you're interested in knowing what I'm up to, check out my [/now page](/now).
 
 <Quote by="Francis of Assisi">Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.</Quote>
 
@@ -24,20 +22,3 @@ Over a decade later, my passion for technology has not diminished; it has only e
 ## What Makes Me a Robot?
 
 I... don't remember. Not the full story anyway. It started off as a joke at work, where certain things I did would be met with a comment about how I'm a robot. At one point, I created [a little app](https://quangdaon.github.io/q-robometer/) where my coworkers could input records of my robotic behavior.
-
-<style lang="scss">
-	@use '@scissors/breakpoints';
-	@use '@scissors/media';
-
-	abbr {
-		text-decoration: none;
-		&:hover {
-			background: var(--color-green-base-op-1);
-		}
-		@include media.dark {
-			&:hover {
-				background: var(--color-orange-500-op-1);
-			}
-		}
-	}
-</style>
