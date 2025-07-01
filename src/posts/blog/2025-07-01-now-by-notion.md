@@ -12,13 +12,13 @@ date: '2025-07-01'
 
 I first heard about this movement to create a ["Now" page](https://nownownow.com/about) around half a year ago. If you are not familiar, it is a movement popularized by [Derek Sivers](https://sive.rs/nowff) in 2015. The idea is similar to the typical "About" or "Bio" page you might find on someone's website, except with an emphasis on what they are focused on [right _now_](/now).
 
-I am normally not one to chase trends. If anything, I like finding ways to go _against_ the grain. For some reason, this particular idea spoke to me, and so I thought about giving it a go. Here's the problem though -- I, like many humans, am stricken with a multitude of fatal flaws. One of these flaws includes the inability to be consistent and keep my stuff up-to-date. With the way my site is set up, making an update to my Now page means pulling down my codebase, finding and editing a file, and pushing it back up. That isn't a lot of work by any means; obviously I am perfectly satisfied with that process for writing a blog post or I would not have set it up this way. But for quick updates about things going on in my life, it is a bit of a chore. Goodness knows that if I took this route, my Now page would be five years out of date by August. However, there is one tool I use daily that could help me maintain this page.
+I am normally not one to chase trends. If anything, I like finding ways to go _against_ the grain. For some reason, this particular idea spoke to me, and so I thought about giving it a go. Here's the problem though -- I, like many humans, am stricken with a multitude of fatal flaws. One of these flaws includes the inability to be consistent and keep my stuff up-to-date. With the way my site is set up, making an update to my Now page means pulling down my codebase, finding and editing a file, and pushing it back up. That is not a lot of work by any means; obviously I am perfectly satisfied with that process for writing a blog post or I would not have set it up this way. But for quick updates about things going on in my life, it is a bit of a chore. Goodness knows that if I took this route, my Now page would be five years out of date by August. However, there is one tool I use daily that could help me maintain this page.
 
 ## Plan A
 
-If you read the title of this post, you would already know what I am talking about. [Notion](https://www.notion.com/) is a productivity tool for organizing notes and ideas. Their database-like structure makes it easy to keep things organized.
+If you read the title of this post, you may already know what I am talking about. [Notion](https://www.notion.com/) is a productivity tool for organizing notes and ideas. Their database-like structure makes it easy to keep things organized.
 
-Originally, my plan was to manage the content of my Now page in the repo. But to add a layer of upkeep and accountability, I was going to set up a tracker in Notion to log my activities within each engagement. It would be like a daily journal and also give me some insight into just how much time I am spending on all my hobbies. If a section doesn't have an activity logged in two weeks -- poof -- it stops showing on the page.
+Originally, my plan was to manage the content of my Now page in the repo. But to add a layer of upkeep and accountability, I was going to set up a tracker in Notion to log my activities within each engagement. It would be like a daily journal and also give me some insight into just how much time I am spending on all my hobbies. If a section does not have an activity logged in two weeks -- poof -- it stops showing on the page.
 
 As I was building this feature, something struck me: why am I not just managing _all_ of this in Notion? Just when I was about done building a Now page that dynamically hid sections without any activity for two weeks, I scrapped the whole thing and started over.
 
@@ -47,7 +47,7 @@ Well, not exactly the _whole_ thing. I still had the bare essentials to hook up 
 
 "Passions" is the top-level database that tracks everything I want to show on my Now page. Originally, I called it "Hobbies," but I wanted to be more general. I am still a bit iffy on the name but it works for now. Each "passion" is rendered as a section on the page, with content pulled directly from its Notion page.
 
-The Display Mode property controls how it shows on the page. By default, it follows the original plan - if there was an activity logged for this in the last two weeks, show it, otherwise don't. "Always Show" forces the passion to appear on my Now Page. This is for cases that are not event-bound, like programming, which I do for a living. "Always Hide" is a way for me to hide "Passions" I want to track but not render. This is mainly for things I do not have content prepared for but have started tracking activity on. At this point, nothing is hidden, but I figured if I was going to add an Always Show, I should have an Always Hide.
+The Display Mode property controls how it shows on the page. By default, it follows the original plan - if there was an activity logged for this in the last two weeks, show it, otherwise don't. "Always Show" forces the section to appear on my Now Page. This is for cases that are not event-bound, like programming, which I do for a living. "Always Hide" is a way for me to hide sections I want to track but not render. I envision this being for things I do not have content prepared for but have started tracking activity on. At this point, nothing is hidden, but I figured if I was going to add an Always Show, I should have an Always Hide.
 
 ### Assets
 
@@ -129,13 +129,13 @@ export const getActivities = async (): Promise<ActivitiesResponse> => {
 };
 ```
 
-The main trouble is that the response from Notion's Blocks API isn't actually the content itself. Rather, it _describes_ the content. Which means that turning the blocks into HTML would require a bit of elbow grease. I will not be going through every step of it here. If you are interested, my website is fully open source and you can [check out the code on GitHub](https://github.com/quangdaon/quangdao.com/blob/main/src/lib/integrations/notion/rendering.ts).
+The main trouble is that the response from Notion's Blocks API is not actually the content itself. Rather, it _describes_ the content. Which means that turning the blocks into HTML would require a bit of elbow grease. I will not be going through every step of it here. If you are interested, my website is fully open source and you can [check out the rendering code on GitHub](https://github.com/quangdaon/quangdao.com/blob/main/src/lib/integrations/notion/rendering.ts).
 
-At this point, I have all the data to create the view (and am even doing some of that on what is technically the backend). That means that the page is now technically complete. But there was one major issue remaining...
+At this point, I have all the data to create the view (and am even doing some of that on what is supposed to be the backend). That means that the page is now technically complete. But there was one major issue remaining...
 
 ## Roadblock #1 - Performance
 
-As I was integrating with Notion's API, it became very clear that the speed was not up to my standards. Performance is not everything, but taking several seconds to load every single request to the page was just unacceptable. Now, I will not pretend I would not know how to handle the load in their shoes. After all, it is kind of my job to build performant, scalable applications. But my background does give me enough authority to say that building fast APIs can definitely be a challenge.
+As I was integrating with Notion's API, it became very clear that the speed was not up to my standards. Performance is not everything, but taking several seconds to load every single request to the page was just unacceptable. To say that I would not know how to handle the load in their shoes would be empty sympathy. After all, it is kind of my job to build performant, scalable applications. But my background does give me enough authority to say that building fast APIs can definitely be a challenge.
 
 In any case, I was not happy with how long my Now page was taking to load, and had to figure out a way around that. So I came up with a plan. Anyone who has had to deal with performance while integrating with a third party will know that the obvious solution is to cache the response. When I first built this blog in SvelteKit, I wanted it to be self-contained. Unless I absolutely _had_ to, I was not interested in integrating with something like Redis for a persistent caching mechanism. So I started off by implementing an in-memory cache by storing the response and "last checked" timestamp in a module-scope variable.
 
@@ -172,7 +172,7 @@ export async function GET() {
 // Handler for /api/now/refresh
 export async function POST() {
 	refreshActivities(); // This is a promise - Kick off process in the background, then immediately respond with a 202
-	return new Response(null, { status: 202 }); // 202 = Accepted, to let the calling know that work is happening, but not completed
+	return new Response(null, { status: 202 }); // 202 = Accepted, to let the caller know that work is happening, but not completed
 }
 ```
 
@@ -272,7 +272,7 @@ export async function POST({ request }) {
 
 ## _Now_ What?
 
-What I like about the Now page idea is that it forces you to reflect on your priorities. And I will be honest -- keeping a manually maintained list of my priorities up to date is not exactly one of mine right now. Notion helps bridge that gap, by providing an easy-to-edit platform, and also giving me something small to do every day as a reminder that I have this Now page. Every time I log an activity towards one of my hobbies, it gently nudges me and asks "hey, is the information you're sharing on your Now page still accurate?"
+What I like about the Now page idea is that it forces you to reflect on your priorities. And I will be honest -- manually keeping a	 list of my priorities up to date is not exactly one of mine right now. Notion helps bridge that gap, by providing an easy-to-edit platform, and also giving me something small to do every day as a reminder that I have this Now page. Every time I log an activity towards one of my hobbies, it gently nudges me and asks "hey, is the information you're sharing on your Now page still accurate?"
 
 <Quote by="Mother Teresa">
 Yesterday is gone. Tomorrow has not yet come. We have only today. Let us begin.

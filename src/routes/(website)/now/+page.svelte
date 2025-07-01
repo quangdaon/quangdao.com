@@ -28,6 +28,5 @@
 <p><i>Last Updated: {convertedLastUpdated.toLocaleDateString()}</i></p>
 
 <p>
-	This /now page is largely powered by <a href="https://www.notion.com/">Notion</a>. For more
-	details, check out <a href="/blog/now-by-notion">my blog post on the setup</a>.
+	Fun fact: this page pulls its content dynamically from <a href="https://www.notion.com/">Notion</a>. Curious how it works? <a href="/blog/now-by-notion">Check out my blog post.</a>
 </p>
