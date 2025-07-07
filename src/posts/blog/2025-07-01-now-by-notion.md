@@ -290,7 +290,7 @@ export const cacheSet = <T>(key: string, content: T, expirationSec: number) =>
 
 The original in-memory cache is still in place, but now whenever I write to it, I also pass the object along to my Redis cache with an expiry timeline of two weeks. Similarly, when I instantiate the cache for the first time in the app's/function's lifespan, I first check to see if it's persisted in Redis.
 
-The complete changeset is fairly small, and you can check out the [pull request on GitHub](https://github.com/quangdaon/quangdao.com/pull/43).
+The complete changeset is fairly small, and you can check out the [pull request on GitHub](https://github.com/quangdaon/quangdao.com/pull/44).
 
 Now back to the original post.
 
