@@ -270,6 +270,30 @@ export async function POST({ request }) {
 }
 ```
 
+## Amendment 2025-07-09
+
+As it turns out, Netlify Functions are rather short lived, as serverless functions are designed to be. While my testing did indicate successfully loading pre-rendered (ie. cached) content, it did not persist through the full two weeks like I had hoped. Since publishing this feature, I have implemented caching in Redis Cache, through a serverless service called [Upstash](https://upstash.com/). To interact with Upstash, I am using their JavaScript SDK behind a couple wrapper functions to persist the Redis client:
+
+```ts
+import { UPSTASH_REDIS_REST_TOKEN, UPSTASH_REDIS_REST_URL } from '$env/static/private';
+import { Redis } from '@upstash/redis';
+
+const redis = new Redis({
+	url: UPSTASH_REDIS_REST_URL,
+	token: UPSTASH_REDIS_REST_TOKEN
+});
+
+export const cacheGet = <T>(key: string) => redis.get<T>(key);
+export const cacheSet = <T>(key: string, content: T, expirationSec: number) =>
+	redis.set<T>(key, content, { ex: expirationSec });
+```
+
+The original in-memory cache is still in place, but now whenever I write to it, I also pass the object along to my Redis cache with an expiry timeline of two weeks. Similarly, when I instantiate the cache for the first time in the app's/function's lifespan, I first check to see if it's persisted in Redis.
+
+The complete changeset is fairly small, and you can check out the [pull request on GitHub](https://github.com/quangdaon/quangdao.com/pull/44).
+
+Now back to the original post.
+
 ## _Now_ What?
 
 What I like about the Now page idea is that it forces you to reflect on your priorities. And I will be honest -- manually keeping a	 list of my priorities up to date is not exactly one of mine right now. Notion helps bridge that gap, by providing an easy-to-edit platform, and also giving me something small to do every day as a reminder that I have this Now page. Every time I log an activity towards one of my hobbies, it gently nudges me and asks "hey, is the information you're sharing on your Now page still accurate?"

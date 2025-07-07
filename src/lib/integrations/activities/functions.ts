@@ -2,14 +2,15 @@ import type { ActivitiesResponse, Activity } from './models';
 import { getNotionPassions, getNotionPassion, renderContent } from '../notion';
 import type { PageObjectResponse } from '@notionhq/client';
 import { NOTION_ACTIVE_HOBBIES_THRESHOLD_DAYS } from '$env/static/private';
-
-let cache: {
+import { cacheGet, cacheSet } from '../caching';
+interface CachedNowContent {
 	data: ActivitiesResponse | null;
 	lastChecked: Date | null;
-} = {
-	data: null,
-	lastChecked: null
-};
+}
+
+let cache: CachedNowContent | null = null;
+
+const CACHE_KEY = 'NOW:CONTENT';
 
 const processActivity = async (entry: PageObjectResponse): Promise<Activity | null> => {
 	const name = entry.properties['Name'];
@@ -33,7 +34,9 @@ const isCacheStale = (date: Date) => {
 };
 
 export const getActivities = async (): Promise<ActivitiesResponse> => {
-	if (cache.data && cache.lastChecked && !isCacheStale(cache.lastChecked)) {
+	cache ??= await cacheGet<CachedNowContent>(CACHE_KEY);
+
+	if (cache?.data && cache.lastChecked && !isCacheStale(cache.lastChecked)) {
 		return cache.data;
 	}
 
@@ -43,6 +46,7 @@ export const getActivities = async (): Promise<ActivitiesResponse> => {
 };
 
 export const refreshActivities = async () => {
+	console.log('Refreshing activities...');
 	const passions = await getNotionPassions();
 	const editTs = passions.results.map((h) => new Date((h as PageObjectResponse).last_edited_time));
 
@@ -58,8 +62,16 @@ export const refreshActivities = async () => {
 		activities
 	};
 
-	cache.data = result;
-	cache.lastChecked = new Date();
+	const exp = +NOTION_ACTIVE_HOBBIES_THRESHOLD_DAYS * 24 * 60 * 60;
+
+	cache = {
+		data: result,
+		lastChecked: new Date()
+	};
+
+	await cacheSet<CachedNowContent>(CACHE_KEY, cache, exp);
+
+	console.log('Refreshing activities complete.');
 
 	return result;
 };
