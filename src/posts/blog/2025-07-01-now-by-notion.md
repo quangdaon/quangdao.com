@@ -270,7 +270,7 @@ export async function POST({ request }) {
 }
 ```
 
-## Amendment 2025-07-09
+## Addendum 2025-07-08
 
 As it turns out, Netlify Functions are rather short lived, as serverless functions are designed to be. While my testing did indicate successfully loading pre-rendered (ie. cached) content, it did not persist through the full two weeks like I had hoped. Since publishing this feature, I have implemented caching in Redis Cache, through a serverless service called [Upstash](https://upstash.com/). To interact with Upstash, I am using their JavaScript SDK behind a couple wrapper functions to persist the Redis client:
 
