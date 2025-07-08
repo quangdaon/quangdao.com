@@ -296,7 +296,7 @@ Now back to the original post.
 
 ## _Now_ What?
 
-What I like about the Now page idea is that it forces you to reflect on your priorities. And I will be honest -- manually keeping a	 list of my priorities up to date is not exactly one of mine right now. Notion helps bridge that gap, by providing an easy-to-edit platform, and also giving me something small to do every day as a reminder that I have this Now page. Every time I log an activity towards one of my hobbies, it gently nudges me and asks "hey, is the information you're sharing on your Now page still accurate?"
+What I like about the Now page idea is that it forces you to reflect on your priorities. And I will be honest -- manually keeping a	 list of my priorities up to date is not exactly one of mine right now. Notion helps bridge that gap, by providing an easy-to-edit platform, and also giving me something small to do every day as a reminder that I have this Now page. Every time I log an activity towards one of my hobbies, it gently nudges me and asks "hey, is the information you're sharing on your Now page still accurate?" Is it overengineered? Absolutely. But was it worth it? _Absolutely._
 
 <Quote by="Mother Teresa">
 Yesterday is gone. Tomorrow has not yet come. We have only today. Let us begin.
