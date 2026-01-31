@@ -34,7 +34,7 @@
 	"type": "module",
 	"dependencies": {
 		"@notionhq/client": "^3.1.3",
-		"@quangdao/brandkit": "^0.1.2",
+		"@quangdao/brandkit": "^0.2.2",
 		"@quangdao/scissors": "^1.0.0",
 		"@upstash/redis": "^1.35.1",
 		"canvas": "^3.1.0",

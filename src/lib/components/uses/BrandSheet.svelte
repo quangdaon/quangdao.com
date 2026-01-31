@@ -16,7 +16,7 @@
 <h3>Font Faces</h3>
 
 <div class="font font-primary">
-	<h4><a href="https://www.fontshop.com/families/ff-tisa-sans">FF Tisa Sans Pro</a></h4>
+	<h4><a href="https://fonts.google.com/specimen/Nunito+Sans">Nunito Sans</a></h4>
 	<p>My primary font face.</p>
 </div>
 
