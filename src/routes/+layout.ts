@@ -8,7 +8,7 @@ export const load = ({ url }): PageData => {
 		path,
 		pageTitle: 'Quangdao Nguyen',
 		pageDescription:
-			'Quangdao is a creative, adaptable, and resourceful software engineer with a passion for pushing limits and challenging impossiblities.',
+			'Quangdao is a creative, adaptable, and resourceful software engineer with a passion for pushing limits and challenging impossibilities.',
 		pageSocialImage: '/images/social.png'
 	};
 };
